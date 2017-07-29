@@ -6,16 +6,30 @@ import { MaterialModule } from './material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import 'hammerjs';
+import { routing } from './app.routing';
+
+import { LoginComponent } from './componentes/login/login.component';
+import { LoginService } from './servicios/login.service';
+import { HttpVeaService } from './servicios/http-vea.service';
+import { SpinnerService } from './servicios/spinner.service';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    MaterialModule
+    MaterialModule,
+    SimpleNotificationsModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    HttpVeaService,
+    SpinnerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
