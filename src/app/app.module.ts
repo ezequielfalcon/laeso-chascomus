@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material';
@@ -13,6 +15,7 @@ import { LoginService } from './servicios/login.service';
 import { HttpVeaService } from './servicios/http-vea.service';
 import { SpinnerService } from './servicios/spinner.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { NotificationsService } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,17 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MaterialModule,
+    HttpModule,
     SimpleNotificationsModule,
-    routing
+    routing,
+    BrowserAnimationsModule
   ],
   providers: [
     LoginService,
     HttpVeaService,
+    NotificationsService,
     SpinnerService
   ],
   bootstrap: [AppComponent]
