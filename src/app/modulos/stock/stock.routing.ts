@@ -1,3 +1,6 @@
+import { AdminGuard } from './../../guards/admin.guard';
+import { StockGuard } from './../../guards/stock.guard';
+import { LoginGuard } from './../../guards/login.guard';
 import { StockComponent } from './stock.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +11,8 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { DetalleProductoComponent } from './componentes/productos/detalle-producto/detalle-producto.component';
 import { StockHomeComponent } from './componentes/stock-home/stock-home.component';
 const stockRoutes: Routes = [
-  { path: 'stock', component: StockComponent, children: [
+  { path: 'stock', component: StockComponent, canActivate:
+  [LoginGuard, StockGuard, AdminGuard], canActivateChild: [StockGuard, AdminGuard], children: [
     { path: 'configuraciones',  component: ConfiguracionesComponent },
     { path: 'configuraciones/:id', component: ConfiguracionesComponent },
     { path: 'proveedores', component: ProveedoresComponent },
