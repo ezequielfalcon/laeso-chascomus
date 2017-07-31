@@ -1,0 +1,10 @@
+<h2 md-dialog-title>Nueva Categoría</h2>
+<div md-dialog-content>
+        <md-input-container>
+          <input mdInput required placeholder="Nombre" [(ngModel)]="nombreCat">
+        </md-input-container>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button color="primary" (click)="crearCategoria()" #crearBtn>Crear</button>
+  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>
