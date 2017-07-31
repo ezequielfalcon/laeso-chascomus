@@ -21,6 +21,7 @@ export class LoginService {
       .map((response: Response) => {
         sessionStorage.setItem('usuario', usuario);
         sessionStorage.setItem('token', response.json().token);
+        sessionStorage.setItem('roles', response.json().rolesToken);
       });
   }
 
