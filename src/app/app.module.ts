@@ -1,3 +1,5 @@
+import { SpinnerComponent } from './modulos/utils/directivas/spinner/spinner.component';
+import { UtilsModule } from './modulos/utils/utils.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,14 +15,18 @@ import { routing } from './app.routing';
 import { LoginComponent } from './componentes/login/login.component';
 import { LoginService } from './servicios/login.service';
 import { HttpVeaService } from './servicios/http-vea.service';
-import { SpinnerService } from './servicios/spinner.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { NotificationsService } from 'angular2-notifications';
+import { ProveedoresService } from './servicios/datos/proveedores.service';
+import { ProductosService } from './servicios/datos/productos.service';
+import { HomeComponent } from './componentes/home/home.component';
+import { StockModule } from './modulos/stock/stock.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,14 +34,14 @@ import { NotificationsService } from 'angular2-notifications';
     MaterialModule,
     HttpModule,
     SimpleNotificationsModule,
-    routing,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StockModule,
+    routing
   ],
   providers: [
     LoginService,
     HttpVeaService,
-    NotificationsService,
-    SpinnerService
+    NotificationsService
   ],
   bootstrap: [AppComponent]
 })

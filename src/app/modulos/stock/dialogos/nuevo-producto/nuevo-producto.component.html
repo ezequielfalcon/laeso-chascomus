@@ -1,0 +1,52 @@
+<h2 md-dialog-title>Nuevo Producto</h2>
+<div md-dialog-content>
+  <table cellspacing="0">
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput placeholder="Código" [(ngModel)]="nuevoProducto.codigo" required autofocus (keyup.enter)="nombreForm.focus()">
+        </md-input-container>
+      </td>
+      <td>
+        <md-input-container>
+          <input mdInput placeholder="Nombre" [(ngModel)]="nuevoProducto.nombre"
+                 required #nombreForm (keyup.tab)="stockMinimoForm.focus()" (keyup.enter)="crearBtn.focus()">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput placeholder="Stock Mínimo" [(ngModel)]="nuevoProducto.stock_minimo" required #stockMinimoForm (keyup.enter)="crearBtn.focus()">
+        </md-input-container>
+      </td>
+      <td>
+        <md-select placeholder="IVA" [(ngModel)]="nuevoProducto.iva" required>
+          <md-option *ngFor="let iva of ivas" [value]="iva.valor">
+            {{iva.label}}
+          </md-option>
+        </md-select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-select placeholder="Categoría" [(ngModel)]="nuevoProducto.id_categoria" required>
+          <md-option *ngFor="let categoria of categorias" [value]="categoria.id">
+            {{categoria.nombre}}
+          </md-option>
+        </md-select>
+      </td>
+      <td>
+        <md-select placeholder="Unidad" [(ngModel)]="nuevoProducto.id_unidad" required>
+          <md-option *ngFor="let unidad of unidades" [value]="unidad.id">
+            {{unidad.nombre}}
+          </md-option>
+        </md-select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button color="primary" (click)="crearProducto()" #crearBtn>Crear</button>
+  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>

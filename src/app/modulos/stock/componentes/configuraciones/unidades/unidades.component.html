@@ -1,0 +1,11 @@
+<md-list>
+    <md-list-item *ngFor="let unidad of unidades" class="clickVer" (click)="borrarUnidad(unidad)" mdTooltip="Click para borrar!">
+        <md-icon md-list-icon>bubble_chart</md-icon>
+        <h4 md-line>{{unidad.nombre}}</h4>
+    </md-list-item>
+</md-list>
+<div class="boton-add">
+    <a md-fab (click)="nuevaUnidadDialog()">
+        <md-icon>add</md-icon>
+    </a>
+</div>

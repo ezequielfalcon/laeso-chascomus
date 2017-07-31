@@ -1,0 +1,22 @@
+<div class="center-agenda">
+  <md-card>
+    <md-card-header>
+      <md-card-title-group>
+        <h2>Productos</h2>
+      </md-card-title-group>
+    </md-card-header>
+    <div class="boton-add">
+      <a md-fab (click)="nuevoProducto()" (keyup.enter)="nuevoProducto()" #nuevoProd><md-icon>add</md-icon></a>
+    </div>
+    <md-card-content>
+      <table width="100%">
+        <tr>
+          <th *ngFor="let columna of columnas">{{columna.label}}</th>
+        </tr>
+        <tr *ngFor="let producto of productosFull" class="clickVer hover" (click)="router.navigate(['productos/' + producto.id])">
+          <td *ngFor="let columnaProd of columnas">{{producto[columnaProd.name]}}</td>
+        </tr>
+      </table>
+    </md-card-content>
+  </md-card>
+</div>

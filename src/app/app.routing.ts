@@ -1,10 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './componentes/login/login.component';
+import { HomeComponent } from './componentes/home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', component: LoginComponent },
-
-    { path: '*', redirectTo: '/home' }
+    { path: 'login', component: LoginComponent },
+    { path: '', component: HomeComponent },
+    { path: '*', redirectTo: '' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

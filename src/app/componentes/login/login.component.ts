@@ -1,7 +1,7 @@
+import { SpinnerService } from './../../modulos/utils/directivas/spinner/spinner.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../servicios/login.service';
-import { SpinnerService } from '../../servicios/spinner.service';
 import { NotificationsService } from 'angular2-notifications';
 
 @Component({
