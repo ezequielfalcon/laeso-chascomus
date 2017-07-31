@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpVeaService} from "../http-vea.service";
-import {Response, URLSearchParams} from "@angular/http";
+import {HttpVeaService} from '../http-vea.service';
+import {Response, URLSearchParams} from '@angular/http';
 
 @Injectable()
 export class ProveedoresService {
@@ -18,7 +18,7 @@ export class ProveedoresService {
   }
 
   nuevoProveedor(nombre: string, telefono: string, denominacion: string, email: string, direccion: string) {
-    let body = new URLSearchParams();
+    const body = new URLSearchParams();
     body.set('nombre', nombre);
     body.set('telefono', telefono);
     body.set('denominacion', denominacion);
@@ -28,7 +28,7 @@ export class ProveedoresService {
   }
 
   modificarProveedor(proveedorId: number, nombre: string, telefono: string, denominacion: string, email: string, direccion: string) {
-    let body = new URLSearchParams();
+    const body = new URLSearchParams();
     body.set('nombre', nombre);
     body.set('telefono', telefono);
     body.set('denominacion', denominacion);

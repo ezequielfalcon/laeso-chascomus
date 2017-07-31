@@ -14,7 +14,8 @@ const stockRoutes: Routes = [
     { path: 'proveedores', component: ProveedoresComponent },
     { path: 'proveedores/:id', component: DetalleProveedorComponent },
     { path: 'productos', component: ProductosComponent },
-    { path: 'productos/:id', component: DetalleProductoComponent }
+    { path: 'productos/:id', component: DetalleProductoComponent },
+    { path: '*', redirectTo: '', pathMatch: 'full' }
     ]
   },
 ];

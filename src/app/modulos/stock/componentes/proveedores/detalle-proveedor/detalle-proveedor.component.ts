@@ -33,7 +33,7 @@ export class DetalleProveedorComponent implements OnInit, OnDestroy {
       this.proveedor = proveedorDb;
       this.spinner.stop();
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/proveedores';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/stock/proveedores';
   }
 
   ngOnDestroy() {

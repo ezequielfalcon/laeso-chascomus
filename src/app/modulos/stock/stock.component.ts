@@ -7,9 +7,4 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockComponent {
 
-  public options = {
-    position: ['bottom', 'right'],
-    timeOut: 2500,
-  };
-
 }

@@ -40,7 +40,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cargarUnidades();
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/productos';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/stock/productos';
   }
 
   cargarProducto() {

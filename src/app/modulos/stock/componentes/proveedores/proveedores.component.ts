@@ -1,7 +1,7 @@
 import { SpinnerService } from './../../../utils/directivas/spinner/spinner.service';
 import { ProveedoresService } from './../../../../servicios/datos/proveedores.service';
 import { Proveedor } from './../../../../modelos/proveedor';
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import { Component, OnInit, ViewContainerRef, OnDestroy } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
 import {Router} from '@angular/router';
 import { NuevoProveedorService } from '../../dialogos/nuevo-proveedor/nuevo-proveedor.service';
@@ -11,7 +11,7 @@ import { NuevoProveedorService } from '../../dialogos/nuevo-proveedor/nuevo-prov
   templateUrl: './proveedores.component.html',
   styleUrls: ['./proveedores.component.css']
 })
-export class ProveedoresComponent implements OnInit {
+export class ProveedoresComponent implements OnInit, OnDestroy {
 
   proveedores: Proveedor[] = [];
 
@@ -26,6 +26,10 @@ export class ProveedoresComponent implements OnInit {
 
   ngOnInit() {
     this.cargarProveedores();
+  }
+
+  ngOnDestroy() {
+    this.spinner.start();
   }
 
   nuevoProveedor() {

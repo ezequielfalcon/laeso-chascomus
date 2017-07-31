@@ -1,3 +1,4 @@
+import { ConfirmarService } from './../utils/dialogos/confirmar/confirmar.service';
 import { ProductosService } from './../../servicios/datos/productos.service';
 import { ProveedoresService } from './../../servicios/datos/proveedores.service';
 import { SpinnerService } from './../utils/directivas/spinner/spinner.service';
@@ -64,7 +65,8 @@ import { MaterialModule } from '../../material';
     NuevoProveedorService,
     SpinnerService,
     ProveedoresService,
-    ProductosService
+    ProductosService,
+    ConfirmarService
   ]
 })
 export class StockModule { }

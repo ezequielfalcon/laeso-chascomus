@@ -10,7 +10,7 @@
     </div>
     <md-card-content>
       <md-list>
-        <md-list-item class="clickVer" *ngFor="let proveedor of proveedores" (click)="router.navigate(['/proveedores/' + proveedor.id]);">
+        <md-list-item class="clickVer" *ngFor="let proveedor of proveedores" (click)="router.navigate(['/stock/proveedores/' + proveedor.id]);">
           <md-icon md-list-icon>person</md-icon>
           <h4 md-line><strong>Denominación: </strong>{{proveedor.denominacion}}</h4>
           <p md-line><strong>Teléfono: </strong>{{proveedor.telefono}}</p>

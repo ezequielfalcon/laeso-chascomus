@@ -26,7 +26,7 @@ import { StockModule } from './modulos/stock/stock.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
