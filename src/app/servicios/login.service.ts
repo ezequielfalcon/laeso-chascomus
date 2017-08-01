@@ -16,7 +16,7 @@ export class LoginService {
       clave: clave,
       cliente: '$2a$06$haVRFwEuOBH5oV/8LT0CQOXssTCHUtIQLJUy.Tjhmtz.gdZubp8VO'
     };
-    const apiUrl = 'https://vea1-backend.herokuapp.com';
+    const apiUrl = 'https://vea1-backend-test.herokuapp.com';
     return this.http.post(apiUrl + '/login', body)
       .map((response: Response) => {
         sessionStorage.setItem('usuario', usuario);

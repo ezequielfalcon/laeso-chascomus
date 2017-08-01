@@ -12,7 +12,7 @@ import { DetalleProductoComponent } from './componentes/productos/detalle-produc
 import { StockHomeComponent } from './componentes/stock-home/stock-home.component';
 const stockRoutes: Routes = [
   { path: 'stock', component: StockComponent, canActivate:
-  [LoginGuard, StockGuard, AdminGuard], canActivateChild: [StockGuard, AdminGuard], children: [
+  [StockGuard], canActivateChild: [StockGuard], children: [
     { path: 'configuraciones',  component: ConfiguracionesComponent },
     { path: 'configuraciones/:id', component: ConfiguracionesComponent },
     { path: 'proveedores', component: ProveedoresComponent },

@@ -13,7 +13,7 @@ export class StockGuard implements CanActivate, CanActivateChild {
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    if (sessionStorage.getItem('rolesToken').includes('stock')) {
+    if (sessionStorage.getItem('roles').includes('stock') || sessionStorage.getItem('roles').includes('admin')) {
       return true;
     }
     this.notifications.error('Error', 'Permiso denegado!');
@@ -22,7 +22,7 @@ export class StockGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (sessionStorage.getItem('rolesToken').includes('stock')) {
+    if (sessionStorage.getItem('roles').includes('stock') || sessionStorage.getItem('roles').includes('admin')) {
       return true;
     }
     this.notifications.error('Error', 'Permiso denegado!');

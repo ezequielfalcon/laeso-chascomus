@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    if (sessionStorage.getItem('rolesToken').includes('admin')) {
+    if (sessionStorage.getItem('roles').includes('admin')) {
       return true;
     }
     this.notifications.error('Error', 'Permiso denegado!');
@@ -22,7 +22,7 @@ export class AdminGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (sessionStorage.getItem('rolesToken').includes('admin')) {
+    if (sessionStorage.getItem('roles').includes('admin')) {
       return true;
     }
     this.notifications.error('Error', 'Permiso denegado!');
