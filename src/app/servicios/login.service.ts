@@ -4,10 +4,17 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class LoginService {
+
+  private urlPrefix: string;
+
   constructor(
     private http: Http
   ) {
-
+    this.http.get(window.location.origin + '/backend').map((response: Response) => response.json()).subscribe(urlBackend => {
+      this.urlPrefix = urlBackend.url;
+    }, error => {
+      console.error(error);
+    });
   }
 
   login(usuario: string, clave: string) {
@@ -16,8 +23,7 @@ export class LoginService {
       clave: clave,
       cliente: '$2a$06$haVRFwEuOBH5oV/8LT0CQOXssTCHUtIQLJUy.Tjhmtz.gdZubp8VO'
     };
-    const apiUrl = 'https://vea1-backend-test.herokuapp.com';
-    return this.http.post(apiUrl + '/login', body)
+    return this.http.post(this.urlPrefix + '/login', body)
       .map((response: Response) => {
         sessionStorage.setItem('usuario', usuario);
         sessionStorage.setItem('token', response.json().token);
