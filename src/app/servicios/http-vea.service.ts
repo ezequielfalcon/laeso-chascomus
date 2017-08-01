@@ -1,17 +1,12 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 
 @Injectable()
 export class HttpVeaService {
-  private urlPrefix: string;
+  public urlPrefix: string;
 
   constructor(private http: Http) {
     this.http = http;
-    this.http.get(window.location.origin + '/backend').map((response: Response) => response.json()).subscribe(urlBackend => {
-      this.urlPrefix = urlBackend.url;
-    }, error => {
-      console.error(error);
-    });
   }
 
 
