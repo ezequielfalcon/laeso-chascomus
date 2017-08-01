@@ -1,3 +1,4 @@
+import { HttpVeaService } from './http-vea.service';
 import { Injectable } from '@angular/core';
 import {Http, Headers, Response, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -8,10 +9,12 @@ export class LoginService {
   private urlPrefix: string;
 
   constructor(
-    private http: Http
+    private http: Http,
+    private httpVea: HttpVeaService
   ) {
     this.http.get(window.location.origin + '/backend').map((response: Response) => response.json()).subscribe(urlBackend => {
       this.urlPrefix = urlBackend.url;
+      this.httpVea.urlPrefix = urlBackend.url;
     }, error => {
       console.error(error);
     });
