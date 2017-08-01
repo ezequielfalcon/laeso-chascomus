@@ -63,7 +63,6 @@ import { MaterialModule } from '../../material';
     NuevaUnidadService,
     NuevoProductoService,
     NuevoProveedorService,
-    SpinnerService,
     ProveedoresService,
     ProductosService,
     ConfirmarService

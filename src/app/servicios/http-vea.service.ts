@@ -7,7 +7,7 @@ export class HttpVeaService {
 
   constructor(private http: Http) {
     this.http = http;
-    this.urlPrefix = 'https://vea1-backend.herokuapp.com';
+    this.urlPrefix = 'https://vea1-backend-test.herokuapp.com';
   }
 
 
