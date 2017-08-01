@@ -10,10 +10,15 @@
     </div>
     <md-card-content>
       <table width="100%">
+        <md-input-container>
+          <input mdInput placeholder="Filtrar por nombre..." [(ngModel)]="filtroNombre" />
+        </md-input-container>
+      </table>
+      <table width="100%">
         <tr>
           <th *ngFor="let columna of columnas">{{columna.label}}</th>
         </tr>
-        <tr *ngFor="let producto of productosFull" class="clickVer hover" (click)="router.navigate(['stock/productos/' + producto.id])">
+        <tr *ngFor="let producto of productosFull | filtro: {nombre: filtroNombre}" class="clickVer hover" (click)="router.navigate(['stock/productos/' + producto.id])">
           <td *ngFor="let columnaProd of columnas">{{producto[columnaProd.name]}}</td>
         </tr>
       </table>

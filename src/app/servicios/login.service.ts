@@ -17,6 +17,9 @@ export class LoginService {
       this.httpVea.urlPrefix = urlBackend.url;
     }, error => {
       console.error(error);
+      console.log('Error al obtener URL del backend, usando testing: vea1-backend-test');
+      this.urlPrefix = 'https://vea1-backend-test.herokuapp.com';
+      this.httpVea.urlPrefix = this.urlPrefix;
     });
   }
 

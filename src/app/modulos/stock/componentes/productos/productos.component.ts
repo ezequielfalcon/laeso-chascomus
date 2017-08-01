@@ -15,6 +15,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
 
   productosFull: ProductoFull[] = [];
   dialogoAbierto = false;
+  filtroNombre = '';
   columnas = [
     { name: 'id', label: 'ID' },
     { name: 'nombre', label: 'Nombre', sortable: true },
