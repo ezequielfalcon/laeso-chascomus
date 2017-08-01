@@ -9,17 +9,15 @@ export class LoginService {
   private urlPrefix: string;
 
   constructor(
-    private http: Http,
-    private httpVea: HttpVeaService
+    private http: Http
   ) {
     this.http.get(window.location.origin + '/backend').map((response: Response) => response.json()).subscribe(urlBackend => {
       this.urlPrefix = urlBackend.url;
-      this.httpVea.urlPrefix = urlBackend.url;
+      sessionStorage.setItem('url_backend', urlBackend.url);
     }, error => {
-      console.error(error);
       console.log('Error al obtener URL del backend, usando testing: vea1-backend-test');
       this.urlPrefix = 'https://vea1-backend-test.herokuapp.com';
-      this.httpVea.urlPrefix = this.urlPrefix;
+      sessionStorage.setItem('url_backend', this.urlPrefix); // guardar la URL en el sessionStorage para que los servicios no volteen
     });
   }
 
@@ -40,5 +38,7 @@ export class LoginService {
   logout() {
     sessionStorage.removeItem('usuario');
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('roles');
+    sessionStorage.removeItem('url_backend');
   }
 }

@@ -5,7 +5,7 @@ import {Http, Headers, Response} from '@angular/http';
 
 @Injectable()
 export class HttpVeaService {
-  public urlPrefix: string; // La URL acá es seteada por el servicio de Login
+  private urlPrefix: string; // La URL acá es seteada por el servicio de Login
 
   constructor(
     private http: Http,
@@ -13,7 +13,9 @@ export class HttpVeaService {
     private router: Router
   ) {
     this.http = http;
-    if (!this.urlPrefix) {
+    if (sessionStorage.getItem('url_backend')) {
+      this.urlPrefix = sessionStorage.getItem('url_backend');
+    } else {
       this.notif.error('Error', 'Error de comunicación con el servicio de VEA, ingrese sus credenciales nuevamente!');
       this.router.navigate(['/login']); // Si la URL todavía no está seteada, la única forma de seguir es volver al login
     }
