@@ -1,3 +1,7 @@
+import { SpinnerService } from './modulos/utils/directivas/spinner/spinner.service';
+import { StockGuard } from './guards/stock.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { LoginGuard } from './guards/login.guard';
 import { SpinnerComponent } from './modulos/utils/directivas/spinner/spinner.component';
 import { UtilsModule } from './modulos/utils/utils.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +30,7 @@ import { StockModule } from './modulos/stock/stock.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,11 @@ import { StockModule } from './modulos/stock/stock.module';
   providers: [
     LoginService,
     HttpVeaService,
-    NotificationsService
+    NotificationsService,
+    LoginGuard,
+    AdminGuard,
+    StockGuard,
+    SpinnerService
   ],
   bootstrap: [AppComponent]
 })
