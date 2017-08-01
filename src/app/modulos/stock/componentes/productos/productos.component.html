@@ -1,13 +1,14 @@
 <div class="center-agenda">
   <md-card>
+    <div class="boton-add">
+      <a md-fab (click)="nuevoProducto()" (keyup.enter)="nuevoProducto()" #nuevoProd><md-icon>add</md-icon></a>
+    </div>
     <md-card-header>
       <md-card-title-group>
         <h2>Productos</h2>
       </md-card-title-group>
     </md-card-header>
-    <div class="boton-add">
-      <a md-fab (click)="nuevoProducto()" (keyup.enter)="nuevoProducto()" #nuevoProd><md-icon>add</md-icon></a>
-    </div>
+
     <md-card-content>
       <table width="100%">
         <md-input-container>
