@@ -1,7 +1,7 @@
 import { SpinnerService } from './../../../utils/directivas/spinner/spinner.service';
 import { ProductosService } from './../../../../servicios/datos/productos.service';
 import { ProductoFull } from './../../../../modelos/producto-full';
-import {Component, HostListener, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewContainerRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
 import {Router} from '@angular/router';
 import { NuevoProductoService } from '../../dialogos/nuevo-producto/nuevo-producto.service';
@@ -11,10 +11,11 @@ import { NuevoProductoService } from '../../dialogos/nuevo-producto/nuevo-produc
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit, OnDestroy {
+export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   productosFull: ProductoFull[] = [];
   dialogoAbierto = false;
+  filtroNombre = '';
   columnas = [
     { name: 'id', label: 'ID' },
     { name: 'nombre', label: 'Nombre', sortable: true },
@@ -34,12 +35,22 @@ export class ProductosComponent implements OnInit, OnDestroy {
     public router: Router
   ) { }
 
+  @ViewChild('nuevoProd', {read: ElementRef}) BotonNuevoProd: ElementRef;
+
   ngOnInit() {
     this.cargarProductos();
   }
 
   ngOnDestroy() {
     this.spinner.start();
+  }
+
+  ngAfterViewInit() {
+    this.sacarFoco();
+  }
+
+  sacarFoco() {
+    this.BotonNuevoProd.nativeElement.blur();
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -66,6 +77,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
   nuevoProducto() {
     this.nuevoProductoService.crearProducto(this.vcr).subscribe(() => {
       this.cargarProductos();
+      this.sacarFoco();
       this.dialogoAbierto = false;
     }, error => {
       const body = JSON.parse(error._body);

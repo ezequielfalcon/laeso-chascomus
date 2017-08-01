@@ -1,3 +1,14 @@
-<p>
-  configuraciones works!
-</p>
+<div class="center-form">
+  <md-card>
+    <md-card-content>
+      <md-tab-group [selectedIndex]="indiceTab">
+        <md-tab label="Categorías">
+          <app-categorias></app-categorias>
+        </md-tab>
+        <md-tab label="Unidades">
+          <app-unidades></app-unidades>
+        </md-tab>
+      </md-tab-group>
+    </md-card-content>
+  </md-card>
+</div>

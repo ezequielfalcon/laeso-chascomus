@@ -1,11 +1,11 @@
+<div class="boton-add">
+    <a md-fab (click)="nuevaCategoriaDialog()">
+        <md-icon>add</md-icon>
+    </a>
+</div>
 <md-list>
     <md-list-item *ngFor="let categoria of categorias" class="clickVer" (click)="borrarCategoria(categoria)" mdTooltip="Click para borrar!">
         <md-icon md-list-icon>dashboard</md-icon>
         <h4 md-line>{{categoria.nombre}}</h4>
     </md-list-item>
 </md-list>
-<div class="boton-add">
-    <a md-fab (click)="nuevaCategoriaDialog()">
-        <md-icon>add</md-icon>
-    </a>
-</div>
