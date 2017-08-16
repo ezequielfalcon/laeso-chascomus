@@ -41,7 +41,15 @@ export class ProveedoresComponent implements OnInit, OnDestroy {
 
   cargarProveedores() {
     this.proveedoresService.traerTodos().subscribe(proveedoresDb => {
-      this.proveedores = proveedoresDb;
+      this.proveedores = proveedoresDb.sort((p1, p2) => {
+        if (p1.denominacion > p2.denominacion) {
+          return 1;
+        }
+        if (p1.denominacion < p2.denominacion) {
+          return -1;
+        }
+        return 0;
+      });
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
