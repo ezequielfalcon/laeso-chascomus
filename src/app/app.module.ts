@@ -26,6 +26,7 @@ import { ProductosService } from './servicios/datos/productos.service';
 import { HomeComponent } from './componentes/home/home.component';
 import { StockModule } from './modulos/stock/stock.module';
 import {CajaGuard} from './guards/caja.guard';
+import {CajaModule} from './modulos/caja/caja.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {CajaGuard} from './guards/caja.guard';
     SimpleNotificationsModule,
     BrowserAnimationsModule,
     StockModule,
+    CajaModule,
     routing
   ],
   providers: [
