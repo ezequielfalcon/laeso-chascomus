@@ -1,12 +1,10 @@
-import { ConfirmarService } from './../utils/dialogos/confirmar/confirmar.service';
-import { ProductosService } from './../../servicios/datos/productos.service';
-import { ProveedoresService } from './../../servicios/datos/proveedores.service';
-import { SpinnerService } from './../utils/directivas/spinner/spinner.service';
+import { ConfirmarService } from '../utils/dialogos/confirmar/confirmar.service';
+import { ProductosService } from '../../servicios/datos/productos.service';
+import { ProveedoresService } from '../../servicios/datos/proveedores.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { UtilsModule } from './../utils/utils.module';
+import { UtilsModule } from '../utils/utils.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { StockComponent } from './stock.component';
 import { ConfiguracionesComponent } from './componentes/configuraciones/configuraciones.component';
 import { CategoriasComponent } from './componentes/configuraciones/categorias/categorias.component';

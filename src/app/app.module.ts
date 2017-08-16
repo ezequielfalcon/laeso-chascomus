@@ -25,6 +25,7 @@ import { ProveedoresService } from './servicios/datos/proveedores.service';
 import { ProductosService } from './servicios/datos/productos.service';
 import { HomeComponent } from './componentes/home/home.component';
 import { StockModule } from './modulos/stock/stock.module';
+import {CajaGuard} from './guards/caja.guard';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { StockModule } from './modulos/stock/stock.module';
     LoginGuard,
     AdminGuard,
     StockGuard,
-    SpinnerService
+    SpinnerService,
+    CajaGuard
   ],
   bootstrap: [AppComponent]
 })
