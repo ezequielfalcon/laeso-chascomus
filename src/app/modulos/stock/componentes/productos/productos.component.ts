@@ -75,9 +75,9 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   nuevoProducto() {
+    this.sacarFoco();
     this.nuevoProductoService.crearProducto(this.vcr).subscribe(() => {
       this.cargarProductos();
-      this.sacarFoco();
       this.dialogoAbierto = false;
     }, error => {
       const body = JSON.parse(error._body);
