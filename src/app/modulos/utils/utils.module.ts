@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './directivas/spinner/spinner.component';
 import { ConfirmarComponent } from './dialogos/confirmar/confirmar.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 @NgModule({
   imports: [
@@ -11,14 +12,16 @@ import { ConfirmarComponent } from './dialogos/confirmar/confirmar.component';
   ],
   declarations: [
     SpinnerComponent,
-    ConfirmarComponent
+    ConfirmarComponent,
+    FiltroPipe
   ],
   entryComponents: [
     ConfirmarComponent
   ],
   exports: [
     SpinnerComponent,
-    ConfirmarComponent
+    ConfirmarComponent,
+    FiltroPipe
   ]
 })
 export class UtilsModule { }
