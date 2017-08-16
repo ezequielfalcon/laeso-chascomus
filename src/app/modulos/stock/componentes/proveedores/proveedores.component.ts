@@ -14,6 +14,7 @@ import { NuevoProveedorService } from '../../dialogos/nuevo-proveedor/nuevo-prov
 export class ProveedoresComponent implements OnInit, OnDestroy {
 
   proveedores: Proveedor[] = [];
+  filtroNombre = '';
 
   constructor(
     private proveedoresService: ProveedoresService,

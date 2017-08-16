@@ -1,6 +1,6 @@
-import { SpinnerService } from './../../../utils/directivas/spinner/spinner.service';
-import { ProductosService } from './../../../../servicios/datos/productos.service';
-import { ProductoFull } from './../../../../modelos/producto-full';
+import { SpinnerService } from '../../../utils/directivas/spinner/spinner.service';
+import { ProductosService } from '../../../../servicios/datos/productos.service';
+import { ProductoFull } from '../../../../modelos/producto-full';
 import { Component, HostListener, OnDestroy, OnInit, ViewContainerRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
 import {Router} from '@angular/router';
