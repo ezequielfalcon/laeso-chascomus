@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './directivas/spinner/spinner.component';
 import { ConfirmarComponent } from './dialogos/confirmar/confirmar.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { OrdenPipe } from './pipes/orden.pipe';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { FiltroPipe } from './pipes/filtro.pipe';
   declarations: [
     SpinnerComponent,
     ConfirmarComponent,
-    FiltroPipe
+    FiltroPipe,
+    OrdenPipe
   ],
   entryComponents: [
     ConfirmarComponent
