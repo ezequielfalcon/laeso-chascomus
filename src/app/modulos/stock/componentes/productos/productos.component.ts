@@ -1,6 +1,6 @@
-import { SpinnerService } from './../../../utils/directivas/spinner/spinner.service';
-import { ProductosService } from './../../../../servicios/datos/productos.service';
-import { ProductoFull } from './../../../../modelos/producto-full';
+import { SpinnerService } from '../../../utils/directivas/spinner/spinner.service';
+import { ProductosService } from '../../../../servicios/datos/productos.service';
+import { ProductoFull } from '../../../../modelos/producto-full';
 import { Component, HostListener, OnDestroy, OnInit, ViewContainerRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
 import {Router} from '@angular/router';
@@ -75,9 +75,9 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   nuevoProducto() {
+    this.sacarFoco();
     this.nuevoProductoService.crearProducto(this.vcr).subscribe(() => {
       this.cargarProductos();
-      this.sacarFoco();
       this.dialogoAbierto = false;
     }, error => {
       const body = JSON.parse(error._body);
