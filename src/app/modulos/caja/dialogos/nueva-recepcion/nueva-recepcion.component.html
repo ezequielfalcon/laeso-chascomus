@@ -8,7 +8,7 @@
         </md-input-container>
       </td>
       <td>
-        <button md-raised-button color="primary" *ngIf="!proveedorSeleccionado" type="button">Proveedor...</button>
+        <button md-raised-button color="primary" *ngIf="!proveedorSeleccionado" type="button" (click)="seleccionarProveedor()">Proveedor...</button>
         <md-input-container>
           <input mdInput disabled placeholder="Proveedor" *ngIf="proveedorSeleccionado" class="clickVer" [(ngModel)]="proveedor.denominacion">
         </md-input-container>
