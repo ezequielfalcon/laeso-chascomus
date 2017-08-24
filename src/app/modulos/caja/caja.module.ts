@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {MaterialModule} from '../../material';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -14,7 +13,6 @@ import {SeleccionarProveedorService} from './dialogos/seleccionar-proveedor/sele
 
 @NgModule({
   imports: [
-    CommonModule,
     BrowserModule,
     FormsModule,
     MaterialModule,
@@ -30,6 +28,10 @@ import {SeleccionarProveedorService} from './dialogos/seleccionar-proveedor/sele
   providers: [
     NuevaRecepcionService,
     SeleccionarProveedorService
+  ],
+  entryComponents: [
+    NuevaRecepcionComponent,
+    SeleccionarProveedorComponent
   ]
 })
 export class CajaModule { }

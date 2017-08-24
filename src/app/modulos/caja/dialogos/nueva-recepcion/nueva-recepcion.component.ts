@@ -39,6 +39,7 @@ export class NuevaRecepcionComponent implements OnInit {
     this.proveedoresService.verProveedor(proveedorId).subscribe(proveedorDb => {
       this.proveedor = proveedorDb;
       this.proveedorSeleccionado = true;
+      this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
