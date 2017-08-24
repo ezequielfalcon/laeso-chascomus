@@ -7,6 +7,8 @@ import {CajaComponent} from './caja.component';
 import {CajaRoutingModule} from './caja.routing';
 import {UtilsModule} from '../utils/utils.module';
 import {CajaHomeComponent} from './componentes/caja-home/caja-home.component';
+import {NuevaRecepcionComponent} from './dialogos/nueva-recepcion/nueva-recepcion.component';
+import {NuevaRecepcionService} from './dialogos/nueva-recepcion/nueva-recepcion.service';
 
 @NgModule({
   imports: [
@@ -19,7 +21,11 @@ import {CajaHomeComponent} from './componentes/caja-home/caja-home.component';
   ],
   declarations: [
     CajaComponent,
-    CajaHomeComponent
+    CajaHomeComponent,
+    NuevaRecepcionComponent
+  ],
+  providers: [
+    NuevaRecepcionService
   ]
 })
 export class CajaModule { }

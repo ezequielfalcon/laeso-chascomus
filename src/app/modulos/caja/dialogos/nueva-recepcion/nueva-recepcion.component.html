@@ -1,0 +1,28 @@
+<h2 md-dialog-title>Recepción de mercadería</h2>
+<md-dialog-content>
+  <table>
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput placeholder="Nro de Remito / Factura">
+        </md-input-container>
+      </td>
+      <td>
+        <button md-raised-button color="primary" *ngIf="!proveedorSeleccionado" type="button">Proveedor...</button>
+        <md-input-container>
+          <input mdInput disabled placeholder="Proveedor" *ngIf="proveedorSeleccionado" class="clickVer" [(ngModel)]="proveedor.denominacion">
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <md-input-container>
+          <input mdInput placeholder="Observaciones">
+        </md-input-container>
+      </td>
+    </tr>
+  </table>
+</md-dialog-content>
+<md-dialog-actions>
+
+</md-dialog-actions>
