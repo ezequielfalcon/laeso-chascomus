@@ -10,7 +10,7 @@ export class StockService {
   ) { }
 
   verRemitosRecibidos() {
-    this.http.get('/stock/remitos-recibidos').map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos-recibidos').map((response: Response) => response.json().datos);
   }
 
   nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
