@@ -1,0 +1,16 @@
+<h2 md-dialog-title>Seleccionar proveedor</h2>
+<md-dialog-content>
+  <table width="100%">
+    <md-input-container>
+      <input mdInput placeholder="Filtrar por denominación..." [(ngModel)]="filtroNombre" />
+    </md-input-container>
+  </table>
+  <md-list>
+    <md-list-item class="clickVer" *ngFor="let proveedor of proveedores | filtro: {denominacion: filtroNombre}" (click)="dialogRef.close(proveedor.id)">
+      <md-icon md-list-icon>person</md-icon>
+      <h4 md-line><strong>{{proveedor.denominacion}}</strong></h4>
+      <p md-line><strong>Teléfono: </strong>{{proveedor.telefono}}</p>
+    </md-list-item>
+    <md-divider></md-divider>
+  </md-list>
+</md-dialog-content>

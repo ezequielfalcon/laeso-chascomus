@@ -1,12 +1,10 @@
-import { ConfirmarService } from './../utils/dialogos/confirmar/confirmar.service';
-import { ProductosService } from './../../servicios/datos/productos.service';
-import { ProveedoresService } from './../../servicios/datos/proveedores.service';
-import { SpinnerService } from './../utils/directivas/spinner/spinner.service';
+import { ConfirmarService } from '../utils/dialogos/confirmar/confirmar.service';
+import { ProductosService } from '../../servicios/datos/productos.service';
+import { ProveedoresService } from '../../servicios/datos/proveedores.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { UtilsModule } from './../utils/utils.module';
+import { UtilsModule } from '../utils/utils.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { StockComponent } from './stock.component';
 import { ConfiguracionesComponent } from './componentes/configuraciones/configuraciones.component';
 import { CategoriasComponent } from './componentes/configuraciones/categorias/categorias.component';
@@ -27,6 +25,7 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { StockHomeComponent } from './componentes/stock-home/stock-home.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '../../material';
+import {StockService} from '../../servicios/datos/stock.service';
 
 @NgModule({
   imports: [
@@ -65,7 +64,8 @@ import { MaterialModule } from '../../material';
     NuevoProveedorService,
     ProveedoresService,
     ProductosService,
-    ConfirmarService
+    ConfirmarService,
+    StockService
   ]
 })
 export class StockModule { }
