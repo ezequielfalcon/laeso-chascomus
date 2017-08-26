@@ -10,6 +10,7 @@ import {NuevaRecepcionComponent} from './dialogos/nueva-recepcion/nueva-recepcio
 import {NuevaRecepcionService} from './dialogos/nueva-recepcion/nueva-recepcion.service';
 import {SeleccionarProveedorComponent} from './dialogos/seleccionar-proveedor/seleccionar-proveedor.component';
 import {SeleccionarProveedorService} from './dialogos/seleccionar-proveedor/seleccionar-proveedor.service';
+import {StockService} from '../../servicios/datos/stock.service';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {SeleccionarProveedorService} from './dialogos/seleccionar-proveedor/sele
   ],
   providers: [
     NuevaRecepcionService,
-    SeleccionarProveedorService
+    SeleccionarProveedorService,
+    StockService
   ],
   entryComponents: [
     NuevaRecepcionComponent,

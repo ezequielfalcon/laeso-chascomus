@@ -13,11 +13,12 @@ export class StockService {
     this.http.get('/stock/remitos-recibidos').map((response: Response) => response.json().datos);
   }
 
-  nuevoRemitoRecibido(proveedorId: number, numero: string) {
+  nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
     const body = new URLSearchParams();
     body.set('id_proveedor', '' + proveedorId);
     body.set('numero', numero);
-    this.http.post('/stock/remitos-recibidos', body).map((response: Response) => response.json());
+    body.set('observaciones', obs);
+    return this.http.post('/stock/remitos-recibidos', body).map((response: Response) => response.json());
   }
 
 }
