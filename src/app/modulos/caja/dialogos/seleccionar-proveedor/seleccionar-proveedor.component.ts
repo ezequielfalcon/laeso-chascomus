@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Proveedor} from '../../../../modelos/proveedor';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
 import {MdDialogRef} from '@angular/material';
