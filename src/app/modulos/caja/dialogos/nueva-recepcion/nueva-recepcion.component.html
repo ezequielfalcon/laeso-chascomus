@@ -4,7 +4,7 @@
     <tr>
       <td>
         <md-input-container>
-          <input mdInput placeholder="Nro de Remito / Factura">
+          <input mdInput placeholder="Nro de Remito / Factura" [(ngModel)]="numeroRemito">
         </md-input-container>
       </td>
       <td>
@@ -17,12 +17,12 @@
     <tr>
       <td>
         <md-input-container>
-          <input mdInput placeholder="Observaciones">
+          <input mdInput placeholder="Observaciones" [(ngModel)]="obs">
         </md-input-container>
       </td>
     </tr>
   </table>
 </md-dialog-content>
 <md-dialog-actions>
-
+  <button md-raised-button color="primary" type="button" (click)="crearRemito()">Cargar remito</button>
 </md-dialog-actions>

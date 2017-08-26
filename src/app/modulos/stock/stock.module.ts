@@ -25,6 +25,7 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { StockHomeComponent } from './componentes/stock-home/stock-home.component';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '../../material';
+import {StockService} from '../../servicios/datos/stock.service';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { MaterialModule } from '../../material';
     NuevoProveedorService,
     ProveedoresService,
     ProductosService,
-    ConfirmarService
+    ConfirmarService,
+    StockService
   ]
 })
 export class StockModule { }
