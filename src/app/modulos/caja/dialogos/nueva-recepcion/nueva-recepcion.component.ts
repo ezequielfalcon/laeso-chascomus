@@ -66,6 +66,9 @@ export class NuevaRecepcionComponent implements OnInit {
         this.notificationsService.error('Error', body.mensaje);
         this.spinner.stop();
       });
+    } else {
+      this.notificationsService.warn('Error', 'Faltan datos para crear el remito!');
+      this.spinner.stop();
     }
   }
 
