@@ -1,12 +1,12 @@
 
 import {RouterModule, Routes} from '@angular/router';
 import {CajaComponent} from './caja.component';
-import {StockGuard} from '../../guards/stock.guard';
 import {NgModule} from '@angular/core';
 import {CajaHomeComponent} from './componentes/caja-home/caja-home.component';
+import {CajaGuard} from '../../guards/caja.guard';
 
 const cajaRoutes: Routes = [
-  {path: 'caja', component: CajaComponent, canActivate: [StockGuard], canActivateChild: [StockGuard],
+  {path: 'caja', component: CajaComponent, canActivate: [CajaGuard], canActivateChild: [CajaGuard],
   children: [
     {path: '', component: CajaHomeComponent}
   ]}
