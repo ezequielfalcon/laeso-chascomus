@@ -7,6 +7,7 @@ import {MaterialModule} from '../../material';
 import {AdminRoutingModule} from './admin.routing';
 import {AdminComponent} from './admin.component';
 import {UtilsModule} from '../utils/utils.module';
+import {AdminHomeComponent} from './componentes/admin-home/admin-home.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {UtilsModule} from '../utils/utils.module';
     UtilsModule
   ],
   declarations: [
-    AdminComponent
+    AdminComponent,
+    AdminHomeComponent
   ]
 })
 export class AdminModule { }
