@@ -8,6 +8,8 @@ import {AdminRoutingModule} from './admin.routing';
 import {AdminComponent} from './admin.component';
 import {UtilsModule} from '../utils/utils.module';
 import {AdminHomeComponent} from './componentes/admin-home/admin-home.component';
+import {UsuariosComponent} from './componentes/usuarios/usuarios.component';
+import {AdminService} from '../../servicios/datos/admin.service';
 
 @NgModule({
   imports: [
@@ -21,7 +23,11 @@ import {AdminHomeComponent} from './componentes/admin-home/admin-home.component'
   ],
   declarations: [
     AdminComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    UsuariosComponent
+  ],
+  providers: [
+    AdminService
   ]
 })
 export class AdminModule { }

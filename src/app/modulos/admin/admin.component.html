@@ -5,6 +5,11 @@
       <span>Inicio</span>
     </button>
     <br>
+    <button md-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/usuarios']">
+      <md-icon>people</md-icon>
+      <span>Usuarios</span>
+    </button>
+    <br>
     <md-divider></md-divider>
     <button md-button class="boton-sidenav" color="warn" (click)="sidenav.toggle()" [routerLink]="['/']">
       <md-icon>exit_to_app</md-icon>

@@ -1,0 +1,18 @@
+<div class="center">
+  <md-card>
+    <md-card-header>
+      <md-card-title>
+        <h3>Usuarios y roles</h3>
+      </md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <md-list>
+        <md-list-item *ngFor="let usuario of usuarios">
+          <md-icon md-list-icon>person</md-icon>
+          <h4 md-line><strong>{{usuario.nombre}}</strong></h4>
+          <p md-line><strong>Nombre completo: </strong>{{usuario.nombre_apellido}}</p>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+</div>
