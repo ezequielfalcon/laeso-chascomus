@@ -13,4 +13,8 @@ export class AdminService {
     return this.http.get('/usuarios').map((response: Response) => response.json().datos);
   }
 
+  verRoles() {
+    return this.http.get('/roles').map((response: Response) => response.json().datos);
+  }
+
 }

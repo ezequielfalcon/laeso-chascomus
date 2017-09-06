@@ -10,6 +10,8 @@ import {UtilsModule} from '../utils/utils.module';
 import {AdminHomeComponent} from './componentes/admin-home/admin-home.component';
 import {UsuariosComponent} from './componentes/usuarios/usuarios.component';
 import {AdminService} from '../../servicios/datos/admin.service';
+import {NuevoUsuarioComponent} from './dialogos/nuevo-usuario/nuevo-usuario.component';
+import {NuevoUsuarioService} from './dialogos/nuevo-usuario/nuevo-usuario.service';
 
 @NgModule({
   imports: [
@@ -24,10 +26,15 @@ import {AdminService} from '../../servicios/datos/admin.service';
   declarations: [
     AdminComponent,
     AdminHomeComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    NuevoUsuarioComponent
   ],
   providers: [
-    AdminService
+    AdminService,
+    NuevoUsuarioService
+  ],
+  entryComponents: [
+    NuevoUsuarioComponent
   ]
 })
 export class AdminModule { }

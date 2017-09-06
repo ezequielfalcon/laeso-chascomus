@@ -1,5 +1,8 @@
 <div class="center">
   <md-card>
+    <div class="boton-add">
+      <a md-fab (click)="crearUsuario()"><md-icon>add</md-icon></a>
+    </div>
     <md-card-header>
       <md-card-title>
         <h3>Usuarios y roles</h3>
@@ -7,11 +10,21 @@
     </md-card-header>
     <md-card-content>
       <md-list>
-        <md-list-item *ngFor="let usuario of usuarios">
-          <md-icon md-list-icon>person</md-icon>
-          <h4 md-line><strong>{{usuario.nombre}}</strong></h4>
-          <p md-line><strong>Nombre completo: </strong>{{usuario.nombre_apellido}}</p>
-        </md-list-item>
+        <ng-container *ngFor="let usuario of usuarios">
+          <md-list-item>
+            <md-icon md-list-icon>person</md-icon>
+            <h4 md-line><strong>{{usuario.nombre}}</strong></h4>
+            <p md-line><strong>Nombre completo: </strong>{{usuario.nombre_apellido}}</p>
+            <p md-line><strong>Roles: </strong>{{juntarRoles(usuario)}}</p>
+            <button md-mini-fab>
+              <md-icon>mode_edit</md-icon>
+            </button>
+            <button md-mini-fab color="warn">
+              <md-icon>clear</md-icon>
+            </button>
+          </md-list-item>
+          <md-divider></md-divider>
+        </ng-container>
       </md-list>
     </md-card-content>
   </md-card>

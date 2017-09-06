@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {Usuario} from '../../../../modelos/usuario';
 import {AdminService} from '../../../../servicios/datos/admin.service';
 import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
+import {NuevoUsuarioService} from '../../dialogos/nuevo-usuario/nuevo-usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -16,7 +17,9 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   constructor(
     private adminService: AdminService,
     private spinner: SpinnerService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private nuevoUsuario: NuevoUsuarioService,
+    private vcr: ViewContainerRef
   ) { }
 
   ngOnInit() {
@@ -35,6 +38,25 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
+    });
+  }
+
+  juntarRoles(usuario: Usuario): string {
+    let roles = '';
+    if (usuario.roles) {
+      for (const rol of usuario.roles) {
+        roles = roles + rol.nombre + ' ';
+      }
+    }
+    return roles;
+  }
+
+  crearUsuario() {
+    this.nuevoUsuario.crearUsuario(this.vcr).subscribe((creado) => {
+      if (creado) {
+        this.spinner.start();
+        this.cargarUsuarios();
+      }
     });
   }
 

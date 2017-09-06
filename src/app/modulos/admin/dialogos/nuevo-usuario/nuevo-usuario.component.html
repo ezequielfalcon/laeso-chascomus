@@ -1,0 +1,45 @@
+<h2 md-dialog-title>Nuevo Usuario</h2>
+<div md-dialog-content>
+    <table>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput required placeholder="Nombre de usuario">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Nombre completo">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Email">
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Teléfono">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Dirección">
+          </md-input-container>
+        </td>
+        <td>
+          <md-select placeholder="Rol">
+            <md-option *ngFor="let rol of roles" [value]="rol.id">
+              {{rol.nombre}}
+            </md-option>
+          </md-select>
+        </td>
+      </tr>
+    </table>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button color="primary" #crearBtn>Crear</button>
+  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>
