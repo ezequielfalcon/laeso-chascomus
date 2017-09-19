@@ -35,4 +35,8 @@ export class AdminService {
     return this.http.del('/usuarios/' + nombre).map((response: Response) => response);
   }
 
+  verUsuario(nombre: string) {
+    return this.http.get('/usuarios/' + nombre).map((response: Response) => response.json().datos);
+  }
+
 }
