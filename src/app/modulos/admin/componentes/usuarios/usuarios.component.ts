@@ -63,6 +63,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   borrarUsuario(nombre: string) {
     this.spinner.start();
     this.adminService.borrarUsuario(nombre).subscribe(() => {
+      this.notificationsService.success('OK', 'Usuario borrado!');
+      this.cargarUsuarios();
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
