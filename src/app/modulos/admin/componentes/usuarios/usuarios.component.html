@@ -16,7 +16,7 @@
             <h4 md-line><strong>{{usuario.nombre}}</strong></h4>
             <p md-line><strong>Nombre completo: </strong>{{usuario.nombre_apellido}}</p>
             <p md-line><strong>Roles: </strong>{{juntarRoles(usuario)}}</p>
-            <button md-mini-fab>
+            <button md-mini-fab (click)="editar(usuario.nombre)">
               <md-icon>mode_edit</md-icon>
             </button>
             <button md-mini-fab color="warn" (click)="borrarUsuario(usuario.nombre)">

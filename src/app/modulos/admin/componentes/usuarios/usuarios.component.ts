@@ -4,6 +4,7 @@ import {AdminService} from '../../../../servicios/datos/admin.service';
 import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {NuevoUsuarioService} from '../../dialogos/nuevo-usuario/nuevo-usuario.service';
+import {EditarUsuarioService} from '../../dialogos/editar-usuario/editar-usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -19,7 +20,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private nuevoUsuario: NuevoUsuarioService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private editarUsuario: EditarUsuarioService
   ) { }
 
   ngOnInit() {
@@ -70,6 +72,12 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
+    });
+  }
+
+  editar(nombre: string) {
+    this.editarUsuario.modUsuario(nombre, this.vcr).subscribe(() => {
+      this.cargarUsuarios();
     });
   }
 

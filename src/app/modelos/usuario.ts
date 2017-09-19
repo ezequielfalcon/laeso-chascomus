@@ -7,4 +7,5 @@ export class Usuario {
   telefono: string;
   direccion: string;
   roles: Rol[];
+  id_rol: number;
 }
