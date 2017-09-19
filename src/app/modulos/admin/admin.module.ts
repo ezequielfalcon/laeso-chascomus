@@ -12,6 +12,8 @@ import {UsuariosComponent} from './componentes/usuarios/usuarios.component';
 import {AdminService} from '../../servicios/datos/admin.service';
 import {NuevoUsuarioComponent} from './dialogos/nuevo-usuario/nuevo-usuario.component';
 import {NuevoUsuarioService} from './dialogos/nuevo-usuario/nuevo-usuario.service';
+import {EditarUsuarioComponent} from './dialogos/editar-usuario/editar-usuario.component';
+import {EditarUsuarioService} from './dialogos/editar-usuario/editar-usuario.service';
 
 @NgModule({
   imports: [
@@ -27,14 +29,17 @@ import {NuevoUsuarioService} from './dialogos/nuevo-usuario/nuevo-usuario.servic
     AdminComponent,
     AdminHomeComponent,
     UsuariosComponent,
-    NuevoUsuarioComponent
+    NuevoUsuarioComponent,
+    EditarUsuarioComponent
   ],
   providers: [
     AdminService,
-    NuevoUsuarioService
+    NuevoUsuarioService,
+    EditarUsuarioService
   ],
   entryComponents: [
-    NuevoUsuarioComponent
+    NuevoUsuarioComponent,
+    EditarUsuarioComponent
   ]
 })
 export class AdminModule { }
