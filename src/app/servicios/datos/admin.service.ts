@@ -39,4 +39,17 @@ export class AdminService {
     return this.http.get('/usuarios/' + nombre).map((response: Response) => response.json().datos);
   }
 
+  modificarUsuario(nombre: string, nombre_completo: string, clave: string, email: string,
+               telefono: string, direccion: string, id_rol: number) {
+    const usuarioNuevo = {
+      nombre_apellido: nombre_completo,
+      clave: clave,
+      email: email,
+      telefono: telefono,
+      direccion: direccion,
+      id_rol: id_rol
+    };
+    return this.http.put('/usuarios/' + nombre, usuarioNuevo).map((response: Response) => response.json());
+  }
+
 }
