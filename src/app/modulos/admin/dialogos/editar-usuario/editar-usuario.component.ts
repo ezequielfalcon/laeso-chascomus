@@ -3,7 +3,6 @@ import {NotificationsService} from 'angular2-notifications';
 import {AdminService} from '../../../../servicios/datos/admin.service';
 import {MdDialogRef} from '@angular/material';
 import {Rol} from '../../../../modelos/rol';
-import {Usuario} from '../../../../modelos/usuario';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 
 @Component({
@@ -16,7 +15,9 @@ export class EditarUsuarioComponent implements OnInit {
   public nombreUsuario: string;
 
   roles: Rol[] = [];
-  usuario: Usuario = new Usuario;
+  clave1: string;
+  clave2: string;
+  usuario: any = {};
 
   constructor(
     public dialogRef: MdDialogRef<EditarUsuarioComponent>,
@@ -43,13 +44,29 @@ export class EditarUsuarioComponent implements OnInit {
   cargarUsuario(nombre: string) {
     this.adminService.verUsuario(nombre).subscribe(usuarioDb => {
       this.usuario = usuarioDb;
-      console.log(usuarioDb);
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
     });
+  }
+
+  guardar() {
+    if (this.clave1 !== this.clave2) {
+      this.notificationsService.warn('Error', 'Las contraseñas no coinciden');
+      return;
+    }
+    this.adminService.modificarUsuario(this.usuario.nombre, this.usuario.nombre_apellido, this.clave1,
+      this.usuario.email, this.usuario.telefono, this.usuario.direccion, this.usuario.id_rol)
+      .subscribe(() => {
+        this.notificationsService.success('OK', 'Usuario modificado!');
+        this.dialogRef.close(true);
+      }, error => {
+        const body = JSON.parse(error._body);
+        this.notificationsService.error('Error', body.mensaje);
+        this.spinner.stop();
+      });
   }
 
 }
