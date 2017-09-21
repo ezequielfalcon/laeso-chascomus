@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdCommonModule, MdCoreModule, MdDialogModule, MdIconModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdCommonModule, MdDialogModule, MdIconModule,
   MdInputModule, MdLineModule, MdListModule, MdProgressBarModule, MdSelectModule,
   MdSidenavModule, MdTableModule, MdTabsModule,
   MdToolbarModule, MdTooltipModule
