@@ -27,6 +27,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { StockModule } from './modulos/stock/stock.module';
 import {CajaGuard} from './guards/caja.guard';
 import {CajaModule} from './modulos/caja/caja.module';
+import {AdminModule} from './modulos/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {CajaModule} from './modulos/caja/caja.module';
     BrowserAnimationsModule,
     StockModule,
     CajaModule,
+    AdminModule,
     routing
   ],
   providers: [

@@ -1,0 +1,51 @@
+<h2 md-dialog-title>Nuevo Usuario</h2>
+<div md-dialog-content>
+    <table>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput required placeholder="Nombre de usuario" [(ngModel)]="nuevoUsuario.nombre">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Nombre completo" [(ngModel)]="nuevoUsuario.nombre_apellido">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Email" [(ngModel)]="nuevoUsuario.email">
+          </md-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Teléfono" [(ngModel)]="nuevoUsuario.telefono">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Dirección" [(ngModel)]="nuevoUsuario.direccion">
+          </md-input-container>
+        </td>
+        <td>
+          <md-select placeholder="Rol" [(ngModel)]="nuevoUsuario.id_rol">
+            <md-option *ngFor="let rol of roles" [value]="rol.id" >
+              {{rol.nombre}}
+            </md-option>
+          </md-select>
+        </td>
+      </tr>
+    </table>
+    <md-input-container>
+      <input mdInput type="password" required placeholder="Contraseña" [(ngModel)]="clave1">
+    </md-input-container>
+  <md-input-container>
+    <input mdInput type="password" required placeholder="Repita la contraseña" [(ngModel)]="clave2">
+  </md-input-container>
+</div>
+<div md-dialog-actions>
+  <button md-raised-button color="primary" #crearBtn (click)="crear()">Crear</button>
+  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>

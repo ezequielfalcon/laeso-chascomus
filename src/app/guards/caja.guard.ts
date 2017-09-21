@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 
 @Injectable()
 export class CajaGuard implements CanActivate, CanActivateChild {
