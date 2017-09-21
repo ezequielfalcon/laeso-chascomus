@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdCommonModule, MdCoreModule, MdDialogModule, MdIconModule,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdCommonModule, MdDialogModule, MdIconModule,
   MdInputModule, MdLineModule, MdListModule, MdProgressBarModule, MdSelectModule,
   MdSidenavModule, MdTableModule, MdTabsModule,
   MdToolbarModule, MdTooltipModule
 } from '@angular/material';
-import {CdkColumnDef, DataSource} from '@angular/cdk';
 
 @NgModule({
   imports: [
@@ -14,7 +13,6 @@ import {CdkColumnDef, DataSource} from '@angular/cdk';
     MdInputModule,
     MdIconModule,
     MdCommonModule,
-    MdCoreModule,
     MdCardModule,
     MdSidenavModule,
     MdDialogModule,
@@ -33,7 +31,6 @@ import {CdkColumnDef, DataSource} from '@angular/cdk';
     MdInputModule,
     MdIconModule,
     MdCommonModule,
-    MdCoreModule,
     MdCardModule,
     MdSidenavModule,
     MdDialogModule,
