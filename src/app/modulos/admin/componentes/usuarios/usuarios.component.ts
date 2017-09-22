@@ -5,6 +5,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {NuevoUsuarioService} from '../../dialogos/nuevo-usuario/nuevo-usuario.service';
 import {EditarUsuarioService} from '../../dialogos/editar-usuario/editar-usuario.service';
+import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -21,7 +22,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     private notificationsService: NotificationsService,
     private nuevoUsuario: NuevoUsuarioService,
     private vcr: ViewContainerRef,
-    private editarUsuario: EditarUsuarioService
+    private editarUsuario: EditarUsuarioService,
+    private confirmar: ConfirmarService
   ) { }
 
   ngOnInit() {
@@ -63,15 +65,20 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   }
 
   borrarUsuario(nombre: string) {
-    this.spinner.start();
-    this.adminService.borrarUsuario(nombre).subscribe(() => {
-      this.notificationsService.success('OK', 'Usuario borrado!');
-      this.cargarUsuarios();
-      this.spinner.stop();
-    }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
-      this.spinner.stop();
+    this.confirmar.confirmar('Borrar usuario!',
+      'Está seguro que desea borrar el usuario ' + nombre + '?', this.vcr).subscribe(confirmado => {
+        if (confirmado) {
+          this.spinner.start();
+          this.adminService.borrarUsuario(nombre).subscribe(() => {
+            this.notificationsService.success('OK', 'Usuario borrado!');
+            this.cargarUsuarios();
+            this.spinner.stop();
+          }, error => {
+            const body = JSON.parse(error._body);
+            this.notificationsService.error('Error', body.mensaje);
+            this.spinner.stop();
+          });
+        }
     });
   }
 
