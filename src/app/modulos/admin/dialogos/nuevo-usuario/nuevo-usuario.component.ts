@@ -36,7 +36,7 @@ export class NuevoUsuarioComponent implements OnInit {
   }
 
   crear() {
-    if (!this.nuevoUsuario.nombre || !this.clave1 || !this.clave2) {
+    if (!this.nuevoUsuario.nombre || !this.nuevoUsuario.nombre_apellido || !this.clave1 || !this.clave2) {
       this.notificationsService.warn('Error', 'Complete los datos mínimos!');
       return;
     }
