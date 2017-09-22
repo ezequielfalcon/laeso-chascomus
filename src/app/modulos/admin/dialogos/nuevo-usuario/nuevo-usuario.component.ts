@@ -49,6 +49,9 @@ export class NuevoUsuarioComponent implements OnInit {
       .subscribe(() => {
         this.notificationsService.success('OK', 'Usuario creado!');
         this.dialogRef.close(true);
+      }, error => {
+        const body = JSON.parse(error._body);
+        this.notificationsService.error('Error', body.mensaje);
       });
   }
 
