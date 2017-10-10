@@ -1,17 +1,17 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
     <span>LA ESO CHASCOMÚS</span>
-</md-toolbar>
+</mat-toolbar>
 <div class="center-login">
     <form name="loginForm" (ngSubmit)="login()">
-        <md-card>
-            <md-input-container style="width: 100%">
-                <input mdInput [disabled]="loading" type="email" placeholder="Usuario" maxlength="50" required name="username" [(ngModel)]="model.username">
-            </md-input-container>
-            <md-input-container style="width: 100%">
-                <input mdInput [disabled]="loading" type="password" placeholder="Contraseña" maxlength="50" required name="password" [(ngModel)]="model.password">
-            </md-input-container>
-            <button md-raised-button [disabled]="loading" color="primary">Iniciar sesión</button>
-            <md-progress-bar *ngIf="loading" mode="indeterminate"></md-progress-bar>
-        </md-card>
+        <mat-card>
+            <mat-form-field style="width: 100%">
+                <input matInput [disabled]="loading" type="email" placeholder="Usuario" maxlength="50" required name="username" [(ngModel)]="model.username">
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+                <input matInput [disabled]="loading" type="password" placeholder="Contraseña" maxlength="50" required name="password" [(ngModel)]="model.password">
+            </mat-form-field>
+            <button mat-raised-button [disabled]="loading" color="primary">Iniciar sesión</button>
+            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        </mat-card>
     </form>
 </div>

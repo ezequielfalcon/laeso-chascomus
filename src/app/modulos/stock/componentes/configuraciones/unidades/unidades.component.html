@@ -1,11 +1,11 @@
 <div class="boton-add">
-    <a md-fab (click)="nuevaUnidadDialog()">
-        <md-icon>add</md-icon>
+    <a mat-fab (click)="nuevaUnidadDialog()">
+        <mat-icon>add</mat-icon>
     </a>
 </div>
-<md-list>
-    <md-list-item *ngFor="let unidad of unidades" class="clickVer" (click)="borrarUnidad(unidad)" mdTooltip="Click para borrar!">
-        <md-icon md-list-icon>bubble_chart</md-icon>
-        <h4 md-line>{{unidad.nombre}}</h4>
-    </md-list-item>
-</md-list>
+<mat-list>
+    <mat-list-item *ngFor="let unidad of unidades" class="clickVer" (click)="borrarUnidad(unidad)" matTooltip="Click para borrar!">
+        <mat-icon mat-list-icon>bubble_chart</mat-icon>
+        <h4 matLine>{{unidad.nombre}}</h4>
+    </mat-list-item>
+</mat-list>

@@ -1,53 +1,53 @@
 <div class="center-form">
-  <md-card>
-    <md-card-header>
-      <md-card-header>
-        <md-card-header>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-header>
+        <mat-card-header>
           <h2>Detalle de Proveedor</h2>
-        </md-card-header>
-      </md-card-header>
-    </md-card-header>
-    <md-card-content *ngIf="proveedor">
+        </mat-card-header>
+      </mat-card-header>
+    </mat-card-header>
+    <mat-card-content *ngIf="proveedor">
       <table>
         <tr>
           <td>
-            <md-input-container>
-              <input mdInput [disabled]="!edicion" placeholder="Denominación" [(ngModel)]="proveedor.denominacion">
-            </md-input-container>
+            <mat-form-field>
+              <input matInput [disabled]="!edicion" placeholder="Denominación" [(ngModel)]="proveedor.denominacion">
+            </mat-form-field>
           </td>
           <td>
-            <md-input-container>
-              <input mdInput [disabled]="!edicion" placeholder="Teléfono" [(ngModel)]="proveedor.telefono">
-            </md-input-container>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <md-input-container>
-              <input mdInput [disabled]="!edicion" placeholder="Nombre" [(ngModel)]="proveedor.nombre">
-            </md-input-container>
-          </td>
-          <td>
-            <md-input-container>
-              <input mdInput [disabled]="!edicion" placeholder="Email" [(ngModel)]="proveedor.email">
-            </md-input-container>
+            <mat-form-field>
+              <input matInput [disabled]="!edicion" placeholder="Teléfono" [(ngModel)]="proveedor.telefono">
+            </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <md-input-container>
-              <input mdInput [disabled]="!edicion" placeholder="Dirección" [(ngModel)]="proveedor.direccion">
-            </md-input-container>
+            <mat-form-field>
+              <input matInput [disabled]="!edicion" placeholder="Nombre" [(ngModel)]="proveedor.nombre">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+              <input matInput [disabled]="!edicion" placeholder="Email" [(ngModel)]="proveedor.email">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput [disabled]="!edicion" placeholder="Dirección" [(ngModel)]="proveedor.direccion">
+            </mat-form-field>
           </td>
         </tr>
       </table>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button color="primary" (click)="editar(true)" *ngIf="!edicion" type="button"><md-icon>create</md-icon>Modificar</button>
-      <button *ngIf="edicion" md-button color="accent" type="button" (click)="modificar()"><md-icon>archive</md-icon>Guardar</button>
-      <button md-button type="button" *ngIf="!edicion" color="primary" [routerLink]="[returnUrl]"><md-icon>undo</md-icon>Volver</button>
-      <button md-button color="primary" (click)="editar(false)" type="button" *ngIf="edicion"><md-icon>clear</md-icon>Cancelar</button>
-      <button md-button color="warn" type="button" class="botones-derecha" (click)="borrar()"><md-icon>remove_circle_outline</md-icon>Borrar</button>
-    </md-card-actions>
-  </md-card>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="editar(true)" *ngIf="!edicion" type="button"><mat-icon>create</mat-icon>Modificar</button>
+      <button *ngIf="edicion" mat-button color="accent" type="button" (click)="modificar()"><mat-icon>archive</mat-icon>Guardar</button>
+      <button mat-button type="button" *ngIf="!edicion" color="primary" [routerLink]="[returnUrl]"><mat-icon>undo</mat-icon>Volver</button>
+      <button mat-button color="primary" (click)="editar(false)" type="button" *ngIf="edicion"><mat-icon>clear</mat-icon>Cancelar</button>
+      <button mat-button color="warn" type="button" class="botones-derecha" (click)="borrar()"><mat-icon>remove_circle_outline</mat-icon>Borrar</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

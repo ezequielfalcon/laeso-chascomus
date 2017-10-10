@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 import {Rol} from '../../../../modelos/rol';
 import {AdminService} from '../../../../servicios/datos/admin.service';
 import {NotificationsService} from 'angular2-notifications';
@@ -17,7 +17,7 @@ export class NuevoUsuarioComponent implements OnInit {
   clave2: string;
 
   constructor(
-    public dialogRef: MdDialogRef<NuevoUsuarioComponent>,
+    public dialogRef: MatDialogRef<NuevoUsuarioComponent>,
     private adminService: AdminService,
     private notificationsService: NotificationsService
   ) { }

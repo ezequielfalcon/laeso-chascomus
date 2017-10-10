@@ -1,30 +1,30 @@
-<md-sidenav-container class="mat-app-background">
-  <md-sidenav #sidenav mode="over" align="end">
-    <button md-button color="accent" class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin']">
-      <md-icon>home</md-icon>
+<mat-sidenav-container class="mat-app-background">
+  <mat-sidenav #sidenav mode="over" align="end">
+    <button mat-button color="accent" class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin']">
+      <mat-icon>home</mat-icon>
       <span>Inicio</span>
     </button>
     <br>
-    <button md-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/usuarios']">
-      <md-icon>people</md-icon>
+    <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/usuarios']">
+      <mat-icon>people</mat-icon>
       <span>Usuarios</span>
     </button>
     <br>
-    <md-divider></md-divider>
-    <button md-button class="boton-sidenav" color="warn" (click)="sidenav.toggle()" [routerLink]="['/']">
-      <md-icon>exit_to_app</md-icon>
+    <mat-divider></mat-divider>
+    <button mat-button class="boton-sidenav" color="warn" (click)="sidenav.toggle()" [routerLink]="['/']">
+      <mat-icon>exit_to_app</mat-icon>
       <span>Salir</span>
     </button>
-  </md-sidenav>
-  <md-toolbar color="primary">
+  </mat-sidenav>
+  <mat-toolbar color="primary">
     <span>LA ESO CHASCOMÚS - ADMINISTRACIÓN</span>
     <span class="espacio-toolbar"></span>
-    <button md-icon-button (click)="sidenav.toggle()">
-      <md-icon class="icono-toolbar">more_vert</md-icon>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon class="icono-toolbar">more_vert</mat-icon>
     </button>
-  </md-toolbar>
+  </mat-toolbar>
   <app-spinner></app-spinner>
   <div class="contenido-app">
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>

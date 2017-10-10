@@ -1,27 +1,27 @@
 <div class="center">
-  <md-card>
+  <mat-card>
     <div class="boton-add">
-      <a md-fab (click)="nuevoProveedor()"><md-icon>add</md-icon></a>
+      <a mat-fab (click)="nuevoProveedor()"><mat-icon>add</mat-icon></a>
     </div>
-    <md-card-header>
-      <md-card-title-group>
+    <mat-card-header>
+      <mat-card-title-group>
         <h2>Proveedores</h2>
-      </md-card-title-group>
-    </md-card-header>
-    <md-card-content>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
       <table width="100%">
-        <md-input-container>
-          <input mdInput placeholder="Filtrar por denominación..." [(ngModel)]="filtroNombre" />
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Filtrar por denominación..." [(ngModel)]="filtroNombre" />
+        </mat-form-field>
       </table>
-      <md-list>
-        <md-list-item class="clickVer" *ngFor="let proveedor of proveedores | filtro: {denominacion: filtroNombre}" (click)="router.navigate(['/stock/proveedores/' + proveedor.id]);">
-          <md-icon md-list-icon>person</md-icon>
-          <h4 md-line><strong>{{proveedor.denominacion}}</strong></h4>
-          <p md-line><strong>Teléfono: </strong>{{proveedor.telefono}}</p>
-        </md-list-item>
-        <md-divider></md-divider>
-      </md-list>
-    </md-card-content>
-  </md-card>
+      <mat-list>
+        <mat-list-item class="clickVer" *ngFor="let proveedor of proveedores | filtro: {denominacion: filtroNombre}" (click)="router.navigate(['/stock/proveedores/' + proveedor.id]);">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h4 matLine><strong>{{proveedor.denominacion}}</strong></h4>
+          <p matLine><strong>Teléfono: </strong>{{proveedor.telefono}}</p>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 </div>

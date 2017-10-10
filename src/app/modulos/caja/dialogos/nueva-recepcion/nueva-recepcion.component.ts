@@ -4,9 +4,8 @@ import {ProveedoresService} from '../../../../servicios/datos/proveedores.servic
 import {SeleccionarProveedorService} from '../seleccionar-proveedor/seleccionar-proveedor.service';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {NotificationsService} from 'angular2-notifications';
-import {RemitoRecibido} from '../../../../modelos/remito-recibido';
 import {StockService} from '../../../../servicios/datos/stock.service';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-nueva-recepcion',
@@ -27,7 +26,7 @@ export class NuevaRecepcionComponent implements OnInit {
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private stockServ: StockService,
-    private dialog: MdDialogRef<NuevaRecepcionComponent>
+    private dialog: MatDialogRef<NuevaRecepcionComponent>
   ) { }
 
   ngOnInit() {

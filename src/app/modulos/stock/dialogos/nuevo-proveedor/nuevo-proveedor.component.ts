@@ -2,7 +2,7 @@ import { SpinnerService } from './../../../utils/directivas/spinner/spinner.serv
 import { ProveedoresService } from './../../../../servicios/datos/proveedores.service';
 import {Component, OnInit} from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-nuevo-proveedor',
@@ -21,7 +21,7 @@ export class NuevoProveedorComponent implements OnInit {
     private proveedoresService: ProveedoresService,
     private notificationsService: NotificationsService,
     private spinner: SpinnerService,
-    public dialogRef: MdDialogRef<NuevoProveedorComponent>
+    public dialogRef: MatDialogRef<NuevoProveedorComponent>
   ) { }
 
   ngOnInit() {

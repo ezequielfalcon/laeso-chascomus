@@ -1,31 +1,31 @@
 <div class="center">
-  <md-card>
+  <mat-card>
     <div class="boton-add">
-      <a md-fab (click)="crearUsuario()"><md-icon>add</md-icon></a>
+      <a mat-fab (click)="crearUsuario()"><mat-icon>add</mat-icon></a>
     </div>
-    <md-card-header>
-      <md-card-title>
+    <mat-card-header>
+      <mat-card-title>
         <h3>Usuarios y roles</h3>
-      </md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <md-list>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
         <ng-container *ngFor="let usuario of usuarios">
-          <md-list-item>
-            <md-icon md-list-icon>person</md-icon>
-            <h4 md-line><strong>{{usuario.nombre}}</strong></h4>
-            <p md-line><strong>Nombre completo: </strong>{{usuario.nombre_apellido}}</p>
-            <p md-line><strong>Roles: </strong>{{juntarRoles(usuario)}}</p>
-            <button md-mini-fab (click)="editar(usuario.nombre)">
-              <md-icon>mode_edit</md-icon>
+          <mat-list-item>
+            <mat-icon mat-list-icon>person</mat-icon>
+            <h4 matLine><strong>{{usuario.nombre}}</strong></h4>
+            <p matLine><strong>Nombre completo: </strong>{{usuario.nombre_apellido}}</p>
+            <p matLine><strong>Roles: </strong>{{juntarRoles(usuario)}}</p>
+            <button mat-mini-fab (click)="editar(usuario.nombre)">
+              <mat-icon>mode_edit</mat-icon>
             </button>
-            <button md-mini-fab color="warn" (click)="borrarUsuario(usuario.nombre)">
-              <md-icon>clear</md-icon>
+            <button mat-mini-fab color="warn" (click)="borrarUsuario(usuario.nombre)">
+              <mat-icon>clear</mat-icon>
             </button>
-          </md-list-item>
-          <md-divider></md-divider>
+          </mat-list-item>
+          <mat-divider></mat-divider>
         </ng-container>
-      </md-list>
-    </md-card-content>
-  </md-card>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 </div>

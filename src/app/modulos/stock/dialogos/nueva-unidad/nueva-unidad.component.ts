@@ -2,7 +2,7 @@ import { SpinnerService } from './../../../utils/directivas/spinner/spinner.serv
 import { ProductosService } from './../../../../servicios/datos/productos.service';
 import { Component, OnInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-nueva-unidad',
@@ -12,7 +12,7 @@ import {MdDialogRef} from '@angular/material';
 export class NuevaUnidadComponent implements OnInit {
 
   constructor(
-    public dialogRef: MdDialogRef<NuevaUnidadComponent>,
+    public dialogRef: MatDialogRef<NuevaUnidadComponent>,
     private productosService: ProductosService,
     private notificationsService: NotificationsService,
     private spinner: SpinnerService
