@@ -4,4 +4,5 @@ export class RemitoRecibido {
   fecha: string;
   id_proveedor: number;
   observaciones: string;
+  usuario: string;
 }
