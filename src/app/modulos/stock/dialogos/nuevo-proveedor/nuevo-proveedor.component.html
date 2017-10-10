@@ -1,40 +1,40 @@
-<h2 md-dialog-title>Nuevo Proveedor</h2>
-<div md-dialog-content>
+<h2 matDialogTitle>Nuevo Proveedor</h2>
+<div mat-dialog-content>
   <table cellspacing="0">
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Denominación" [(ngModel)]="nuevoProveedor.denominacion" required>
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Denominación" [(ngModel)]="nuevoProveedor.denominacion" required>
+        </mat-form-field>
       </td>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Nombre" [(ngModel)]="nuevoProveedor.nombre">
-        </md-input-container>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <md-input-container>
-          <input mdInput placeholder="Teléfono" [(ngModel)]="nuevoProveedor.telefono">
-        </md-input-container>
-      </td>
-      <td>
-        <md-input-container>
-          <input mdInput placeholder="Email" [(ngModel)]="nuevoProveedor.email">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Nombre" [(ngModel)]="nuevoProveedor.nombre">
+        </mat-form-field>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Dirección" [(ngModel)]="nuevoProveedor.direccion">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Teléfono" [(ngModel)]="nuevoProveedor.telefono">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Email" [(ngModel)]="nuevoProveedor.email">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Dirección" [(ngModel)]="nuevoProveedor.direccion">
+        </mat-form-field>
       </td>
     </tr>
   </table>
 </div>
-<div md-dialog-actions>
-  <button md-raised-button color="primary" (click)="crearProveedor()">Crear</button>
-  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="crearProveedor()">Crear</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
 </div>

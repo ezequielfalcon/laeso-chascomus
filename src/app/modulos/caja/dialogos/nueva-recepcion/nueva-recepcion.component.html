@@ -1,28 +1,28 @@
-<h2 md-dialog-title>Recepción de mercadería</h2>
-<md-dialog-content>
+<h2 matDialogTitle>Recepción de mercadería</h2>
+<mat-dialog-content>
   <table>
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Nro de Remito / Factura" [(ngModel)]="numeroRemito">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Nro de Remito / Factura" [(ngModel)]="numeroRemito">
+        </mat-form-field>
       </td>
       <td>
-        <button md-raised-button color="primary" *ngIf="!proveedorSeleccionado" type="button" (click)="seleccionarProveedor()">Proveedor...</button>
-        <md-input-container *ngIf="proveedorSeleccionado" (click)="seleccionarProveedor()">
-          <input mdInput disabled placeholder="Proveedor" [(ngModel)]="proveedor.denominacion" class="clickVer" (click)="seleccionarProveedor()">
-        </md-input-container>
+        <button mat-raised-button color="primary" *ngIf="!proveedorSeleccionado" type="button" (click)="seleccionarProveedor()">Proveedor...</button>
+        <mat-form-field *ngIf="proveedorSeleccionado" (click)="seleccionarProveedor()">
+          <input matInput disabled placeholder="Proveedor" [(ngModel)]="proveedor.denominacion" class="clickVer" (click)="seleccionarProveedor()">
+        </mat-form-field>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Observaciones" [(ngModel)]="obs">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Observaciones" [(ngModel)]="obs">
+        </mat-form-field>
       </td>
     </tr>
   </table>
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-raised-button color="primary" type="button" (click)="crearRemito()">Cargar remito</button>
-</md-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" type="button" (click)="crearRemito()">Cargar remito</button>
+</mat-dialog-actions>

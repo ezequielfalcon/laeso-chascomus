@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
 import {AdminService} from '../../../../servicios/datos/admin.service';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 import {Rol} from '../../../../modelos/rol';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 
@@ -20,7 +20,7 @@ export class EditarUsuarioComponent implements OnInit {
   usuario: any = {};
 
   constructor(
-    public dialogRef: MdDialogRef<EditarUsuarioComponent>,
+    public dialogRef: MatDialogRef<EditarUsuarioComponent>,
     private adminService: AdminService,
     private notificationsService: NotificationsService,
     private spinner: SpinnerService

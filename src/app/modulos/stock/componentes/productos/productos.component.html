@@ -1,27 +1,27 @@
 <div class="center-agenda">
-  <md-card>
+  <mat-card>
     <div class="boton-add">
-      <a md-fab (click)="nuevoProducto()" (keyup.enter)="nuevoProducto()" #nuevoProd><md-icon>add</md-icon></a>
+      <a mat-fab (click)="nuevoProducto()" (keyup.enter)="nuevoProducto()" #nuevoProd><mat-icon>add</mat-icon></a>
     </div>
-    <md-card-header>
-      <md-card-title-group>
+    <mat-card-header>
+      <mat-card-title-group>
         <h2>Productos</h2>
-      </md-card-title-group>
-    </md-card-header>
+      </mat-card-title-group>
+    </mat-card-header>
 
-    <md-card-content>
-      <md-input-container>
-        <input mdInput placeholder="Nombre..." [(ngModel)]="filtroNombre" />
-      </md-input-container>
-      <md-input-container>
-        <input mdInput placeholder="Código..." [(ngModel)]="filtroCodigo" />
-      </md-input-container>
-      <md-select placeholder="Categoría" [(ngModel)]="filtroCat">
-        <md-option *ngFor="let cat of categorias" [value]="cat.nombre">
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Nombre..." [(ngModel)]="filtroNombre" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Código..." [(ngModel)]="filtroCodigo" />
+      </mat-form-field>
+      <mat-select placeholder="Categoría" [(ngModel)]="filtroCat">
+        <mat-option *ngFor="let cat of categorias" [value]="cat.nombre">
           {{cat.nombre}}
-        </md-option>
-      </md-select>
-      <button md-button color="warn" (click)="sacarFiltro()">Quitar filtro</button>
+        </mat-option>
+      </mat-select>
+      <button mat-button color="warn" (click)="sacarFiltro()">Quitar filtro</button>
       <table width="100%">
         <tr>
           <th *ngFor="let columna of columnas">{{columna.label}}</th>
@@ -30,6 +30,6 @@
           <td *ngFor="let columnaProd of columnas">{{producto[columnaProd.name]}}</td>
         </tr>
       </table>
-    </md-card-content>
-  </md-card>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -1,51 +1,51 @@
-<h2 md-dialog-title>Editar Usuario</h2>
-<div md-dialog-content>
+<h2 matDialogTitle>Editar Usuario</h2>
+<div mat-dialog-content>
   <table>
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput required disabled placeholder="Nombre de usuario" [(ngModel)]="nombreUsuario">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput required disabled placeholder="Nombre de usuario" [(ngModel)]="nombreUsuario">
+        </mat-form-field>
       </td>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Nombre completo" [(ngModel)]="usuario.nombre_apellido">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Nombre completo" [(ngModel)]="usuario.nombre_apellido">
+        </mat-form-field>
       </td>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Email" [(ngModel)]="usuario.email">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Email" [(ngModel)]="usuario.email">
+        </mat-form-field>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Teléfono" [(ngModel)]="usuario.telefono">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Teléfono" [(ngModel)]="usuario.telefono">
+        </mat-form-field>
       </td>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Dirección" [(ngModel)]="usuario.direccion">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Dirección" [(ngModel)]="usuario.direccion">
+        </mat-form-field>
       </td>
       <td>
-        <md-select placeholder="Rol" [(ngModel)]="usuario.id_rol">
-          <md-option *ngFor="let rol of roles" [value]="rol.id" >
+        <mat-select placeholder="Rol" [(ngModel)]="usuario.id_rol">
+          <mat-option *ngFor="let rol of roles" [value]="rol.id" >
             {{rol.nombre}}
-          </md-option>
-        </md-select>
+          </mat-option>
+        </mat-select>
       </td>
     </tr>
   </table>
-  <md-input-container>
-    <input mdInput type="password" required placeholder="Contraseña" [(ngModel)]="clave1">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput type="password" required placeholder="Repita la contraseña" [(ngModel)]="clave2">
-  </md-input-container>
+  <mat-form-field>
+    <input matInput type="password" required placeholder="Contraseña" [(ngModel)]="clave1">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" required placeholder="Repita la contraseña" [(ngModel)]="clave2">
+  </mat-form-field>
 </div>
-<div md-dialog-actions>
-  <button md-raised-button color="primary" #crearBtn (click)="guardar()">Guardar</button>
-  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" #crearBtn (click)="guardar()">Guardar</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
 </div>

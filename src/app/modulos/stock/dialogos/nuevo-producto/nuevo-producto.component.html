@@ -1,52 +1,52 @@
-<h2 md-dialog-title>Nuevo Producto</h2>
-<div md-dialog-content>
+<h2 matDialogTitle>Nuevo Producto</h2>
+<div mat-dialog-content>
   <table cellspacing="0">
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Código" [(ngModel)]="nuevoProducto.codigo" required autofocus (keyup.enter)="nombreForm.focus()">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Código" [(ngModel)]="nuevoProducto.codigo" required autofocus (keyup.enter)="nombreForm.focus()">
+        </mat-form-field>
       </td>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Nombre" [(ngModel)]="nuevoProducto.nombre"
+        <mat-form-field>
+          <input matInput placeholder="Nombre" [(ngModel)]="nuevoProducto.nombre"
                  required #nombreForm (keyup.tab)="stockMinimoForm.focus()" (keyup.enter)="crearBtn.focus()">
-        </md-input-container>
+        </mat-form-field>
       </td>
     </tr>
     <tr>
       <td>
-        <md-input-container>
-          <input mdInput placeholder="Stock Mínimo" [(ngModel)]="nuevoProducto.stock_minimo" required #stockMinimoForm (keyup.enter)="crearBtn.focus()">
-        </md-input-container>
+        <mat-form-field>
+          <input matInput placeholder="Stock Mínimo" [(ngModel)]="nuevoProducto.stock_minimo" required #stockMinimoForm (keyup.enter)="crearBtn.focus()">
+        </mat-form-field>
       </td>
       <td>
-        <md-select placeholder="IVA" [(ngModel)]="nuevoProducto.iva" required>
-          <md-option *ngFor="let iva of ivas" [value]="iva.valor">
+        <mat-select placeholder="IVA" [(ngModel)]="nuevoProducto.iva" required>
+          <mat-option *ngFor="let iva of ivas" [value]="iva.valor">
             {{iva.label}}
-          </md-option>
-        </md-select>
+          </mat-option>
+        </mat-select>
       </td>
     </tr>
     <tr>
       <td>
-        <md-select placeholder="Categoría" [(ngModel)]="nuevoProducto.id_categoria" required>
-          <md-option *ngFor="let categoria of categorias" [value]="categoria.id">
+        <mat-select placeholder="Categoría" [(ngModel)]="nuevoProducto.id_categoria" required>
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
             {{categoria.nombre}}
-          </md-option>
-        </md-select>
+          </mat-option>
+        </mat-select>
       </td>
       <td>
-        <md-select placeholder="Unidad" [(ngModel)]="nuevoProducto.id_unidad" required>
-          <md-option *ngFor="let unidad of unidades" [value]="unidad.id">
+        <mat-select placeholder="Unidad" [(ngModel)]="nuevoProducto.id_unidad" required>
+          <mat-option *ngFor="let unidad of unidades" [value]="unidad.id">
             {{unidad.nombre}}
-          </md-option>
-        </md-select>
+          </mat-option>
+        </mat-select>
       </td>
     </tr>
   </table>
 </div>
-<div md-dialog-actions>
-  <button md-raised-button color="primary" (click)="crearProducto()" #crearBtn>Crear</button>
-  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="crearProducto()" #crearBtn>Crear</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
 </div>

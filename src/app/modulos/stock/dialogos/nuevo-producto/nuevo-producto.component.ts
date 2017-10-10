@@ -5,7 +5,7 @@ import { Unidad } from './../../../../modelos/unidad';
 import { Categoria } from './../../../../modelos/categoria';
 import { Component, OnInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -46,7 +46,7 @@ export class NuevoProductoComponent implements OnInit {
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private productosService: ProductosService,
-    public dialogRef: MdDialogRef<NuevoProductoComponent>
+    public dialogRef: MatDialogRef<NuevoProductoComponent>
   ) { }
 
   ngOnInit() {
