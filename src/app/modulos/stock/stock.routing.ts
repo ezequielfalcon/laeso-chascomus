@@ -19,7 +19,7 @@ const stockRoutes: Routes = [
     { path: 'proveedores/:id', component: DetalleProveedorComponent },
     { path: 'productos', component: ProductosComponent },
     { path: 'productos/:id', component: DetalleProductoComponent },
-    { path: 'carga-remito/:numero', component: RemitoCompletoComponent },
+    { path: 'carga-remito/:codigo', component: RemitoCompletoComponent },
     { path: '*', redirectTo: '', pathMatch: 'full' }
     ]
   },

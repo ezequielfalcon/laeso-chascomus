@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-remito-completo',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RemitoCompletoComponent implements OnInit {
 
-  constructor() { }
+  codigoRemito: string;
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.codigoRemito = this.route.snapshot.queryParams['codigo'];
   }
 
 }
