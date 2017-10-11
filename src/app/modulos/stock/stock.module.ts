@@ -26,6 +26,7 @@ import { StockHomeComponent } from './componentes/stock-home/stock-home.componen
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '../../material';
 import {StockService} from '../../servicios/datos/stock.service';
+import { RemitoCompletoComponent } from './componentes/stock-home/remito-completo/remito-completo.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import {StockService} from '../../servicios/datos/stock.service';
     DetalleProductoComponent,
     ProveedoresComponent,
     ProductosComponent,
-    StockHomeComponent
+    StockHomeComponent,
+    RemitoCompletoComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
