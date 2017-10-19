@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {RemitoRecibido} from '../../../../../modelos/remito-recibido';
 
 @Component({
   selector: 'app-remito-completo',
@@ -9,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 export class RemitoCompletoComponent implements OnInit {
 
   id: string;
+  remito: RemitoRecibido;
 
   constructor(
     private route: ActivatedRoute
