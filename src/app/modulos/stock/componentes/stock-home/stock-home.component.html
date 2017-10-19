@@ -10,7 +10,7 @@
         <tr>
           <th>Numero</th><th>Fecha</th><th>Proveedor</th><th>Observaciones</th><th>Usuario</th>
         </tr>
-        <tr *ngFor="let remito of remitosRecibidos">
+        <tr *ngFor="let remito of remitosRecibidos" class="clickVer" [routerLink]="['/stock/carga-remito/' + remito.id]">
           <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
           <td>{{reemplazarProv(remito.id_proveedor)}}</td>
           <td>{{remito.observaciones}}</td>
@@ -30,7 +30,7 @@
         <tr>
           <th>Numero</th><th>Fecha</th><th>Proveedor</th><th>Observaciones</th><th>Usuario</th>
         </tr>
-        <tr *ngFor="let remito of remitosEnCarga">
+        <tr *ngFor="let remito of remitosEnCarga"  class="clickVer" [routerLink]="['/stock/carga-remito/' + remito.id]">
           <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
           <td>{{reemplazarProv(remito.id_proveedor)}}</td>
           <td>{{remito.observaciones}}</td>

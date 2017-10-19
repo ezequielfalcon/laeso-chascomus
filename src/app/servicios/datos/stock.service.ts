@@ -17,6 +17,18 @@ export class StockService {
     return this.http.get('/stock/remitos/en-carga').map((response: Response) => response.json().datos);
   }
 
+  verRemitosParaCarga(remitoId: number) {
+    return this.http.get('/stock/remitos/para-carga/' + remitoId).map((response: Response) => response.json().datos);
+  }
+
+  verHistorialRemito(remitoId: number) {
+    return this.http.get('/stock/remitos/historial/' + remitoId).map((response: Response) => response.json().datos);
+  }
+
+  verProductosPorRemito(remitoId: number) {
+    return this.http.get('/stock/remitos/productos/' + remitoId).map((response: Response) => response.json().datos);
+  }
+
   nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
     const body = new URLSearchParams();
     body.set('id_proveedor', '' + proveedorId);
