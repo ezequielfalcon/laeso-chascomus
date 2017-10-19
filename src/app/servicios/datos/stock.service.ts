@@ -13,6 +13,10 @@ export class StockService {
     return this.http.get('/stock/remitos-recibidos').map((response: Response) => response.json().datos);
   }
 
+  verRemitosEnCarga() {
+    return this.http.get('/stock/remitos-encarga').map((response: Response) => response.json().datos);
+  }
+
   nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
     const body = new URLSearchParams();
     body.set('id_proveedor', '' + proveedorId);

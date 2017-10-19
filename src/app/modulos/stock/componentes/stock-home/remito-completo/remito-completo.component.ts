@@ -8,14 +8,19 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class RemitoCompletoComponent implements OnInit {
 
-  codigoRemito: string;
+  id: string;
 
   constructor(
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.codigoRemito = this.route.snapshot.queryParams['codigo'];
+    this.id = this.route.snapshot.queryParams['id'];
+    if (this.id) {
+      console.log('hay id: ' + this.id);
+    } else {
+      console.log('no hay id');
+    }
   }
 
 }

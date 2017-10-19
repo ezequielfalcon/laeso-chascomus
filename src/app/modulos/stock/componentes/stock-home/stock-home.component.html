@@ -19,4 +19,24 @@
       </table>
     </mat-card-content>
   </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3>Remitos en proceso de carga</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table width="100%">
+        <tr>
+          <th>Numero</th><th>Fecha</th><th>Proveedor</th><th>Observaciones</th><th>Usuario</th>
+        </tr>
+        <tr *ngFor="let remito of remitosEnCarga">
+          <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
+          <td>{{reemplazarProv(remito.id_proveedor)}}</td>
+          <td>{{remito.observaciones}}</td>
+          <td>{{remito.nombre}}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
 </div>

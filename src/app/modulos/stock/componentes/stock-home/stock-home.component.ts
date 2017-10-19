@@ -14,6 +14,7 @@ import {ProveedoresService} from '../../../../servicios/datos/proveedores.servic
 export class StockHomeComponent implements OnInit, OnDestroy {
 
   remitosRecibidos: RemitoRecibido[] = [];
+  remitosEnCarga: RemitoRecibido[] = [];
   proveedores: Proveedor[] = [];
 
   constructor(
@@ -42,7 +43,8 @@ export class StockHomeComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this.cargarRemitos();
+      this.cargarRemitosRecibidos();
+      this.cargarRemitosEnCarga();
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
@@ -50,9 +52,20 @@ export class StockHomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  cargarRemitos() {
+  cargarRemitosRecibidos() {
     this.stockServ.verRemitosRecibidos().subscribe(remitosDb => {
       this.remitosRecibidos = remitosDb;
+      this.spinner.stop();
+    }, error => {
+      const body = JSON.parse(error._body);
+      this.notificationsService.error('Error', body.mensaje);
+      this.spinner.stop();
+    });
+  }
+
+  cargarRemitosEnCarga() {
+    this.stockServ.verRemitosEnCarga().subscribe(remitosDb => {
+      this.remitosEnCarga = remitosDb;
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
