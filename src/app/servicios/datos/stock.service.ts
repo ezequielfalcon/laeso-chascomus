@@ -10,11 +10,11 @@ export class StockService {
   ) { }
 
   verRemitosRecibidos() {
-    return this.http.get('/stock/remitos-recibidos').map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos/recibidos').map((response: Response) => response.json().datos);
   }
 
   verRemitosEnCarga() {
-    return this.http.get('/stock/remitos-encarga').map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos/en-carga').map((response: Response) => response.json().datos);
   }
 
   nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
@@ -22,7 +22,7 @@ export class StockService {
     body.set('id_proveedor', '' + proveedorId);
     body.set('numero', numero);
     body.set('observaciones', obs);
-    return this.http.post('/stock/remitos-recibidos', body).map((response: Response) => response.json());
+    return this.http.post('/stock/remitos/recibidos', body).map((response: Response) => response.json());
   }
 
 }
