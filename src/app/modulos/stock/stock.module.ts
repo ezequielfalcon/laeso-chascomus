@@ -27,6 +27,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { MaterialModule } from '../../material';
 import {StockService} from '../../servicios/datos/stock.service';
 import { RemitoCompletoComponent } from './componentes/stock-home/remito-completo/remito-completo.component';
+import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-producto.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { RemitoCompletoComponent } from './componentes/stock-home/remito-complet
     ProveedoresComponent,
     ProductosComponent,
     StockHomeComponent,
-    RemitoCompletoComponent
+    RemitoCompletoComponent,
+    AgregarProductoComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
