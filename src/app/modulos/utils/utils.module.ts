@@ -5,6 +5,7 @@ import { SpinnerComponent } from './directivas/spinner/spinner.component';
 import { ConfirmarComponent } from './dialogos/confirmar/confirmar.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { OrdenPipe } from './pipes/orden.pipe';
+import { LimitarPipe } from './pipes/limitar.pipe';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { OrdenPipe } from './pipes/orden.pipe';
     SpinnerComponent,
     ConfirmarComponent,
     FiltroPipe,
-    OrdenPipe
+    OrdenPipe,
+    LimitarPipe
   ],
   entryComponents: [
     ConfirmarComponent

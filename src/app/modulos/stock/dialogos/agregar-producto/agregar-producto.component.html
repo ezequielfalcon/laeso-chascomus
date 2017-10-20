@@ -1,6 +1,10 @@
 <h2 matDialogTitle>Agregar producto al remito {{codRemito}}</h2>
 <div mat-dialog-content>
-
+  <mat-list>
+    <mat-list-item *ngFor="let producto of productos | limitar: 10">
+      <p mat-line>{{producto.codigo + ' | ' + producto.nombre}}</p>
+    </mat-list-item>
+  </mat-list>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" #crearBtn>Agregar y continuar</button>
