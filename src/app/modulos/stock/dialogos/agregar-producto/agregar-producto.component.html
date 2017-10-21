@@ -1,13 +1,17 @@
 <h2 matDialogTitle>Agregar producto al remito {{codRemito}}</h2>
 <div mat-dialog-content>
   <mat-list>
-    <mat-list-item *ngFor="let producto of productos | limitar: 10">
+    <mat-input-container>
+      <input matInput type="text" placeholder="Código..." [(ngModel)]="busquedaCodigo">
+    </mat-input-container>
+    <mat-input-container>
+      <input matInput type="text" placeholder="Nombre..." [(ngModel)]="busquedaNombre">
+    </mat-input-container>
+    <mat-list-item *ngFor="let producto of productos | slice:0:5 | filtro: {codigo: busquedaCodigo, nombre: busquedaNombre}">
       <p mat-line>{{producto.codigo + ' | ' + producto.nombre}}</p>
     </mat-list-item>
   </mat-list>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" #crearBtn>Agregar y continuar</button>
-  <button mat-raised-button color="primary" #crearBtn>Agregar y terminar</button>
   <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
 </div>

@@ -25,7 +25,8 @@ import { LimitarPipe } from './pipes/limitar.pipe';
   exports: [
     SpinnerComponent,
     ConfirmarComponent,
-    FiltroPipe
+    FiltroPipe,
+    LimitarPipe
   ]
 })
 export class UtilsModule { }

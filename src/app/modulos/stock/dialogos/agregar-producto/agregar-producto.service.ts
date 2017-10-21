@@ -9,13 +9,13 @@ export class AgregarProductoService {
 
   constructor(private dialog: MatDialog) { }
 
-  public agregarProductos(tablaProductos: ProductoFull[], codRemito: string, viewContainerRef: ViewContainerRef): Observable<any> {
+  public agregarProductos(tablaProductos: ProductoFull[], idRemito: number, viewContainerRef: ViewContainerRef): Observable<any> {
     let dialogRef: MatDialogRef<AgregarProductoComponent>;
     const config = new MatDialogConfig();
     config.viewContainerRef = viewContainerRef;
     dialogRef = this.dialog.open(AgregarProductoComponent, config);
     dialogRef.componentInstance.productos = tablaProductos;
-    dialogRef.componentInstance.codRemito = codRemito;
+    dialogRef.componentInstance.idRemito = idRemito;
     return dialogRef.afterClosed();
   }
 

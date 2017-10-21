@@ -13,9 +13,11 @@ import {MatDialogRef} from '@angular/material';
 export class AgregarProductoComponent implements OnInit {
 
   public productos: ProductoFull[];
-  public codRemito: string;
+  public idRemito: number;
 
   productoNuevo: ProductoRemito = new ProductoRemito;
+  busquedaCodigo = '';
+  busquedaNombre = '';
 
   constructor(
     private stockService: StockService,

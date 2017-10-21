@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {RemitoRecibido} from '../../../../../modelos/remito-recibido';
 import {HistorialRemito} from '../../../../../modelos/historial-remito';
@@ -8,6 +8,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {ProductoFull} from '../../../../../modelos/producto-full';
 import {ProductosService} from '../../../../../servicios/datos/productos.service';
 import {ProductoRemito} from '../../../../../modelos/producto-remito';
+import {AgregarProductoService} from '../../../dialogos/agregar-producto/agregar-producto.service';
 
 @Component({
   selector: 'app-remito-completo',
@@ -26,7 +27,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     private stockService: StockService,
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private agregarProd: AgregarProductoService,
+    private vcr: ViewContainerRef
   ) { }
 
   ngOnInit() {
@@ -75,6 +78,12 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
+    });
+  }
+
+  agregarProducto() {
+    this.agregarProd.agregarProductos(this.productosFull, this.remito.id, this.vcr).subscribe(() => {
+      console.log('piola');
     });
   }
 

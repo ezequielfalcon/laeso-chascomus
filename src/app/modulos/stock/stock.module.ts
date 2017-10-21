@@ -28,6 +28,7 @@ import { MaterialModule } from '../../material';
 import {StockService} from '../../servicios/datos/stock.service';
 import { RemitoCompletoComponent } from './componentes/stock-home/remito-completo/remito-completo.component';
 import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-producto.component';
+import {AgregarProductoService} from './dialogos/agregar-producto/agregar-producto.service';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-pr
     NuevaCategoriaComponent,
     NuevaUnidadComponent,
     NuevoProductoComponent,
-    NuevoProveedorComponent
+    NuevoProveedorComponent,
+    AgregarProductoComponent
   ],
   providers: [
     NuevaCategoriaService,
@@ -69,7 +71,8 @@ import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-pr
     ProveedoresService,
     ProductosService,
     ConfirmarService,
-    StockService
+    StockService,
+    AgregarProductoService
   ]
 })
 export class StockModule { }
