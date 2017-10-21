@@ -56,7 +56,7 @@ export class NuevaRecepcionComponent implements OnInit {
   crearRemito() {
     this.spinner.start();
     if (this.numeroRemito && this.proveedorSeleccionado) {
-      this.stockServ.nuevoRemitoRecibido(this.proveedor.id, this.numeroRemito, this.obs).subscribe(nuevoRem => {
+      this.stockServ.nuevoRemitoRecibido(this.proveedor.id, this.numeroRemito, this.obs).subscribe(() => {
         this.notificationsService.success('OK', 'Remito guardado!');
         this.spinner.stop();
         this.dialog.close();
@@ -66,7 +66,7 @@ export class NuevaRecepcionComponent implements OnInit {
         this.spinner.stop();
       });
     } else {
-      this.notificationsService.warn('Error', 'Faltan datos para crear el remito!');
+      this.notificationsService.warn('Error', 'Faltan datos para crear el remitoCarga!');
       this.spinner.stop();
     }
   }

@@ -2,11 +2,69 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <h3>Carga de Remitos</h3>
+        <h3>Carga de Remito</h3>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <button type="button" mat-button (click)="agregarProducto()">Agregar producto demo</button>
+      <div *ngIf="proveedorRemito && remitoCarga">
+        <table>
+          <tr>
+            <td>
+              Número: <strong>{{remitoCarga.numero}}</strong>
+            </td>
+            <td>
+              Observaciones: <strong>{{remitoCarga.observaciones}}</strong>
+            </td>
+            <td>
+              Fecha: <strong>{{remitoCarga.fecha.substr(0, 10)}}</strong>
+            </td>
+            <td>
+              Proveedor: <strong>{{proveedorRemito.denominacion}}</strong>
+            </td>
+          </tr>
+        </table>
+        <h3>Productos:</h3>
+        <table>
+          <tr>
+            <th>
+              Código
+            </th>
+            <th>
+              Descripción
+            </th>
+            <th>
+              Vencimiento
+            </th>
+            <th>
+              Cantidad
+            </th>
+            <th>
+              Precio
+            </th>
+          </tr>
+          <tr *ngFor="let producto of productosRemito">
+            <td>
+              {{verCodigoProducto(producto.id_producto)}}
+            </td>
+            <td>
+              {{verNombreProducto(producto.id_producto)}}
+            </td>
+            <td>
+              {{producto.fecha_vencimiento.substr(0, 10)}}
+            </td>
+            <td>
+              {{producto.cantidad}}
+            </td>
+            <td>
+              {{producto.costo}}
+            </td>
+            <td>
+              <a mat-mini-fab color="warn"><mat-icon>remove</mat-icon></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <button type="button" mat-raised-button color="accent" (click)="agregarProducto()">Agregar producto</button>
     </mat-card-content>
   </mat-card>
 </div>

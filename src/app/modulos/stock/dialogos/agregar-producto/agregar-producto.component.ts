@@ -4,6 +4,7 @@ import {ProductoFull} from '../../../../modelos/producto-full';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {NotificationsService} from 'angular2-notifications';
 import {MatDialogRef} from '@angular/material';
+import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -24,7 +25,8 @@ export class AgregarProductoComponent implements OnInit {
   constructor(
     private stockService: StockService,
     private notificationsService: NotificationsService,
-    public dialogRef: MatDialogRef<AgregarProductoComponent>
+    public dialogRef: MatDialogRef<AgregarProductoComponent>,
+    private spinner: SpinnerService
   ) { }
 
   ngOnInit() {
@@ -41,8 +43,22 @@ export class AgregarProductoComponent implements OnInit {
     this.seleccionar = false;
   }
 
-  agregarProducto(terminar: boolean) {
-
+  guardarProductoNuevo(terminar: boolean) {
+    this.spinner.start();
+    this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
+      if (terminar) {
+        this.dialogRef.close(true);
+      } else {
+        this.seleccionar = true;
+        this.productoNuevo = new ProductoRemito;
+      }
+      this.notificationsService.success('OK', 'Producto agregado al remitoCarga!');
+      this.spinner.stop();
+    }, error => {
+      const body = JSON.parse(error._body);
+      this.notificationsService.error('Error', body.mensaje);
+      this.spinner.stop();
+    });
   }
 
 }

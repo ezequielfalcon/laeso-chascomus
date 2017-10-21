@@ -60,7 +60,7 @@ export class DetalleProveedorComponent implements OnInit, OnDestroy {
   }
 
   borrar() {
-    this.confirmar.confirmar('Confirmar borrado', 'Está seguro que desea borrar al proveedor '
+    this.confirmar.confirmar('Confirmar borrado', 'Está seguro que desea borrar al proveedorRemito '
     + this.proveedor.denominacion + '?', this.vcr)
       .subscribe(confirmado => {
         if (confirmado) {

@@ -9,6 +9,8 @@ import {ProductoFull} from '../../../../../modelos/producto-full';
 import {ProductosService} from '../../../../../servicios/datos/productos.service';
 import {ProductoRemito} from '../../../../../modelos/producto-remito';
 import {AgregarProductoService} from '../../../dialogos/agregar-producto/agregar-producto.service';
+import {Proveedor} from '../../../../../modelos/proveedor';
+import {ProveedoresService} from '../../../../../servicios/datos/proveedores.service';
 
 @Component({
   selector: 'app-remito-completo',
@@ -17,10 +19,11 @@ import {AgregarProductoService} from '../../../dialogos/agregar-producto/agregar
 })
 export class RemitoCompletoComponent implements OnInit, OnDestroy {
 
-  remito: RemitoRecibido;
+  remitoCarga: RemitoRecibido;
   historialRemito: HistorialRemito[] = [];
   productosFull: ProductoFull[] = [];
   productosRemito: ProductoRemito[] = [];
+  proveedorRemito: Proveedor;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,14 +32,16 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     private notificationsService: NotificationsService,
     private productosService: ProductosService,
     private agregarProd: AgregarProductoService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private proveedoresService: ProveedoresService
   ) { }
 
   ngOnInit() {
     this.route.params.switchMap((params: Params) => this.stockService.verRemitosParaCarga(+params['id']))
       .subscribe(remitoDb => {
-        this.remito = remitoDb;
-        this.histoRemito(this.remito.id);
+        this.remitoCarga = remitoDb;
+        this.histoRemito(this.remitoCarga.id);
+        this.cargarProveedor(this.remitoCarga.id_proveedor);
       }, error => {
         const body = JSON.parse(error._body);
         this.notificationsService.error('Error', body.mensaje);
@@ -47,6 +52,12 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.spinner.start();
+  }
+
+  cargarProveedor(proveedorId: number) {
+    this.proveedoresService.verProveedor(proveedorId).subscribe(proveedorDb => {
+      this.proveedorRemito = proveedorDb;
+    });
   }
 
   histoRemito(remitoId: number) {
@@ -82,9 +93,31 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
   }
 
   agregarProducto() {
-    this.agregarProd.agregarProductos(this.productosFull, this.remito.id, this.vcr).subscribe(() => {
-      console.log('piola');
+    this.agregarProd.agregarProductos(this.productosFull, this.remitoCarga.id, this.vcr).subscribe(cargoProducto => {
+      if (cargoProducto) {
+        this.spinner.start();
+        this.cargarProductosRemito(this.remitoCarga.id);
+      }
     });
   }
+
+  verNombreProducto(productoId: number): string {
+    for (const prod of this.productosFull) {
+      if (prod.id === productoId) {
+        return prod.nombre;
+      }
+    }
+    return 'error';
+  }
+
+  verCodigoProducto(productoId: number): string {
+    for (const prod of this.productosFull) {
+      if (prod.id === productoId) {
+        return prod.codigo;
+      }
+    }
+    return 'error';
+  }
+
 
 }
