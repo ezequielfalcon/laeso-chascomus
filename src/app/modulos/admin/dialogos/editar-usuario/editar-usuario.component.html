@@ -1,0 +1,51 @@
+<h2 matDialogTitle>Editar Usuario</h2>
+<div mat-dialog-content>
+  <table>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput required disabled placeholder="Nombre de usuario" [(ngModel)]="nombreUsuario">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Nombre completo" [(ngModel)]="usuario.nombre_apellido">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Email" [(ngModel)]="usuario.email">
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Teléfono" [(ngModel)]="usuario.telefono">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Dirección" [(ngModel)]="usuario.direccion">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-select placeholder="Rol" [(ngModel)]="usuario.id_rol">
+          <mat-option *ngFor="let rol of roles" [value]="rol.id" >
+            {{rol.nombre}}
+          </mat-option>
+        </mat-select>
+      </td>
+    </tr>
+  </table>
+  <mat-form-field>
+    <input matInput type="password" required placeholder="Contraseña" [(ngModel)]="clave1">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" required placeholder="Repita la contraseña" [(ngModel)]="clave2">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" #crearBtn (click)="guardar()">Guardar</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>

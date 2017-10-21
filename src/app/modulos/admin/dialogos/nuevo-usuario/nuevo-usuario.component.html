@@ -1,0 +1,51 @@
+<h2 matDialogTitle>Nuevo Usuario</h2>
+<div mat-dialog-content>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput required placeholder="Nombre de usuario" [(ngModel)]="nuevoUsuario.nombre">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput required placeholder="Nombre completo" [(ngModel)]="nuevoUsuario.nombre_apellido">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Email" [(ngModel)]="nuevoUsuario.email">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Teléfono" [(ngModel)]="nuevoUsuario.telefono">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Dirección" [(ngModel)]="nuevoUsuario.direccion">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-select placeholder="Rol" [(ngModel)]="nuevoUsuario.id_rol">
+            <mat-option *ngFor="let rol of roles" [value]="rol.id" >
+              {{rol.nombre}}
+            </mat-option>
+          </mat-select>
+        </td>
+      </tr>
+    </table>
+    <mat-form-field>
+      <input matInput type="password" required placeholder="Contraseña" [(ngModel)]="clave1">
+    </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" required placeholder="Repita la contraseña" [(ngModel)]="clave2">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" #crearBtn (click)="crear()">Crear</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>

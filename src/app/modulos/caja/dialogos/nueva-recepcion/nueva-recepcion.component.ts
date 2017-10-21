@@ -4,9 +4,8 @@ import {ProveedoresService} from '../../../../servicios/datos/proveedores.servic
 import {SeleccionarProveedorService} from '../seleccionar-proveedor/seleccionar-proveedor.service';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {NotificationsService} from 'angular2-notifications';
-import {RemitoRecibido} from '../../../../modelos/remito-recibido';
 import {StockService} from '../../../../servicios/datos/stock.service';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-nueva-recepcion',
@@ -27,7 +26,7 @@ export class NuevaRecepcionComponent implements OnInit {
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private stockServ: StockService,
-    private dialog: MdDialogRef<NuevaRecepcionComponent>
+    private dialog: MatDialogRef<NuevaRecepcionComponent>
   ) { }
 
   ngOnInit() {
@@ -57,7 +56,7 @@ export class NuevaRecepcionComponent implements OnInit {
   crearRemito() {
     this.spinner.start();
     if (this.numeroRemito && this.proveedorSeleccionado) {
-      this.stockServ.nuevoRemitoRecibido(this.proveedor.id, this.numeroRemito, this.obs).subscribe(nuevoRem => {
+      this.stockServ.nuevoRemitoRecibido(this.proveedor.id, this.numeroRemito, this.obs).subscribe(() => {
         this.notificationsService.success('OK', 'Remito guardado!');
         this.spinner.stop();
         this.dialog.close();
@@ -67,7 +66,7 @@ export class NuevaRecepcionComponent implements OnInit {
         this.spinner.stop();
       });
     } else {
-      this.notificationsService.warn('Error', 'Faltan datos para crear el remito!');
+      this.notificationsService.warn('Error', 'Faltan datos para crear el remitoCarga!');
       this.spinner.stop();
     }
   }

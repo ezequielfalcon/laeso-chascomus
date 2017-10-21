@@ -5,6 +5,7 @@ import { Component, HostListener, OnDestroy, OnInit, ViewContainerRef, ViewChild
 import {NotificationsService} from 'angular2-notifications';
 import {Router} from '@angular/router';
 import { NuevoProductoService } from '../../dialogos/nuevo-producto/nuevo-producto.service';
+import {Categoria} from '../../../../modelos/categoria';
 
 @Component({
   selector: 'app-productos',
@@ -14,8 +15,11 @@ import { NuevoProductoService } from '../../dialogos/nuevo-producto/nuevo-produc
 export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   productosFull: ProductoFull[] = [];
+  categorias: Categoria[] = [];
   dialogoAbierto = false;
   filtroNombre = '';
+  filtroCat = '';
+  filtroCodigo = '';
   columnas = [
     { name: 'id', label: 'ID' },
     { name: 'nombre', label: 'Nombre', sortable: true },
@@ -38,7 +42,7 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('nuevoProd', {read: ElementRef}) BotonNuevoProd: ElementRef;
 
   ngOnInit() {
-    this.cargarProductos();
+    this.cargarCategorias();
   }
 
   ngOnDestroy() {
@@ -74,6 +78,17 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
+  cargarCategorias() {
+    this.productosService.verCategorias().subscribe(categoriasDb => {
+      this.categorias = categoriasDb;
+      this.cargarProductos();
+    }, error => {
+      const body = JSON.parse(error._body);
+      this.notificationsService.error('Error', body.mensaje);
+      this.spinner.stop();
+    });
+  }
+
   nuevoProducto() {
     this.sacarFoco();
     this.nuevoProductoService.crearProducto(this.vcr).subscribe(() => {
@@ -85,6 +100,12 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
       this.spinner.stop();
       this.dialogoAbierto = false;
     });
+  }
+
+  sacarFiltro() {
+    this.filtroCat = '';
+    this.filtroNombre = '';
+    this.filtroCodigo = '';
   }
 
 }

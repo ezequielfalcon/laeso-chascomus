@@ -1,0 +1,30 @@
+<mat-sidenav-container class="mat-app-background">
+  <mat-sidenav #sidenav mode="over" align="end">
+    <button mat-button color="accent" class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin']">
+      <mat-icon>home</mat-icon>
+      <span>Inicio</span>
+    </button>
+    <br>
+    <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/usuarios']">
+      <mat-icon>people</mat-icon>
+      <span>Usuarios</span>
+    </button>
+    <br>
+    <mat-divider></mat-divider>
+    <button mat-button class="boton-sidenav" color="warn" (click)="sidenav.toggle()" [routerLink]="['/']">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Salir</span>
+    </button>
+  </mat-sidenav>
+  <mat-toolbar color="primary">
+    <span>LA ESO CHASCOMÚS - ADMINISTRACIÓN</span>
+    <span class="espacio-toolbar"></span>
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon class="icono-toolbar">more_vert</mat-icon>
+    </button>
+  </mat-toolbar>
+  <app-spinner></app-spinner>
+  <div class="contenido-app">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

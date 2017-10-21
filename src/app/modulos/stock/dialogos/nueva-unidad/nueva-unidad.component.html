@@ -1,10 +1,10 @@
-<h2 md-dialog-title>Nueva Unidad</h2>
-<div md-dialog-content>
-  <md-input-container>
-    <input mdInput required placeholder="Nombre" [(ngModel)]="nombreUnidad">
-  </md-input-container>
+<h2 matDialogTitle>Nueva Unidad</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput required placeholder="Nombre" [(ngModel)]="nombreUnidad">
+  </mat-form-field>
 </div>
-<div md-dialog-actions>
-  <button md-raised-button color="primary" (click)="crearUnidad()" #crearBtn>Crear</button>
-  <button md-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="crearUnidad()" #crearBtn>Crear</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
 </div>

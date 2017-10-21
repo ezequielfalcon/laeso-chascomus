@@ -1,50 +1,47 @@
 import { NgModule } from '@angular/core';
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdCommonModule, MdCoreModule, MdDialogModule, MdIconModule,
-  MdInputModule, MdLineModule, MdListModule, MdProgressBarModule, MdSelectModule,
-  MdSidenavModule, MdTableModule, MdTabsModule,
-  MdToolbarModule, MdTooltipModule
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatCommonModule, MatDialogModule, MatIconModule,
+  MatInputModule, MatLineModule, MatListModule, MatProgressBarModule, MatSelectModule,
+  MatSidenavModule, MatTableModule, MatTabsModule,
+  MatToolbarModule, MatTooltipModule
 } from '@angular/material';
-import {CdkColumnDef, DataSource} from '@angular/cdk';
 
 @NgModule({
   imports: [
-    MdButtonModule,
-    MdCheckboxModule,
-    MdInputModule,
-    MdIconModule,
-    MdCommonModule,
-    MdCoreModule,
-    MdCardModule,
-    MdSidenavModule,
-    MdDialogModule,
-    MdToolbarModule,
-    MdProgressBarModule,
-    MdTableModule,
-    MdListModule,
-    MdLineModule,
-    MdSelectModule,
-    MdTabsModule,
-    MdTooltipModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatIconModule,
+    MatCommonModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatProgressBarModule,
+    MatTableModule,
+    MatListModule,
+    MatLineModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatTooltipModule
   ],
   exports: [
-    MdButtonModule,
-    MdCheckboxModule,
-    MdInputModule,
-    MdIconModule,
-    MdCommonModule,
-    MdCoreModule,
-    MdCardModule,
-    MdSidenavModule,
-    MdDialogModule,
-    MdToolbarModule,
-    MdProgressBarModule,
-    MdTableModule,
-    MdListModule,
-    MdLineModule,
-    MdSelectModule,
-    MdTabsModule,
-    MdTooltipModule
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatIconModule,
+    MatCommonModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatProgressBarModule,
+    MatTableModule,
+    MatListModule,
+    MatLineModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatTooltipModule
   ],
 })
 export class MaterialModule { }

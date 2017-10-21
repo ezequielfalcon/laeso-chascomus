@@ -1,16 +1,16 @@
-<h2 md-dialog-title>Seleccionar proveedor</h2>
-<md-dialog-content>
+<h2 matDialogTitle>Seleccionar proveedor</h2>
+<mat-dialog-content>
   <table width="100%">
-    <md-input-container>
-      <input mdInput placeholder="Filtrar por denominación..." [(ngModel)]="filtroNombre" />
-    </md-input-container>
+    <mat-form-field>
+      <input matInput placeholder="Filtrar por denominación..." [(ngModel)]="filtroNombre" />
+    </mat-form-field>
   </table>
-  <md-list>
-    <md-list-item class="clickVer" *ngFor="let proveedor of proveedores | filtro: {denominacion: filtroNombre}" (click)="dialogRef.close(proveedor.id)">
-      <md-icon md-list-icon>person</md-icon>
-      <h4 md-line><strong>{{proveedor.denominacion}}</strong></h4>
-      <p md-line><strong>Teléfono: </strong>{{proveedor.telefono}}</p>
-    </md-list-item>
-    <md-divider></md-divider>
-  </md-list>
-</md-dialog-content>
+  <mat-list>
+    <mat-list-item class="clickVer" *ngFor="let proveedor of proveedores | filtro: {denominacion: filtroNombre}" (click)="dialogRef.close(proveedor.id)">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <h4 matLine><strong>{{proveedor.denominacion}}</strong></h4>
+      <p matLine><strong>Teléfono: </strong>{{proveedor.telefono}}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</mat-dialog-content>
