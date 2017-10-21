@@ -18,6 +18,8 @@ export class AgregarProductoComponent implements OnInit {
   productoNuevo: ProductoRemito = new ProductoRemito;
   busquedaCodigo = '';
   busquedaNombre = '';
+  seleccionar = true;
+  tieneIva = false;
 
   constructor(
     private stockService: StockService,
@@ -26,6 +28,21 @@ export class AgregarProductoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  seleccionarProducto(idProducto: number) {
+    this.productoNuevo.id_producto = idProducto;
+    for (const prod of this.productos) {
+      if (prod.id === idProducto) {
+        this.productoNuevo.codigo = prod.codigo;
+        this.productoNuevo.nombre = prod.nombre;
+      }
+    }
+    this.seleccionar = false;
+  }
+
+  agregarProducto(terminar: boolean) {
+
   }
 
 }
