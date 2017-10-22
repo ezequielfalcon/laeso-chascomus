@@ -8,10 +8,17 @@
       <mat-input-container>
         <input matInput type="text" placeholder="Nombre..." [(ngModel)]="busquedaNombre">
       </mat-input-container>
-      <mat-list-item *ngFor="let producto of productos | filtro: {codigo: busquedaCodigo, nombre: busquedaNombre} | slice:0:5"
-                     (click)="seleccionarProducto(producto.id)">
-        <p mat-line>{{producto.codigo + ' | ' + producto.nombre}}</p>
-      </mat-list-item>
+      <table width="100%">
+        <tr *ngFor="let producto of productos | filtro: {codigo: busquedaCodigo, nombre: busquedaNombre} | slice:0:5"
+            (click)="seleccionarProducto(producto.id)" class="clickVer">
+          <td>
+            {{producto.codigo}}
+          </td>
+          <td>
+            {{producto.nombre}}
+          </td>
+        </tr>
+      </table>
     </div>
     <div *ngIf="!seleccionar">
       <h3>{{productoNuevo.nombre}}</h3>
