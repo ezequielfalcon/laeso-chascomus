@@ -50,7 +50,7 @@
               {{verNombreProducto(producto.id_producto)}}
             </td>
             <td>
-              {{producto.fecha_vencimiento.substr(0, 10)}}
+              {{intentarFecha(producto.fecha_vencimiento)}}
             </td>
             <td>
               {{producto.cantidad}}
@@ -59,12 +59,16 @@
               {{producto.costo}}
             </td>
             <td>
-              <a mat-mini-fab color="warn"><mat-icon>remove</mat-icon></a>
+              <a class="clickVer" (click)="sacarProducto(remitoCarga.id, producto.id_producto)"><mat-icon>delete</mat-icon></a>
             </td>
           </tr>
         </table>
       </div>
-      <button type="button" mat-raised-button color="accent" (click)="agregarProducto()">Agregar producto</button>
     </mat-card-content>
+    <mat-card-footer>
+      <button type="button" mat-raised-button [routerLink]="['/stock']"><mat-icon>undo</mat-icon> Volver</button>
+      <button type="button" mat-raised-button color="accent" (click)="agregarProducto()"><mat-icon>add_circle</mat-icon> Agregar producto</button>
+      <button type="button" mat-raised-button color="primary"><mat-icon>archive</mat-icon> Confirmar remito</button>
+    </mat-card-footer>
   </mat-card>
 </div>

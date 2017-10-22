@@ -96,6 +96,15 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     this.agregarProd.agregarProductos(this.productosFull, this.remitoCarga.id, this.vcr).subscribe(cargoProducto => {
       if (cargoProducto) {
         this.spinner.start();
+        if (this.productosRemito.length === 0) {
+          this.stockService.confirmarRemito(this.remitoCarga.id).subscribe(() => {
+            // nada
+          }, error => {
+            const body = JSON.parse(error._body);
+            this.notificationsService.error('Error', body.mensaje);
+            this.spinner.stop();
+          });
+        }
         this.cargarProductosRemito(this.remitoCarga.id);
       }
     });
@@ -119,5 +128,24 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     return 'error';
   }
 
+  sacarProducto(remitoId: number, productoId: number) {
+    this.spinner.start();
+    this.stockService.quitarProductoRemito(remitoId, productoId).subscribe(() => {
+      this.spinner.stop();
+      this.cargarProductosRemito(remitoId);
+    }, error => {
+      const body = JSON.parse(error._body);
+      this.notificationsService.error('Error', body.mensaje);
+      this.spinner.stop();
+    });
+  }
+
+  intentarFecha(fecha: string): string {
+    if (fecha) {
+      return fecha.substr(0, 10);
+    } else {
+      return 'N/A';
+    }
+  }
 
 }
