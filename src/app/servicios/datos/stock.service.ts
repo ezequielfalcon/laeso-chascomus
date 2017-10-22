@@ -52,4 +52,8 @@ export class StockService {
     return this.http.del('/stock/remitos/productos/' + remitoId + '/' + productoId).map((response: Response) => response.json());
   }
 
+  confirmarRemito(remitoId: number) {
+    return this.http.put('/stock/remitos/confirmar/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
+  }
+
 }

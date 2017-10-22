@@ -96,6 +96,15 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     this.agregarProd.agregarProductos(this.productosFull, this.remitoCarga.id, this.vcr).subscribe(cargoProducto => {
       if (cargoProducto) {
         this.spinner.start();
+        if (this.productosRemito.length === 0) {
+          this.stockService.confirmarRemito(this.remitoCarga.id).subscribe(() => {
+            // nada
+          }, error => {
+            const body = JSON.parse(error._body);
+            this.notificationsService.error('Error', body.mensaje);
+            this.spinner.stop();
+          });
+        }
         this.cargarProductosRemito(this.remitoCarga.id);
       }
     });
