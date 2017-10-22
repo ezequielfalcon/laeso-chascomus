@@ -44,21 +44,25 @@ export class AgregarProductoComponent implements OnInit {
   }
 
   guardarProductoNuevo(terminar: boolean) {
-    this.spinner.start();
-    this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
-      if (terminar) {
-        this.dialogRef.close(true);
-      } else {
-        this.seleccionar = true;
-        this.productoNuevo = new ProductoRemito;
-      }
-      this.notificationsService.success('OK', 'Producto agregado al remitoCarga!');
-      this.spinner.stop();
-    }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
-      this.spinner.stop();
-    });
+    if (this.productoNuevo.costo && this.productoNuevo.cantidad) {
+      this.spinner.start();
+      this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
+        if (terminar) {
+          this.dialogRef.close(true);
+        } else {
+          this.seleccionar = true;
+          this.productoNuevo = new ProductoRemito;
+        }
+        this.notificationsService.success('OK', 'Producto agregado al remitoCarga!');
+        this.spinner.stop();
+      }, error => {
+        const body = JSON.parse(error._body);
+        this.notificationsService.error('Error', body.mensaje);
+        this.spinner.stop();
+      });
+    } else {
+      this.notificationsService.warn('Error', 'Complete todos los campos!');
+    }
   }
 
 }

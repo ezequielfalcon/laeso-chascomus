@@ -140,4 +140,12 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     });
   }
 
+  intentarFecha(fecha: string): string {
+    if (fecha) {
+      return fecha.substr(0, 10);
+    } else {
+      return 'N/A';
+    }
+  }
+
 }
