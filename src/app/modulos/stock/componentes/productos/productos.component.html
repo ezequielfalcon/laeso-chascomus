@@ -26,7 +26,7 @@
         <tr>
           <th *ngFor="let columna of columnas">{{columna.label}}</th>
         </tr>
-        <tr *ngFor="let producto of productosFull | filtro: {nombre: filtroNombre, categoria: filtroCat, codigo: filtroCodigo}" class="clickVer hover" (click)="router.navigate(['stock/productos/' + producto.id])">
+        <tr *ngFor="let producto of productosFull | filtro: {nombre: filtroNombre, categoria: filtroCat, codigo: filtroCodigo} | slice:0:20" class="clickVer hover" (click)="router.navigate(['stock/productos/' + producto.id])">
           <td *ngFor="let columnaProd of columnas">{{producto[columnaProd.name]}}</td>
         </tr>
       </table>

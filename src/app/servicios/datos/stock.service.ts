@@ -45,7 +45,15 @@ export class StockService {
     body.set('cantidad', '' + producto.cantidad);
     body.set('costo', '' + producto.costo);
     body.set('fecha_vencimiento', producto.fecha_vencimiento);
-    return this.http.post('/stock/remitos/agregar-producto', body).map((response: Response) => response.json());
+    return this.http.post('/stock/remitos/productos', body).map((response: Response) => response.json());
+  }
+
+  quitarProductoRemito(remitoId: number, productoId: number) {
+    return this.http.del('/stock/remitos/productos/' + remitoId + '/' + productoId).map((response: Response) => response.json());
+  }
+
+  confirmarRemito(remitoId: number) {
+    return this.http.put('/stock/remitos/confirmar/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
   }
 
 }
