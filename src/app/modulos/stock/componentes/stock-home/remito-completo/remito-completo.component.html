@@ -59,7 +59,7 @@
               {{producto.costo}}
             </td>
             <td>
-              <a mat-mini-fab color="warn"><mat-icon>remove</mat-icon></a>
+              <a class="clickVer" (click)="sacarProducto(remitoCarga.id, producto.id_producto)"><mat-icon>delete</mat-icon></a>
             </td>
           </tr>
         </table>

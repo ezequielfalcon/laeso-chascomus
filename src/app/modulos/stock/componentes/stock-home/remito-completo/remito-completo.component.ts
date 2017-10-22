@@ -119,5 +119,16 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     return 'error';
   }
 
+  sacarProducto(remitoId: number, productoId: number) {
+    this.spinner.start();
+    this.stockService.quitarProductoRemito(remitoId, productoId).subscribe(() => {
+      this.spinner.stop();
+      this.cargarProductosRemito(remitoId);
+    }, error => {
+      const body = JSON.parse(error._body);
+      this.notificationsService.error('Error', body.mensaje);
+      this.spinner.stop();
+    });
+  }
 
 }
