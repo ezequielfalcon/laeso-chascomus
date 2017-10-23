@@ -21,6 +21,7 @@ export class AgregarProductoComponent implements OnInit {
   busquedaNombre = '';
   seleccionar = true;
   tieneIva = false;
+  productosAgregados = 0;
 
   constructor(
     private stockService: StockService,
@@ -47,8 +48,9 @@ export class AgregarProductoComponent implements OnInit {
     if (this.productoNuevo.costo && this.productoNuevo.cantidad) {
       this.spinner.start();
       this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
+        this.productosAgregados++;
         if (terminar) {
-          this.dialogRef.close(true);
+          this.dialogRef.close(this.productosAgregados);
         } else {
           this.seleccionar = true;
           this.productoNuevo = new ProductoRemito;
