@@ -5,4 +5,5 @@ export class ProductoRemito {
   cantidad: number;
   costo: number;
   fecha_vencimiento: string;
+  iva_incluido: boolean;
 }
