@@ -15,6 +15,7 @@ export class NuevoUsuarioComponent implements OnInit {
   nuevoUsuario: any = {};
   clave1: string;
   clave2: string;
+  placeRol = 'Rol';
 
   constructor(
     public dialogRef: MatDialogRef<NuevoUsuarioComponent>,
