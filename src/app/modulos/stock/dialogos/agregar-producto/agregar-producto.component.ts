@@ -46,6 +46,12 @@ export class AgregarProductoComponent implements OnInit {
 
   guardarProductoNuevo(terminar: boolean) {
     if (this.productoNuevo.costo && this.productoNuevo.cantidad) {
+      if (this.productoNuevo.fecha_vencimiento) {
+        if (new Date(this.productoNuevo.fecha_vencimiento) < new Date) {
+          this.notificationsService.warn('Error', 'La fecha de vencimiento es anterior a la actual!!');
+          return;
+        }
+      }
       this.spinner.start();
       this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
         this.productosAgregados++;
