@@ -56,7 +56,7 @@
               {{producto.cantidad}}
             </td>
             <td>
-              {{calcularCosto(producto)}}
+              {{calcularCostoConIva(producto)}}
             </td>
             <td>
               <a class="clickVer" (click)="sacarProducto(remitoCarga.id, producto.id_producto)"><mat-icon>delete</mat-icon></a>
@@ -64,21 +64,10 @@
           </tr>
         </table>
         <mat-list>
-          <h3 mat-subheader>Totales</h3>
+          <h2 mat-subheader>Total</h2>
           <mat-list-item>
             <mat-icon mat-list-icon>monetization_on</mat-icon>
-            <h4 mat-line>Subtotal</h4>
-            <p mat-line>calcular</p>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>monetization_on</mat-icon>
-            <h4 mat-line>Subtotal IVA</h4>
-            <p mat-line>calcular</p>
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>monetization_on</mat-icon>
-            <h4 mat-line>Total</h4>
-            <p mat-line>calcular</p>
+            <h4 mat-line>{{costoTotal(productosRemito)}}</h4>
           </mat-list-item>
         </mat-list>
       </div>
