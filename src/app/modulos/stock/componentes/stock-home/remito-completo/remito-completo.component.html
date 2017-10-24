@@ -39,7 +39,7 @@
               Cantidad
             </th>
             <th>
-              Precio
+              Precio (con IVA)
             </th>
           </tr>
           <tr *ngFor="let producto of productosRemito">
@@ -56,7 +56,7 @@
               {{producto.cantidad}}
             </td>
             <td>
-              {{producto.costo}}
+              {{calcularCosto(producto)}}
             </td>
             <td>
               <a class="clickVer" (click)="sacarProducto(remitoCarga.id, producto.id_producto)"><mat-icon>delete</mat-icon></a>
