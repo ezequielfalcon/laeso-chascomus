@@ -84,7 +84,6 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
   cargarProductosRemito(remitoId: number) {
     this.stockService.verProductosPorRemito(remitoId).subscribe(productosDb => {
       this.productosRemito = productosDb;
-      console.log(this.productosRemito);
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
@@ -148,9 +147,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     }
   }
 
-  calcularCosto(producto: ProductoRemito): number {
+  calcularCostoConIva(producto: ProductoRemito): number {
     if (producto.iva_incluido === true) {
-      return +producto.costo;
+      return producto.costo;
     } else {
       switch (producto.iva) {
         case '21':
@@ -162,6 +161,31 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
         default:
           return producto.costo;
       }
+    }
+  }
+
+  costoTotal(productos: ProductoRemito[]): number {
+    let costo = 0;
+    for (const prod of productos) {
+      costo = costo + this.calcularCostoConIva(prod);
+    }
+    return costo;
+  }
+
+  calcularIva(producto: ProductoRemito): number {
+    if (producto.iva_incluido === true) {
+      switch (producto.iva) {
+        case '21':
+          return producto.costo / 1.21;
+        case '10.5':
+          return producto.costo / 1.105;
+        case '27':
+          return producto.costo / 1.27;
+        default:
+          return 0;
+      }
+    } else {
+      return 0;
     }
   }
 
