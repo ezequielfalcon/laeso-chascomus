@@ -21,27 +21,33 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-select placeholder="IVA" [(ngModel)]="nuevoProducto.iva" required>
-          <mat-option *ngFor="let iva of ivas" [value]="iva.valor">
-            {{iva.label}}
-          </mat-option>
-        </mat-select>
+        <mat-form-field>
+          <mat-select placeholder="IVA" [(ngModel)]="nuevoProducto.iva" required>
+            <mat-option *ngFor="let iva of ivas" [value]="iva.valor">
+              {{iva.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </td>
     </tr>
     <tr>
       <td>
-        <mat-select placeholder="Categoría" [(ngModel)]="nuevoProducto.id_categoria" required>
-          <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-            {{categoria.nombre}}
-          </mat-option>
-        </mat-select>
+        <mat-form-field>
+          <mat-select placeholder="Categoría" [(ngModel)]="nuevoProducto.id_categoria" required>
+            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+              {{categoria.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </td>
       <td>
-        <mat-select placeholder="Unidad" [(ngModel)]="nuevoProducto.id_unidad" required>
-          <mat-option *ngFor="let unidad of unidades" [value]="unidad.id">
-            {{unidad.nombre}}
-          </mat-option>
-        </mat-select>
+        <mat-form-field>
+          <mat-select placeholder="Unidad" [(ngModel)]="nuevoProducto.id_unidad" required>
+            <mat-option *ngFor="let unidad of unidades" [value]="unidad.id">
+              {{unidad.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </td>
     </tr>
   </table>
