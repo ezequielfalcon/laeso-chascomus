@@ -6,4 +6,5 @@ export class ProductoRemito {
   costo: number;
   fecha_vencimiento: string;
   iva_incluido: boolean;
+  iva: string;
 }

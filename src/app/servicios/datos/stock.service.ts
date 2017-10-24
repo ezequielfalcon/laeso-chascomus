@@ -45,6 +45,7 @@ export class StockService {
     body.set('cantidad', '' + producto.cantidad);
     body.set('costo', '' + producto.costo);
     body.set('fecha_vencimiento', producto.fecha_vencimiento);
+    body.set('iva_incluido', producto.iva_incluido === true ? 'tiene_iva' : 'no_tiene_iva');
     return this.http.post('/stock/remitos/productos', body).map((response: Response) => response.json());
   }
 

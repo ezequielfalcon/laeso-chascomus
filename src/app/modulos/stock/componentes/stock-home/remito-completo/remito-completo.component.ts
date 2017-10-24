@@ -84,6 +84,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
   cargarProductosRemito(remitoId: number) {
     this.stockService.verProductosPorRemito(remitoId).subscribe(productosDb => {
       this.productosRemito = productosDb;
+      console.log(this.productosRemito);
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
@@ -131,7 +132,6 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
   sacarProducto(remitoId: number, productoId: number) {
     this.spinner.start();
     this.stockService.quitarProductoRemito(remitoId, productoId).subscribe(() => {
-      this.spinner.stop();
       this.cargarProductosRemito(remitoId);
     }, error => {
       const body = JSON.parse(error._body);
@@ -145,6 +145,23 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       return fecha.substr(0, 10);
     } else {
       return 'N/A';
+    }
+  }
+
+  calcularCosto(producto: ProductoRemito): number {
+    if (producto.iva_incluido === true) {
+      return +producto.costo;
+    } else {
+      switch (producto.iva) {
+        case '21':
+          return producto.costo * 1.21;
+        case '10.5':
+          return producto.costo * 1.105;
+        case '27':
+          return producto.costo * 1.27;
+        default:
+          return producto.costo;
+      }
     }
   }
 

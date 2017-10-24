@@ -53,6 +53,7 @@ export class AgregarProductoComponent implements OnInit {
         }
       }
       this.spinner.start();
+      this.productoNuevo.iva_incluido = this.tieneIva;
       this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
         this.productosAgregados++;
         if (terminar) {
