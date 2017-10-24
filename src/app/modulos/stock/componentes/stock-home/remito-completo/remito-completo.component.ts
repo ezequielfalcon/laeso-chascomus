@@ -167,7 +167,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
   costoTotal(productos: ProductoRemito[]): number {
     let costo = 0;
     for (const prod of productos) {
-      costo = costo + this.calcularCostoConIva(prod);
+      costo = costo + +this.calcularCostoConIva(prod);
     }
     return costo;
   }
