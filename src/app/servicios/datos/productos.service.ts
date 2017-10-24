@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import {Response, URLSearchParams} from '@angular/http';
+import {Response} from '@angular/http';
 
 @Injectable()
 export class ProductosService {
@@ -39,48 +39,53 @@ export class ProductosService {
 
   nuevoProducto(nombre: string, stock_minimo: number, codigo: string, iva: string,
                 id_categoria: number, id_unidad: number) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
-    body.set('stock_minimo', '' + stock_minimo);
-    body.set('iva', iva);
-    body.set('codigo', codigo);
-    body.set('id_categoria', '' + id_categoria);
-    body.set('id_unidad', '' + id_unidad);
+    const body = {
+      nombre: nombre,
+      stock_minimo: stock_minimo,
+      iva: iva,
+      codigo: codigo,
+      id_categoria: id_categoria,
+      id_unidad: id_unidad
+    };
     return this.http.post('/productos', body).map((response: Response) => response.json());
   }
 
   nuevoProductoRand(nombre: string, stock_minimo: number, iva: string,
                     id_categoria: number, id_unidad: number) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
-    body.set('stock_minimo', '' + stock_minimo);
-    body.set('iva', iva);
-    body.set('id_categoria', '' + id_categoria);
-    body.set('id_unidad', '' + id_unidad);
+    const body = {
+      nombre: nombre,
+      stock_minimo: stock_minimo,
+      iva: iva,
+      id_categoria: id_categoria,
+      id_unidad: id_unidad
+    };
     return this.http.post('/producto-rand', body).map((response: Response) => response.json());
   }
 
   modificarProducto(productoId: number, nombre: string, stock_minimo: number, codigo: string, iva: string,
                 id_categoria: number, id_unidad: number) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
-    body.set('stock_minimo', '' + stock_minimo);
-    body.set('iva', iva);
-    body.set('codigo', codigo);
-    body.set('id_categoria', '' + id_categoria);
-    body.set('id_unidad', '' + id_unidad);
+    const body = {
+      nombre: nombre,
+      stock_minimo: stock_minimo,
+      iva: iva,
+      codigo: codigo,
+      id_categoria: id_categoria,
+      id_unidad: id_unidad
+    };
     return this.http.put('/productos/' + productoId, body).map((response: Response) => response.json().id);
   }
 
   nuevaCategoria(nombre: string) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
+    const body = {
+      nombre: nombre
+    };
     return this.http.post('/productos/categorias', body).map((response: Response) => response.json().id);
   }
 
   nuevaUnidad(nombre: string) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
+    const body = {
+      nombre: nombre
+    };
     return this.http.post('/productos/unidades', body).map((response: Response) => response.json().id);
   }
 

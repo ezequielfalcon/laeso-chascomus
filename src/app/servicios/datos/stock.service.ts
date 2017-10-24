@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import {Response, URLSearchParams} from '@angular/http';
+import {Response} from '@angular/http';
 import {ProductoRemito} from '../../modelos/producto-remito';
 
 @Injectable()
@@ -31,21 +31,23 @@ export class StockService {
   }
 
   nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
-    const body = new URLSearchParams();
-    body.set('id_proveedor', '' + proveedorId);
-    body.set('numero', numero);
-    body.set('observaciones', obs);
+    const body = {
+      id_proveedor: proveedorId,
+      numero: numero,
+      observaciones: obs
+    };
     return this.http.post('/stock/remitos/recibidos', body).map((response: Response) => response.json());
   }
 
   agregarProductoRemito(remitoId: number, producto: ProductoRemito) {
-    const body = new URLSearchParams();
-    body.set('id_remito', '' + remitoId);
-    body.set('id_producto', '' + producto.id_producto);
-    body.set('cantidad', '' + producto.cantidad);
-    body.set('costo', '' + producto.costo);
-    body.set('fecha_vencimiento', producto.fecha_vencimiento);
-    body.set('iva_incluido', producto.iva_incluido === true ? 'tiene_iva' : 'no_tiene_iva');
+    const body = {
+      id_remito: remitoId,
+      id_producto: producto.id_producto,
+      cantidad: producto.cantidad,
+      costo: producto.costo,
+      fecha_vencimiento: producto.fecha_vencimiento,
+      iva: producto.iva_incluido
+    };
     return this.http.post('/stock/remitos/productos', body).map((response: Response) => response.json());
   }
 
