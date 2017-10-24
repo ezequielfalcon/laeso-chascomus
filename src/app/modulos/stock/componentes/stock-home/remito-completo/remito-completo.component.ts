@@ -84,7 +84,6 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
   cargarProductosRemito(remitoId: number) {
     this.stockService.verProductosPorRemito(remitoId).subscribe(productosDb => {
       this.productosRemito = productosDb;
-      console.log(this.productosRemito);
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
@@ -150,7 +149,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
 
   calcularCosto(producto: ProductoRemito): number {
     if (producto.iva_incluido === true) {
-      return +producto.costo;
+      return producto.costo;
     } else {
       switch (producto.iva) {
         case '21':
