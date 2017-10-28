@@ -59,8 +59,7 @@ export class AgregarProductoComponent implements OnInit {
         if (terminar) {
           this.dialogRef.close(this.productosAgregados);
         } else {
-          this.seleccionar = true;
-          this.productoNuevo = new ProductoRemito;
+          this.dialogRef.close(-1);
         }
         this.notificationsService.success('OK', 'Producto agregado al remitoCarga!');
         this.spinner.stop();

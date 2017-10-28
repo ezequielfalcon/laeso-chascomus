@@ -105,7 +105,10 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
             this.spinner.stop();
           });
         }
-        this.cargarProductosRemito(this.remitoCarga.id);
+        this.cargarProductosRemito(this.remitoCarga.id)
+        if (cargoProducto === -1) {
+          this.agregarProducto();
+        }
       }
     });
   }
