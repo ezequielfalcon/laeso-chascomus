@@ -10,12 +10,8 @@ export class StockService {
     private http: HttpVeaService
   ) { }
 
-  verRemitosRecibidos() {
-    return this.http.get('/stock/remitos').map((response: Response) => response.json().datos.remitosRec);
-  }
-
-  verRemitosEnCarga() {
-    return this.http.get('/stock/remitos').map((response: Response) => response.json().datos.remitosEnC);
+  verRemitos() {
+    return this.http.get('/stock/remitos').map((response: Response) => response.json());
   }
 
   verRemitosParaCarga(remitoId: number) {
