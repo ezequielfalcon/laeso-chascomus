@@ -10,16 +10,12 @@ export class StockService {
     private http: HttpVeaService
   ) { }
 
-  verRemitosRecibidos() {
-    return this.http.get('/stock/remitos/recibidos').map((response: Response) => response.json().datos);
-  }
-
-  verRemitosEnCarga() {
-    return this.http.get('/stock/remitos/en-carga').map((response: Response) => response.json().datos);
+  verRemitos() {
+    return this.http.get('/stock/remitos').map((response: Response) => response.json());
   }
 
   verRemitosParaCarga(remitoId: number) {
-    return this.http.get('/stock/remitos/para-carga/' + remitoId).map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos/' + remitoId).map((response: Response) => response.json().datos);
   }
 
   verHistorialRemito(remitoId: number) {
@@ -36,7 +32,7 @@ export class StockService {
       numero: numero,
       observaciones: obs
     };
-    return this.http.post('/stock/remitos/recibidos', body).map((response: Response) => response.json());
+    return this.http.post('/stock/remitos', body).map((response: Response) => response.json());
   }
 
   agregarProductoRemito(remitoId: number, producto: ProductoRemito) {
@@ -56,7 +52,7 @@ export class StockService {
   }
 
   confirmarRemito(remitoId: number) {
-    return this.http.put('/stock/remitos/confirmar/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
+    return this.http.put('/stock/remitos/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
   }
 
 }

@@ -153,11 +153,11 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     } else {
       switch (producto.iva) {
         case '21':
-          return producto.costo * 1.21;
+          return +(producto.costo * 1.21).toFixed(2);
         case '10.5':
-          return producto.costo * 1.105;
+          return +(producto.costo * 1.105).toFixed(2);
         case '27':
-          return producto.costo * 1.27;
+          return +(producto.costo * 1.27).toFixed(2);
         default:
           return producto.costo;
       }
@@ -169,18 +169,18 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     for (const prod of productos) {
       costo = costo + +this.calcularCostoConIva(prod);
     }
-    return costo;
+    return +costo.toFixed(2);
   }
 
   calcularIva(producto: ProductoRemito): number {
     if (producto.iva_incluido === true) {
       switch (producto.iva) {
         case '21':
-          return producto.costo / 1.21;
+          return +(producto.costo / 1.21).toFixed(2);
         case '10.5':
-          return producto.costo / 1.105;
+          return +(producto.costo / 1.105).toFixed(2);
         case '27':
-          return producto.costo / 1.27;
+          return +(producto.costo / 1.27).toFixed(2);
         default:
           return 0;
       }

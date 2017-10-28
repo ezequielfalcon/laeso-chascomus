@@ -43,8 +43,7 @@ export class StockHomeComponent implements OnInit, OnDestroy {
         }
         return 0;
       });
-      this.cargarRemitosRecibidos();
-      this.cargarRemitosEnCarga();
+      this.cargarRemitos();
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
@@ -52,20 +51,10 @@ export class StockHomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  cargarRemitosRecibidos() {
-    this.stockServ.verRemitosRecibidos().subscribe(remitosDb => {
-      this.remitosRecibidos = remitosDb;
-      this.spinner.stop();
-    }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
-      this.spinner.stop();
-    });
-  }
-
-  cargarRemitosEnCarga() {
-    this.stockServ.verRemitosEnCarga().subscribe(remitosDb => {
-      this.remitosEnCarga = remitosDb;
+  cargarRemitos() {
+    this.stockServ.verRemitos().subscribe(resDb => {
+      this.remitosRecibidos = resDb.remitosRec;
+      this.remitosEnCarga = resDb.remitosEnC;
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
