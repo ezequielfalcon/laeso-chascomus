@@ -6,10 +6,13 @@ import { ConfirmarComponent } from './dialogos/confirmar/confirmar.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { OrdenPipe } from './pipes/orden.pipe';
 import { LimitarPipe } from './pipes/limitar.pipe';
+import { SeleccionarComponent } from './dialogos/seleccionar/seleccionar.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule
   ],
   declarations: [
@@ -17,16 +20,19 @@ import { LimitarPipe } from './pipes/limitar.pipe';
     ConfirmarComponent,
     FiltroPipe,
     OrdenPipe,
-    LimitarPipe
+    LimitarPipe,
+    SeleccionarComponent
   ],
   entryComponents: [
-    ConfirmarComponent
+    ConfirmarComponent,
+    SeleccionarComponent
   ],
   exports: [
     SpinnerComponent,
     ConfirmarComponent,
     FiltroPipe,
-    LimitarPipe
+    LimitarPipe,
+    SeleccionarComponent
   ]
 })
 export class UtilsModule { }

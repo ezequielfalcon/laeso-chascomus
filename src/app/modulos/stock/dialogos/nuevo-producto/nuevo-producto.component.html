@@ -32,13 +32,14 @@
     </tr>
     <tr>
       <td>
-        <mat-form-field>
-          <mat-select placeholder="Categoría" [(ngModel)]="nuevoProducto.id_categoria" required>
-            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-              {{categoria.nombre}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <button mat-raised-button color="accent" *ngIf="!catSeleccionada && categorias" type="button"
+                (click)="seleccionarCategoria()">Seleccionar categoría</button>
+        <ng-container *ngIf="catSeleccionada">
+          <mat-form-field class="clickVer" (click)="seleccionarCategoria()">
+            <input matInput disabled placeholder="Categoría" type="text" [(ngModel)]="categoriaSeleccionada.nombre"
+                   class="clickVer" (click)="seleccionarCategoria()">
+          </mat-form-field>
+        </ng-container>
       </td>
       <td>
         <mat-form-field>
