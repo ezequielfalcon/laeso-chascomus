@@ -1,3 +1,16 @@
-<p>
-  seleccionar works!
-</p>
+<h1 matDialogTitle>{{ titulo }}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="filtro" placeholder="Filtro...">
+  </mat-form-field>
+  <mat-list>
+    <mat-list-item *ngFor="let elemento of elementos | filtro: {nombre: filtro}"
+    class="clickVer" (click)="dialogRef.close(elemento.id)">
+      <mat-icon mat-list-icon>label</mat-icon>
+      <h4 mat-line>{{elemento.nombre}}</h4>
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button type="button" (click)="dialogRef.close(0)">Cancelar</button>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-seleccionar',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeleccionarComponent implements OnInit {
 
-  constructor() { }
+  public elementos: any[];
+  public titulo: string;
+
+  filtro = '';
+
+  constructor(
+    public dialogRef: MatDialogRef<SeleccionarComponent>
+  ) { }
 
   ngOnInit() {
   }
