@@ -32,7 +32,7 @@
     </tr>
     <tr>
       <td>
-        <button mat-raised-button color="accent" *ngIf="!catSeleccionada && categorias" type="button"
+        <button mat-raised-button color="accent" *ngIf="!catSeleccionada && categorias.length > 0" type="button"
                 (click)="seleccionarCategoria()">Seleccionar categoría</button>
         <ng-container *ngIf="catSeleccionada">
           <mat-form-field class="clickVer" (click)="seleccionarCategoria()">
