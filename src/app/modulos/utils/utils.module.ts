@@ -7,10 +7,12 @@ import { FiltroPipe } from './pipes/filtro.pipe';
 import { OrdenPipe } from './pipes/orden.pipe';
 import { LimitarPipe } from './pipes/limitar.pipe';
 import { SeleccionarComponent } from './dialogos/seleccionar/seleccionar.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule
   ],
   declarations: [

@@ -11,7 +11,7 @@ export class SeleccionarComponent implements OnInit {
   public elementos: any[];
   public titulo: string;
 
-  filtro = '';
+  filtroNombre = '';
 
   constructor(
     public dialogRef: MatDialogRef<SeleccionarComponent>
