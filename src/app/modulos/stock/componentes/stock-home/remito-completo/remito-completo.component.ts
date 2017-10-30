@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {RemitoRecibido} from '../../../../../modelos/remito-recibido';
 import {HistorialRemito} from '../../../../../modelos/historial-remito';
 import {StockService} from '../../../../../servicios/datos/stock.service';
@@ -11,6 +11,7 @@ import {ProductoRemito} from '../../../../../modelos/producto-remito';
 import {AgregarProductoService} from '../../../dialogos/agregar-producto/agregar-producto.service';
 import {Proveedor} from '../../../../../modelos/proveedor';
 import {ProveedoresService} from '../../../../../servicios/datos/proveedores.service';
+import {ConfirmarService} from '../../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-remito-completo',
@@ -33,7 +34,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     private productosService: ProductosService,
     private agregarProd: AgregarProductoService,
     private vcr: ViewContainerRef,
-    private proveedoresService: ProveedoresService
+    private proveedoresService: ProveedoresService,
+    private confirmar: ConfirmarService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -190,6 +193,25 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     } else {
       return 0;
     }
+  }
+
+  cerrarRemito() {
+    this.confirmar.confirmar('Cerrar remito ' + this.remitoCarga.numero,
+      'Está seguro que desea cerrar el remito ' + this.remitoCarga.numero +
+      ' del proveedor ' + this.proveedorRemito.denominacion + '?', this.vcr).subscribe(confirmado => {
+        if (confirmado) {
+          this.spinner.start();
+          this.stockService.cerrarRemito(this.remitoCarga.id).subscribe(() => {
+            this.notificationsService.success('OK', 'Remito ' +
+              this.remitoCarga.numero + ' confirmado y cerrado.');
+            this.router.navigate(['/stock']);
+          }, error => {
+            const body = JSON.parse(error._body);
+            this.notificationsService.error('Error', body.mensaje);
+            this.spinner.stop();
+          });
+        }
+    });
   }
 
 }
