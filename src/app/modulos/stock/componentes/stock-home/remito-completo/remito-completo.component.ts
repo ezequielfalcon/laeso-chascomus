@@ -214,4 +214,14 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     });
   }
 
+  borrarRemito() {
+    this.confirmar.confirmar('Borrar Remito ' + this.remitoCarga.numero,
+      'Está seguro que desea elminar el remito con código ' + this.remitoCarga.numero +
+      ' del proveedor ' + this.proveedorRemito.denominacion, this.vcr).subscribe(confirmado => {
+        if (confirmado) {
+          // llamar servicio
+        }
+    });
+  }
+
 }
