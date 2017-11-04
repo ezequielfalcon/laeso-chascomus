@@ -219,10 +219,15 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       'Está seguro que desea elminar el remito con código ' + this.remitoCarga.numero +
       ' del proveedor ' + this.proveedorRemito.denominacion, this.vcr).subscribe(confirmado => {
         if (confirmado) {
+          this.spinner.start();
           this.stockService.borrarRemito(this.remitoCarga.id).subscribe(() => {
             this.notificationsService.success('Remito borrado', 'Remito ' +
               this.remitoCarga.numero + ' borrado correctamente');
             this.router.navigate(['/stock']);
+          }, error => {
+            const body = JSON.parse(error._body);
+            this.notificationsService.error('Error', body.mensaje);
+            this.spinner.stop();
           });
         }
     });

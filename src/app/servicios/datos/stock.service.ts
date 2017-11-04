@@ -60,7 +60,7 @@ export class StockService {
   }
 
   borrarRemito(remitoId: number) {
-    return this.http.put('/stock/remitos/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
+    return this.http.del('/stock/remitos/' + remitoId).map((response: Response) => response.json());
   }
 
 }
