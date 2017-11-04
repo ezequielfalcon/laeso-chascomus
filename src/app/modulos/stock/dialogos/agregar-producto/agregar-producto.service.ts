@@ -9,7 +9,7 @@ export class AgregarProductoService {
 
   constructor(private dialog: MatDialog) { }
 
-  public agregarProductos(tablaProductos: ProductoFull[], idRemito: number, viewContainerRef: ViewContainerRef): Observable<any> {
+  public agregarProductos(tablaProductos: ProductoFull[], idRemito: number, viewContainerRef: ViewContainerRef): Observable<number> {
     let dialogRef: MatDialogRef<AgregarProductoComponent>;
     const config = new MatDialogConfig();
     config.viewContainerRef = viewContainerRef;

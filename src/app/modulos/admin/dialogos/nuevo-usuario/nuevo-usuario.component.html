@@ -30,11 +30,13 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-select placeholder="Rol" [(ngModel)]="nuevoUsuario.id_rol">
-            <mat-option *ngFor="let rol of roles" [value]="rol.id" >
-              {{rol.nombre}}
-            </mat-option>
-          </mat-select>
+          <mat-form-field>
+            <mat-select [placeholder]="placeRol" [(ngModel)]="nuevoUsuario.id_rol">
+              <mat-option *ngFor="let rol of roles" [value]="rol.id" >
+                {{rol.nombre}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </td>
       </tr>
     </table>

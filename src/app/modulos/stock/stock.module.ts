@@ -29,6 +29,7 @@ import {StockService} from '../../servicios/datos/stock.service';
 import { RemitoCompletoComponent } from './componentes/stock-home/remito-completo/remito-completo.component';
 import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-producto.component';
 import {AgregarProductoService} from './dialogos/agregar-producto/agregar-producto.service';
+import {SeleccionarService} from '../utils/dialogos/seleccionar/seleccionar.service';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import {AgregarProductoService} from './dialogos/agregar-producto/agregar-produc
     ProductosService,
     ConfirmarService,
     StockService,
-    AgregarProductoService
+    AgregarProductoService,
+    SeleccionarService
   ]
 })
 export class StockModule { }
