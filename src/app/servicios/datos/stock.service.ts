@@ -55,4 +55,12 @@ export class StockService {
     return this.http.put('/stock/remitos/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
   }
 
+  cerrarRemito(remitoId: number) {
+    return this.http.put('/stock/remitos/cerrar/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
+  }
+
+  borrarRemito(remitoId: number) {
+    return this.http.del('/stock/remitos/' + remitoId).map((response: Response) => response.json());
+  }
+
 }
