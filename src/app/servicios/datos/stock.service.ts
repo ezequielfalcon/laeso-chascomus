@@ -63,4 +63,8 @@ export class StockService {
     return this.http.del('/stock/remitos/' + remitoId).map((response: Response) => response.json());
   }
 
+  verProductosStock() {
+    return this.http.get('/stock').map((response: Response) => response.json().datos);
+  }
+
 }
