@@ -30,6 +30,7 @@ import { RemitoCompletoComponent } from './componentes/stock-home/remito-complet
 import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-producto.component';
 import {AgregarProductoService} from './dialogos/agregar-producto/agregar-producto.service';
 import {SeleccionarService} from '../utils/dialogos/seleccionar/seleccionar.service';
+import { StockProductosComponent } from './componentes/stock-productos/stock-productos.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import {SeleccionarService} from '../utils/dialogos/seleccionar/seleccionar.serv
     ProductosComponent,
     StockHomeComponent,
     RemitoCompletoComponent,
-    AgregarProductoComponent
+    AgregarProductoComponent,
+    StockProductosComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
