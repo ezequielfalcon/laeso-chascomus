@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductoStock} from '../../../../modelos/producto-stock';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {Categoria} from '../../../../modelos/categoria';
@@ -58,6 +58,12 @@ export class StockProductosComponent implements OnInit {
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
     });
+  }
+
+  sacarFiltro() {
+    this.filtroCat = '';
+    this.filtroNombre = '';
+    this.filtroCodigo = '';
   }
 
 }

@@ -53,7 +53,6 @@ export class StockHomeComponent implements OnInit, OnDestroy {
 
   cargarRemitos() {
     this.stockServ.verRemitos().subscribe(resDb => {
-      console.log(resDb);
       this.remitosRecibidos = resDb.remitosRec;
       this.remitosEnCarga = resDb.remitosEnC;
       this.spinner.stop();

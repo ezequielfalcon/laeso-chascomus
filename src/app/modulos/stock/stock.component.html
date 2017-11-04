@@ -14,6 +14,10 @@
       <mat-icon>people</mat-icon>
       <span>Proveedores</span>
     </button>
+      <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/stock/stock-productos']">
+        <mat-icon>widgets</mat-icon>
+        <span>Stock</span>
+      </button>
         <br>
         <mat-divider></mat-divider>
         <button mat-button class="boton-sidenav" color="accent" (click)="sidenav.toggle()" [routerLink]="['/stock/configuraciones']">
