@@ -2,11 +2,11 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Proveedor} from '../../../../modelos/proveedor';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
 import {SeleccionarProveedorService} from '../seleccionar-proveedor/seleccionar-proveedor.service';
-import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {NotificationsService} from 'angular2-notifications';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {MatDialogRef} from '@angular/material';
-import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
+import {SpinnerService} from '../../directivas/spinner/spinner.service';
+import {ConfirmarService} from '../confirmar/confirmar.service';
 
 @Component({
   selector: 'app-nueva-recepcion',
