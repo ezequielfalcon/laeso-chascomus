@@ -1,10 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {RemitoRecibido} from '../../../../modelos/remito-recibido';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {Proveedor} from '../../../../modelos/proveedor';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
+import {NuevaRecepcionService} from '../../../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-stock-home',
@@ -21,7 +23,10 @@ export class StockHomeComponent implements OnInit, OnDestroy {
     private proveedoresService: ProveedoresService,
     private stockServ: StockService,
     private spinner: SpinnerService,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private nuevoRemito: NuevaRecepcionService,
+    private vcr: ViewContainerRef,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -70,6 +75,14 @@ export class StockHomeComponent implements OnInit, OnDestroy {
       }
     }
     return 'error';
+  }
+
+  cargarNuevoRemito() {
+    this.nuevoRemito.nuevaRecepcionDialogo(this.vcr).subscribe(nuevoRemito => {
+      if (nuevoRemito) {
+        this.router.navigate(['/stock/carga-remito/' + nuevoRemito]);
+      }
+    });
   }
 
 }
