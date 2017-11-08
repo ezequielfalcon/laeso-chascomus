@@ -2,11 +2,11 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Proveedor} from '../../../../modelos/proveedor';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
 import {SeleccionarProveedorService} from '../seleccionar-proveedor/seleccionar-proveedor.service';
-import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {NotificationsService} from 'angular2-notifications';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {MatDialogRef} from '@angular/material';
-import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
+import {SpinnerService} from '../../directivas/spinner/spinner.service';
+import {ConfirmarService} from '../confirmar/confirmar.service';
 
 @Component({
   selector: 'app-nueva-recepcion',
@@ -76,10 +76,10 @@ export class NuevaRecepcionComponent implements OnInit {
   }
 
   cargaRemito(proveedorId: number, numRemito: string, obs: string) {
-    this.stockServ.nuevoRemitoRecibido(proveedorId, numRemito, obs).subscribe(() => {
+    this.stockServ.nuevoRemitoRecibido(proveedorId, numRemito, obs).subscribe(nuevoRemito => {
       this.notificationsService.success('OK', 'Remito guardado!');
       this.spinner.stop();
-      this.dialog.close();
+      this.dialog.close(nuevoRemito.id);
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);

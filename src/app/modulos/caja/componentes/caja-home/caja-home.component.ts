@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {NuevaRecepcionService} from '../../dialogos/nueva-recepcion/nueva-recepcion.service';
+import {NuevaRecepcionService} from '../../../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
 
 @Component({
   selector: 'app-caja-home',

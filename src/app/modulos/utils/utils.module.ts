@@ -8,6 +8,8 @@ import { OrdenPipe } from './pipes/orden.pipe';
 import { LimitarPipe } from './pipes/limitar.pipe';
 import { SeleccionarComponent } from './dialogos/seleccionar/seleccionar.component';
 import {FormsModule} from '@angular/forms';
+import {NuevaRecepcionComponent} from './dialogos/nueva-recepcion/nueva-recepcion.component';
+import {SeleccionarProveedorComponent} from './dialogos/seleccionar-proveedor/seleccionar-proveedor.component';
 
 @NgModule({
   imports: [
@@ -21,18 +23,24 @@ import {FormsModule} from '@angular/forms';
     FiltroPipe,
     OrdenPipe,
     LimitarPipe,
-    SeleccionarComponent
+    SeleccionarComponent,
+    NuevaRecepcionComponent,
+    SeleccionarProveedorComponent
   ],
   entryComponents: [
     ConfirmarComponent,
-    SeleccionarComponent
+    SeleccionarComponent,
+    NuevaRecepcionComponent,
+    SeleccionarProveedorComponent
   ],
   exports: [
     SpinnerComponent,
     ConfirmarComponent,
     FiltroPipe,
     LimitarPipe,
-    SeleccionarComponent
+    SeleccionarComponent,
+    NuevaRecepcionComponent,
+    SeleccionarProveedorComponent
   ]
 })
 export class UtilsModule { }
