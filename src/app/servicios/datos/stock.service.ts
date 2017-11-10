@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
 import {Response} from '@angular/http';
 import {ProductoRemito} from '../../modelos/producto-remito';
+import {Ajuste} from '../../modelos/ajuste';
+import {Stock} from '../../modelos/stock';
 
 @Injectable()
 export class StockService {
@@ -65,6 +67,22 @@ export class StockService {
 
   verProductosStock() {
     return this.http.get('/stock').map((response: Response) => response.json().datos);
+  }
+
+  verAjustesStock() {
+    return this.http.get('/stock/ajustes').map((response: Response) => response.json().datos);
+  }
+
+  nuevoAjuste(ajuste: Ajuste) {
+    return this.http.post('/stock/ajustes', ajuste).map((response: Response) => response.json());
+  }
+
+  agregarStockAjuste(ajusteId: number, stock: Stock) {
+    const body = {
+      id_producto: stock.id_producto,
+      cantidad: stock.cantidad
+    };
+    return this.http.put('/stock/ajustes/' + ajusteId, body).map((response: Response) => response.json());
   }
 
 }
