@@ -1,6 +1,10 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ProductoStock} from '../../../../modelos/producto-stock';
 import {SeleccionarService} from '../../../utils/dialogos/seleccionar/seleccionar.service';
+import {MatDialogRef} from '@angular/material';
+import {NotificationsService} from 'angular2-notifications';
+import {StockService} from '../../../../servicios/datos/stock.service';
+import {Ajuste} from '../../../../modelos/ajuste';
 
 @Component({
   selector: 'app-nuevo-ajuste',
@@ -13,10 +17,15 @@ export class NuevoAjusteComponent implements OnInit {
 
   prodSeleccionado = false;
   producto: ProductoStock = new ProductoStock();
+  cantidad = 0;
+  motivo = '';
 
   constructor(
     private seleccionar: SeleccionarService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    public dialogRef: MatDialogRef<NuevoAjusteComponent>,
+    private notificationsService: NotificationsService,
+    private stockService: StockService
   ) { }
 
   ngOnInit() {
@@ -34,6 +43,18 @@ export class NuevoAjusteComponent implements OnInit {
           this.prodSeleccionado = true;
         }
       });
+  }
+
+  cargarAjuste() {
+    if (!this.cantidad && !this.prodSeleccionado) {
+      this.notificationsService.warn('Error', 'Debe especificar una cantidad y seleccionar un producto!');
+    } else {
+      const ajuste = new Ajuste();
+      ajuste.motivo = this.motivo;
+      this.stockService.nuevoAjuste(ajuste).subscribe(idNuevoAjuste => {
+
+      });
+    }
   }
 
 }

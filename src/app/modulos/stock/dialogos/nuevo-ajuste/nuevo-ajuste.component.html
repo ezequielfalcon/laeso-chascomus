@@ -1,19 +1,19 @@
 <h2 matDialogTitle>Nuevo ajuste de stock</h2>
 <div mat-dialog-content>
-  <table width="100%">
-    <tr>
-      <td>
-        <button mat-raised-button color="accent" *ngIf="!prodSeleccionado" (click)="seleccionarProducto()">Seleccionar producto</button>
-        <ng-container *ngIf="prodSeleccionado">
-          <mat-form-field>
-            <input matInput disabled [(ngModel)]="producto.nombre">
-          </mat-form-field>
-        </ng-container>
-      </td>
-    </tr>
-  </table>
+  <button mat-raised-button color="accent" *ngIf="!prodSeleccionado" (click)="seleccionarProducto()">Seleccionar producto</button>
+  <ng-container *ngIf="prodSeleccionado">
+    <mat-form-field>
+      <input matInput placeholder="Producto..." disabled [(ngModel)]="producto.nombre">
+    </mat-form-field>
+  </ng-container>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Cantidad" [(ngModel)]="cantidad">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Motivo" [(ngModel)]="motivo"></textarea>
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="accent">Aceptar y salir</button>
-  <button mat-button color="warn">Cancelar</button>
+  <button mat-raised-button color="accent">Ajustar</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
 </div>
