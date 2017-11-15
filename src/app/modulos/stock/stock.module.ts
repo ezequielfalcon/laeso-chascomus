@@ -31,6 +31,8 @@ import { AgregarProductoComponent } from './dialogos/agregar-producto/agregar-pr
 import {AgregarProductoService} from './dialogos/agregar-producto/agregar-producto.service';
 import {SeleccionarService} from '../utils/dialogos/seleccionar/seleccionar.service';
 import { StockProductosComponent } from './componentes/stock-productos/stock-productos.component';
+import { NuevoAjusteComponent } from './dialogos/nuevo-ajuste/nuevo-ajuste.component';
+import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
 
 @NgModule({
   imports: [
@@ -57,14 +59,16 @@ import { StockProductosComponent } from './componentes/stock-productos/stock-pro
     StockHomeComponent,
     RemitoCompletoComponent,
     AgregarProductoComponent,
-    StockProductosComponent
+    StockProductosComponent,
+    NuevoAjusteComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
     NuevaUnidadComponent,
     NuevoProductoComponent,
     NuevoProveedorComponent,
-    AgregarProductoComponent
+    AgregarProductoComponent,
+    NuevoAjusteComponent
   ],
   providers: [
     NuevaCategoriaService,
@@ -76,7 +80,8 @@ import { StockProductosComponent } from './componentes/stock-productos/stock-pro
     ConfirmarService,
     StockService,
     AgregarProductoService,
-    SeleccionarService
+    SeleccionarService,
+    NuevoAjusteService
   ]
 })
 export class StockModule { }
