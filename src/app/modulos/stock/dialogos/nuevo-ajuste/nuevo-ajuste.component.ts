@@ -5,6 +5,7 @@ import {MatDialogRef} from '@angular/material';
 import {NotificationsService} from 'angular2-notifications';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {Ajuste} from '../../../../modelos/ajuste';
+import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-nuevo-ajuste',
@@ -25,7 +26,8 @@ export class NuevoAjusteComponent implements OnInit {
     private vcr: ViewContainerRef,
     public dialogRef: MatDialogRef<NuevoAjusteComponent>,
     private notificationsService: NotificationsService,
-    private stockService: StockService
+    private stockService: StockService,
+    private confirmar: ConfirmarService
   ) { }
 
   ngOnInit() {
@@ -49,11 +51,20 @@ export class NuevoAjusteComponent implements OnInit {
     if (!this.cantidad && !this.prodSeleccionado) {
       this.notificationsService.warn('Error', 'Debe especificar una cantidad y seleccionar un producto!');
     } else {
-      const ajuste = new Ajuste();
-      ajuste.motivo = this.motivo;
-      this.stockService.nuevoAjuste(ajuste).subscribe(idNuevoAjuste => {
-
-      });
+      this.confirmar.confirmar('Ajustar stock', 'Está seguro que desea ajustar el stock del producto '
+        + this.producto.nombre + '?', this.vcr).subscribe(confirmado => {
+          if (confirmado) {
+            const ajuste = new Ajuste();
+            ajuste.motivo = this.motivo;
+            this.stockService.nuevoAjuste(this.producto.id, this.cantidad, this.motivo).subscribe(nuevoAjuste => {
+              this.notificationsService.success('Ok', 'Ajuste de stock creado con ID ' + nuevoAjuste.id);
+              this.dialogRef.close(true);
+            }, error => {
+              const body = JSON.parse(error._body);
+              this.notificationsService.error('Error', body.mensaje);
+            });
+          }
+        });
     }
   }
 
