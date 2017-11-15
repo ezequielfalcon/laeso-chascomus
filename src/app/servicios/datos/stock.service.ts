@@ -73,16 +73,13 @@ export class StockService {
     return this.http.get('/stock/ajustes').map((response: Response) => response.json().datos);
   }
 
-  nuevoAjuste(ajuste: Ajuste) {
-    return this.http.post('/stock/ajustes', ajuste).map((response: Response) => response.json());
-  }
-
-  agregarStockAjuste(ajusteId: number, stock: Stock) {
+  nuevoAjuste(idProducto: number, cantidad: number, motivo: string) {
     const body = {
-      id_producto: stock.id_producto,
-      cantidad: stock.cantidad
+      id_producto: idProducto,
+      cantidad: cantidad,
+      motivo: motivo
     };
-    return this.http.put('/stock/ajustes/' + ajusteId, body).map((response: Response) => response.json());
+    return this.http.post('/stock/ajuste-unico', body).map((response: Response) => response.json());
   }
 
 }
