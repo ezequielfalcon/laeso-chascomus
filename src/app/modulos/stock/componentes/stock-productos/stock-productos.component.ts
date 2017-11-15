@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {ProductoStock} from '../../../../modelos/producto-stock';
 import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {Categoria} from '../../../../modelos/categoria';
 import {ProductosService} from '../../../../servicios/datos/productos.service';
+import {NuevoAjusteService} from '../../dialogos/nuevo-ajuste/nuevo-ajuste.service';
 
 @Component({
   selector: 'app-stock-productos',
@@ -31,7 +32,9 @@ export class StockProductosComponent implements OnInit {
     private stockService: StockService,
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private ajuste: NuevoAjusteService,
+    private vcr: ViewContainerRef
   ) { }
 
   ngOnInit() {
@@ -64,6 +67,15 @@ export class StockProductosComponent implements OnInit {
     this.filtroCat = '';
     this.filtroNombre = '';
     this.filtroCodigo = '';
+  }
+
+  clickAjuste() {
+    this.ajuste.crearAjuste(this.productosStock, this.vcr).subscribe(ajustado => {
+      if (ajustado) {
+        this.spinner.start();
+        this.cargarCategorias();
+      }
+    });
   }
 
 }
