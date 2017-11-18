@@ -4,7 +4,22 @@
       <button mat-raised-button color="accent" (click)="nuevaRecep()">Recepción de mercadería</button>
     </div>
     <mat-card-content>
-      <p>Caja Home</p>
+      <table width="100%">
+        <tr>
+          <th>Numero</th><th>Fecha</th><th>Proveedor</th><th>Observaciones</th><th>Usuario</th>
+        </tr>
+        <tr *ngFor="let remito of remitosRecibidos">
+          <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
+          <td>{{reemplazarProv(remito.id_proveedor)}}</td>
+          <td>{{remito.observaciones}}</td>
+          <td>{{remito.usuario}}</td>
+          <td>
+            <a class="clickVer" matTooltip="Borrar remito" (click)="borrarRemito(remito)">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
+        </tr>
+      </table>
     </mat-card-content>
   </mat-card>
 </div>
