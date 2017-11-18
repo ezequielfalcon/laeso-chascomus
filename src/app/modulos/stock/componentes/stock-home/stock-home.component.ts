@@ -17,6 +17,7 @@ export class StockHomeComponent implements OnInit, OnDestroy {
 
   remitosRecibidos: RemitoRecibido[] = [];
   remitosEnCarga: RemitoRecibido[] = [];
+  remitosFin: RemitoRecibido[] = [];
   proveedores: Proveedor[] = [];
 
   constructor(
@@ -60,6 +61,7 @@ export class StockHomeComponent implements OnInit, OnDestroy {
     this.stockServ.verRemitos().subscribe(resDb => {
       this.remitosRecibidos = resDb.remitosRec;
       this.remitosEnCarga = resDb.remitosEnC;
+      this.remitosFin = resDb.remitosCerr;
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);
