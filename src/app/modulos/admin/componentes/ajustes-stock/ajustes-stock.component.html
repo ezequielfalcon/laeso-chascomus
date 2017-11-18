@@ -1,0 +1,23 @@
+<div class="center">
+  <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>Últimos ajustes de stock</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table width="100%">
+          <tr>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Motivo</th>
+          </tr>
+          <tr *ngFor="let ajuste of ajustes | slice:0:5">
+            <td>{{ajuste.fecha.substr(0, 10)}}</td>
+            <td>{{ajuste.usuario}}</td>
+            <td>{{ajuste.motivo}}</td>
+          </tr>
+        </table>
+      </mat-card-content>
+  </mat-card>
+</div>
