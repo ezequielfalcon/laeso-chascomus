@@ -6,6 +6,7 @@ import {StockService} from '../../../../servicios/datos/stock.service';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
 import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
+import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-caja-home',
@@ -23,7 +24,8 @@ export class CajaHomeComponent implements OnInit {
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private nuevaRecepcion: NuevaRecepcionService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private confirmar: ConfirmarService
   ) { }
 
   ngOnInit() {
@@ -71,6 +73,25 @@ export class CajaHomeComponent implements OnInit {
       }
     }
     return 'error';
+  }
+
+  borrarRemito(remito: RemitoRecibido) {
+    this.confirmar.confirmar('Borrar Remito ' + remito.numero,
+      'Está seguro que desea elminar el remito con código ' + remito.numero +
+      ' del proveedor ' + this.reemplazarProv(remito.id_proveedor), this.vcr).subscribe(confirmado => {
+      if (confirmado) {
+        this.spinner.start();
+        this.stockService.borrarRemito(remito.id).subscribe(() => {
+          this.notificationsService.success('Remito borrado', 'Remito ' +
+            remito.numero + ' borrado correctamente');
+          this.cargarProveedores();
+        }, error => {
+          const body = JSON.parse(error._body);
+          this.notificationsService.error('Error', body.mensaje);
+          this.spinner.stop();
+        });
+      }
+    });
   }
 
 }

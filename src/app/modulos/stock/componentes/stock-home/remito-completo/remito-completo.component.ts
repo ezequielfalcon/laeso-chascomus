@@ -49,6 +49,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
         const body = JSON.parse(error._body);
         this.notificationsService.error('Error', body.mensaje);
         this.spinner.stop();
+        if (error.status === 404) {
+          this.router.navigate(['/stock']);
+        }
       });
     this.cargarProductos();
   }
@@ -71,6 +74,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
+      if (error.status === 404) {
+        this.router.navigate(['/stock']);
+      }
     });
   }
 
@@ -81,6 +87,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
+      if (error.status === 404) {
+        this.router.navigate(['/stock']);
+      }
     });
   }
 
@@ -92,6 +101,9 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
       this.spinner.stop();
+      if (error.status === 404) {
+        this.router.navigate(['/stock']);
+      }
     });
   }
 

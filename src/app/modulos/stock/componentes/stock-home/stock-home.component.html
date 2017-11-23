@@ -16,6 +16,11 @@
           <td>{{reemplazarProv(remito.id_proveedor)}}</td>
           <td>{{remito.observaciones}}</td>
           <td>{{remito.usuario}}</td>
+          <td>
+            <a class="clickVer" matTooltip="Borrar remito" (click)="borrarRemito(remito)">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
         </tr>
       </table>
     </mat-card-content>
@@ -36,6 +41,11 @@
           <td>{{reemplazarProv(remito.id_proveedor)}}</td>
           <td>{{remito.observaciones}}</td>
           <td>{{remito.usuario}}</td>
+          <td>
+            <a class="clickVer" matTooltip="Borrar remito" (click)="borrarRemito(remito)">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </td>
         </tr>
       </table>
     </mat-card-content>

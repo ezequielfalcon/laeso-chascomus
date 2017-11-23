@@ -7,6 +7,7 @@ import {Proveedor} from '../../../../modelos/proveedor';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
 import {NuevaRecepcionService} from '../../../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
 import {Router} from '@angular/router';
+import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-stock-home',
@@ -27,7 +28,8 @@ export class StockHomeComponent implements OnInit, OnDestroy {
     private notificationsService: NotificationsService,
     private nuevoRemito: NuevaRecepcionService,
     private vcr: ViewContainerRef,
-    private router: Router
+    private router: Router,
+    private confirmar: ConfirmarService
   ) { }
 
   ngOnInit() {
@@ -83,6 +85,25 @@ export class StockHomeComponent implements OnInit, OnDestroy {
     this.nuevoRemito.nuevaRecepcionDialogo(this.vcr).subscribe(nuevoRemito => {
       if (nuevoRemito) {
         this.router.navigate(['/stock/carga-remito/' + nuevoRemito]);
+      }
+    });
+  }
+
+  borrarRemito(remito: RemitoRecibido) {
+    this.confirmar.confirmar('Borrar Remito ' + remito.numero,
+      'Está seguro que desea elminar el remito con código ' + remito.numero +
+      ' del proveedor ' + this.reemplazarProv(remito.id_proveedor), this.vcr).subscribe(confirmado => {
+      if (confirmado) {
+        this.spinner.start();
+        this.stockServ.borrarRemito(remito.id).subscribe(() => {
+          this.notificationsService.success('Remito borrado', 'Remito ' +
+            remito.numero + ' borrado correctamente');
+          this.cargarProveedores();
+        }, error => {
+          const body = JSON.parse(error._body);
+          this.notificationsService.error('Error', body.mensaje);
+          this.spinner.stop();
+        });
       }
     });
   }
