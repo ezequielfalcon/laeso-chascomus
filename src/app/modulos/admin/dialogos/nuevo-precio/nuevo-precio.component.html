@@ -1,3 +1,11 @@
-<p>
-  nuevo-precio works!
-</p>
+<h2 matDialogTitle>Nuevoprecio de venta para <strong>{{producto.nombre}}</strong></h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="nuevoPrecio" placeholder="Nuevo precio..." required>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="guardarPrecio()">Guardar precio</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Salir</button>
+</div>

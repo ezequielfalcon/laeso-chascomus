@@ -32,7 +32,10 @@ export class HistorialPreciosComponent implements OnInit {
   cargarPrecios() {
     this.productosService.verPreciosProducto(this.producto.id).subscribe(preciosDb => {
       this.precios = preciosDb;
-      this.spinner.stop();
+      if (this.precios.length < 1) {
+        this.notificationsService.warn('Advertencia', 'El producto no tiene ningún precio cargado!');
+        this.dialogRef.close(-1);
+      }
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);
