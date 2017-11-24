@@ -18,6 +18,8 @@ import {ConfirmarService} from '../utils/dialogos/confirmar/confirmar.service';
 import { AjustesStockComponent } from './componentes/ajustes-stock/ajustes-stock.component';
 import { RemitosComponent } from './componentes/remitos/remitos.component';
 import {PreciosComponent} from './componentes/precios/precios.component';
+import { HistorialPreciosComponent } from './dialogos/historial-precios/historial-precios.component';
+import {HistorialPreciosService} from './dialogos/historial-precios/historial-precios.service';
 
 @NgModule({
   imports: [
@@ -37,13 +39,15 @@ import {PreciosComponent} from './componentes/precios/precios.component';
     EditarUsuarioComponent,
     AjustesStockComponent,
     RemitosComponent,
-    PreciosComponent
+    PreciosComponent,
+    HistorialPreciosComponent
   ],
   providers: [
     AdminService,
     NuevoUsuarioService,
     EditarUsuarioService,
-    ConfirmarService
+    ConfirmarService,
+    HistorialPreciosService
   ],
   entryComponents: [
     NuevoUsuarioComponent,
