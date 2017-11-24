@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {ProductoStock} from '../../../../modelos/producto-stock';
 import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {Categoria} from '../../../../modelos/categoria';
 import {ProductosService} from '../../../../servicios/datos/productos.service';
 import {NuevoAjusteService} from '../../dialogos/nuevo-ajuste/nuevo-ajuste.service';
+import {Producto} from '../../../../modelos/producto';
 
 @Component({
   selector: 'app-stock-productos',
@@ -17,7 +17,7 @@ export class StockProductosComponent implements OnInit {
   filtroNombre = '';
   filtroCat = '';
   filtroCodigo = '';
-  productosStock: ProductoStock[] = [];
+  productosStock: Producto[] = [];
   categorias: Categoria[] = [];
   columnas = [
     { name: 'id', label: 'ID' },

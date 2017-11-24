@@ -2,14 +2,14 @@ import {Injectable, ViewContainerRef} from '@angular/core';
 import {NuevoAjusteComponent} from './nuevo-ajuste.component';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
-import {ProductoStock} from '../../../../modelos/producto-stock';
+import {Producto} from '../../../../modelos/producto';
 
 @Injectable()
 export class NuevoAjusteService {
 
   constructor(private dialog: MatDialog) { }
 
-  public crearAjuste(productos: ProductoStock[], viewContainerRef: ViewContainerRef): Observable<any> {
+  public crearAjuste(productos: Producto[], viewContainerRef: ViewContainerRef): Observable<any> {
     let dialogRef: MatDialogRef<NuevoAjusteComponent>;
     const config = new MatDialogConfig();
     config.viewContainerRef = viewContainerRef;
