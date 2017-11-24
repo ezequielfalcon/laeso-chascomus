@@ -20,6 +20,8 @@ import { RemitosComponent } from './componentes/remitos/remitos.component';
 import {PreciosComponent} from './componentes/precios/precios.component';
 import { HistorialPreciosComponent } from './dialogos/historial-precios/historial-precios.component';
 import {HistorialPreciosService} from './dialogos/historial-precios/historial-precios.service';
+import { NuevoPrecioComponent } from './dialogos/nuevo-precio/nuevo-precio.component';
+import {NuevoPrecioService} from './dialogos/nuevo-precio/nuevo-precio.service';
 
 @NgModule({
   imports: [
@@ -40,19 +42,22 @@ import {HistorialPreciosService} from './dialogos/historial-precios/historial-pr
     AjustesStockComponent,
     RemitosComponent,
     PreciosComponent,
-    HistorialPreciosComponent
+    HistorialPreciosComponent,
+    NuevoPrecioComponent
   ],
   providers: [
     AdminService,
     NuevoUsuarioService,
     EditarUsuarioService,
     ConfirmarService,
-    HistorialPreciosService
+    HistorialPreciosService,
+    NuevoPrecioService
   ],
   entryComponents: [
     NuevoUsuarioComponent,
     EditarUsuarioComponent,
-    HistorialPreciosComponent
+    HistorialPreciosComponent,
+    NuevoPrecioComponent
   ]
 })
 export class AdminModule { }
