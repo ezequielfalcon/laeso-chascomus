@@ -2,7 +2,6 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Producto} from '../../../../modelos/producto';
 import {NotificationsService} from 'angular2-notifications/dist';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
-import {StockService} from '../../../../servicios/datos/stock.service';
 import {Categoria} from '../../../../modelos/categoria';
 import {ProductosService} from '../../../../servicios/datos/productos.service';
 
@@ -27,7 +26,6 @@ export class PreciosComponent implements OnInit {
   ];
 
   constructor(
-    private stockService: StockService,
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private productosService: ProductosService,
@@ -50,7 +48,7 @@ export class PreciosComponent implements OnInit {
   }
 
   cargarProductos() {
-    this.stockService.verProductosPrecios().subscribe(productosDb => {
+    this.productosService.verProductosPrecios().subscribe(productosDb => {
       this.productosPrecios = productosDb;
       this.spinner.stop();
     }, error => {

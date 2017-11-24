@@ -89,4 +89,12 @@ export class ProductosService {
     return this.http.post('/productos/unidades', body).map((response: Response) => response.json().id);
   }
 
+  verProductosPrecios() {
+    return this.http.get('/productos/precios').map((response: Response) => response.json().datos);
+  }
+
+  verPreciosProducto(productoId: number) {
+    return this.http.get('/productos/precios/' + productoId).map((response: Response) => response.json().datos);
+  }
+
 }
