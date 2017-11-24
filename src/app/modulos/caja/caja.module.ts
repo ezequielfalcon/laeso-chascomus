@@ -9,7 +9,6 @@ import {CajaHomeComponent} from './componentes/caja-home/caja-home.component';
 import {StockService} from '../../servicios/datos/stock.service';
 import {NuevaRecepcionService} from '../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
 import {SeleccionarProveedorService} from '../utils/dialogos/seleccionar-proveedor/seleccionar-proveedor.service';
-import { PreciosComponent } from './componentes/precios/precios.component';
 
 @NgModule({
   imports: [
@@ -21,8 +20,7 @@ import { PreciosComponent } from './componentes/precios/precios.component';
   ],
   declarations: [
     CajaComponent,
-    CajaHomeComponent,
-    PreciosComponent
+    CajaHomeComponent
   ],
   providers: [
     NuevaRecepcionService,

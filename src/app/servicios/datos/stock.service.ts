@@ -82,4 +82,8 @@ export class StockService {
     return this.http.post('/stock/ajuste-unico', body).map((response: Response) => response.json());
   }
 
+  verProductosPrecios() {
+    return this.http.get('/productos/precios').map((response: Response) => response.json().datos);
+  }
+
 }

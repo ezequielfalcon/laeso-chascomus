@@ -17,6 +17,7 @@ import {EditarUsuarioService} from './dialogos/editar-usuario/editar-usuario.ser
 import {ConfirmarService} from '../utils/dialogos/confirmar/confirmar.service';
 import { AjustesStockComponent } from './componentes/ajustes-stock/ajustes-stock.component';
 import { RemitosComponent } from './componentes/remitos/remitos.component';
+import {PreciosComponent} from './componentes/precios/precios.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { RemitosComponent } from './componentes/remitos/remitos.component';
     NuevoUsuarioComponent,
     EditarUsuarioComponent,
     AjustesStockComponent,
-    RemitosComponent
+    RemitosComponent,
+    PreciosComponent
   ],
   providers: [
     AdminService,

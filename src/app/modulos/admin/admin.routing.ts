@@ -6,6 +6,7 @@ import {AdminHomeComponent} from './componentes/admin-home/admin-home.component'
 import {UsuariosComponent} from './componentes/usuarios/usuarios.component';
 import {AjustesStockComponent} from './componentes/ajustes-stock/ajustes-stock.component';
 import {RemitosComponent} from './componentes/remitos/remitos.component';
+import {PreciosComponent} from './componentes/precios/precios.component';
 
 const adminRoutes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
@@ -13,7 +14,8 @@ const adminRoutes: Routes = [
     {path: '', component: AdminHomeComponent},
     {path: 'usuarios', component: UsuariosComponent},
     {path: 'ajustes-stock', component: AjustesStockComponent},
-    {path: 'remitos', component: RemitosComponent}
+    {path: 'remitos', component: RemitosComponent},
+    {path: 'precios', component: PreciosComponent}
   ]}
 ];
 
