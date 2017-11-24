@@ -51,7 +51,8 @@ import {HistorialPreciosService} from './dialogos/historial-precios/historial-pr
   ],
   entryComponents: [
     NuevoUsuarioComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    HistorialPreciosComponent
   ]
 })
 export class AdminModule { }

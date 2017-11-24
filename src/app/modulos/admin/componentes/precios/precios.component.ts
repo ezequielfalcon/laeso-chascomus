@@ -4,6 +4,7 @@ import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {Categoria} from '../../../../modelos/categoria';
 import {ProductosService} from '../../../../servicios/datos/productos.service';
+import {HistorialPreciosService} from '../../dialogos/historial-precios/historial-precios.service';
 
 @Component({
   selector: 'app-precios',
@@ -29,7 +30,8 @@ export class PreciosComponent implements OnInit {
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private productosService: ProductosService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private historialPrecios: HistorialPreciosService
   ) { }
 
   ngOnInit() {
@@ -62,6 +64,15 @@ export class PreciosComponent implements OnInit {
     this.filtroCat = '';
     this.filtroNombre = '';
     this.filtroCodigo = '';
+  }
+
+  verHistorial(producto: Producto) {
+    this.historialPrecios.verHistorialPrecios(producto, this.vcr).subscribe(nuevoPrecio => {
+      if (nuevoPrecio) {
+        this.spinner.start();
+        this.cargarCategorias();
+      }
+    });
   }
 
 }

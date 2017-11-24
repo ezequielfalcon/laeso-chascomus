@@ -24,7 +24,8 @@
         <tr>
           <th *ngFor="let columna of columnas">{{columna.label}}</th>
         </tr>
-        <tr *ngFor="let producto of productosPrecios | filtro: {nombre: filtroNombre, categoria: filtroCat, codigo: filtroCodigo} | slice:0:20">
+        <tr *ngFor="let producto of productosPrecios | filtro: {nombre: filtroNombre, categoria: filtroCat, codigo: filtroCodigo} | slice:0:20"
+        (click)="verHistorial(producto)" matTooltip="Click para ver historial de precios o modificarlo" class="clickVer">
           <td *ngFor="let columnaProd of columnas">{{producto[columnaProd.name]}}</td>
         </tr>
       </table>
