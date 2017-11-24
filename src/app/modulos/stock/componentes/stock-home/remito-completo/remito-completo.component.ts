@@ -5,13 +5,12 @@ import {HistorialRemito} from '../../../../../modelos/historial-remito';
 import {StockService} from '../../../../../servicios/datos/stock.service';
 import {SpinnerService} from '../../../../utils/directivas/spinner/spinner.service';
 import {NotificationsService} from 'angular2-notifications';
-import {ProductoFull} from '../../../../../modelos/producto-full';
 import {ProductosService} from '../../../../../servicios/datos/productos.service';
-import {ProductoRemito} from '../../../../../modelos/producto-remito';
 import {AgregarProductoService} from '../../../dialogos/agregar-producto/agregar-producto.service';
 import {Proveedor} from '../../../../../modelos/proveedor';
 import {ProveedoresService} from '../../../../../servicios/datos/proveedores.service';
 import {ConfirmarService} from '../../../../utils/dialogos/confirmar/confirmar.service';
+import {Producto} from '../../../../../modelos/producto';
 
 @Component({
   selector: 'app-remito-completo',
@@ -22,8 +21,8 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
 
   remitoCarga: RemitoRecibido;
   historialRemito: HistorialRemito[] = [];
-  productosFull: ProductoFull[] = [];
-  productosRemito: ProductoRemito[] = [];
+  productosFull: Producto[] = [];
+  productosRemito: Producto[] = [];
   proveedorRemito: Proveedor;
 
   constructor(
@@ -165,7 +164,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     }
   }
 
-  calcularCostoConIva(producto: ProductoRemito): number {
+  calcularCostoConIva(producto: Producto): number {
     if (producto.iva_incluido === true) {
       return producto.costo;
     } else {
@@ -182,7 +181,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     }
   }
 
-  costoTotal(productos: ProductoRemito[]): number {
+  costoTotal(productos: Producto[]): number {
     let costo = 0;
     for (const prod of productos) {
       costo = costo + (+this.calcularCostoConIva(prod) * prod.cantidad);
@@ -190,7 +189,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     return +costo.toFixed(2);
   }
 
-  calcularIva(producto: ProductoRemito): number {
+  calcularIva(producto: Producto): number {
     if (producto.iva_incluido === true) {
       switch (producto.iva) {
         case '21':

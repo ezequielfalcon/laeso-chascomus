@@ -31,7 +31,6 @@ export class AjustesStockComponent implements OnInit, OnDestroy {
   cargarAjustes() {
     this.stockService.verAjustesStock().subscribe(ajustesDb => {
       this.ajustes = ajustesDb;
-      console.log(this.ajustes);
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);

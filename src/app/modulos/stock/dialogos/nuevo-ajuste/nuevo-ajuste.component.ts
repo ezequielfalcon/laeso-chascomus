@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {ProductoStock} from '../../../../modelos/producto-stock';
 import {SeleccionarService} from '../../../utils/dialogos/seleccionar/seleccionar.service';
 import {MatDialogRef} from '@angular/material';
 import {NotificationsService} from 'angular2-notifications';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {Ajuste} from '../../../../modelos/ajuste';
 import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.service';
+import {Producto} from '../../../../modelos/producto';
 
 @Component({
   selector: 'app-nuevo-ajuste',
@@ -14,10 +14,10 @@ import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.serv
 })
 export class NuevoAjusteComponent implements OnInit {
 
-  public productos: ProductoStock[];
+  public productos: Producto[];
 
   prodSeleccionado = false;
-  producto: ProductoStock = new ProductoStock();
+  producto: Producto = new Producto();
   cantidad = 0;
   motivo = '';
 
