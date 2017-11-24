@@ -1,10 +1,11 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Producto} from '../../../../modelos/producto';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
-import {StockService} from '../../../../servicios/datos/stock.service';
 import {Categoria} from '../../../../modelos/categoria';
 import {ProductosService} from '../../../../servicios/datos/productos.service';
+import {HistorialPreciosService} from '../../dialogos/historial-precios/historial-precios.service';
+import {NuevoPrecioService} from '../../dialogos/nuevo-precio/nuevo-precio.service';
 
 @Component({
   selector: 'app-precios',
@@ -27,11 +28,12 @@ export class PreciosComponent implements OnInit {
   ];
 
   constructor(
-    private stockService: StockService,
     private spinner: SpinnerService,
     private notificationsService: NotificationsService,
     private productosService: ProductosService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private historialPrecios: HistorialPreciosService,
+    private nuevoPrecio: NuevoPrecioService
   ) { }
 
   ngOnInit() {
@@ -50,7 +52,7 @@ export class PreciosComponent implements OnInit {
   }
 
   cargarProductos() {
-    this.stockService.verProductosPrecios().subscribe(productosDb => {
+    this.productosService.verProductosPrecios().subscribe(productosDb => {
       this.productosPrecios = productosDb;
       this.spinner.stop();
     }, error => {
@@ -64,6 +66,25 @@ export class PreciosComponent implements OnInit {
     this.filtroCat = '';
     this.filtroNombre = '';
     this.filtroCodigo = '';
+  }
+
+  verHistorial(producto: Producto) {
+    this.historialPrecios.verHistorialPrecios(producto, this.vcr).subscribe(nuevoPrecio => {
+      if (nuevoPrecio) {
+        if (nuevoPrecio === -1) {
+          this.nuevoPrecio.nuevoPrecioSrv(producto, this.vcr).subscribe(nuevoPrecioCreado => {
+            if (nuevoPrecioCreado) {
+              this.verHistorial(producto);
+              this.spinner.start();
+              this.cargarCategorias();
+            }
+          });
+        } else {
+          this.spinner.start();
+          this.cargarCategorias();
+        }
+      }
+    });
   }
 
 }

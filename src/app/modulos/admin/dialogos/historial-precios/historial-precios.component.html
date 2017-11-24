@@ -1,0 +1,21 @@
+<h2 matDialogTitle>Historial de precios de <strong>{{producto.nombre}}</strong></h2>
+<div mat-dialog-content *ngIf="precios.length > 0">
+  <div class="boton-add"><a mat-mini-fab (click)="dialogRef.close(-1)" matTooltip="Nuevo precio"><mat-icon>add</mat-icon></a></div>
+  <p>Precio vigente: <strong>${{precios[0].precio}}</strong></p>
+  <p>Fecha: <strong>{{precios[0].fecha.substr(0, 10) + ' ' + precios[0].fecha.substr(11, 8)}}</strong></p>
+  <mat-divider></mat-divider>
+  <h4>Historial de precios</h4>
+  <mat-list>
+    <ng-container *ngFor="let precio of precios">
+      <mat-list-item>
+        <mat-icon mat-list-icon>monetization_on</mat-icon>
+        <h3 mat-line><strong>{{precio.precio}}</strong></h3>
+        <p mat-line>{{precio.fecha.substr(0, 10) + ' ' + precio.fecha.substr(11, 8)}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="warn" (click)="dialogRef.close()">Salir</button>
+</div>
