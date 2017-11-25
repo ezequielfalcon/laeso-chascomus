@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {RemitoRecibido} from '../../../../modelos/remito-recibido';
 import {StockService} from '../../../../servicios/datos/stock.service';
-import {NotificationsService} from 'angular2-notifications/dist';
+import {NotificationsService} from 'angular2-notifications';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
 import {ProveedoresService} from '../../../../servicios/datos/proveedores.service';
 import {Proveedor} from '../../../../modelos/proveedor';
