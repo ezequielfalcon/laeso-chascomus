@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import {Response, URLSearchParams} from '@angular/http';
+import {Response} from '@angular/http';
 
 @Injectable()
 export class ProveedoresService {
@@ -18,22 +18,24 @@ export class ProveedoresService {
   }
 
   nuevoProveedor(nombre: string, telefono: string, denominacion: string, email: string, direccion: string) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
-    body.set('telefono', telefono);
-    body.set('denominacion', denominacion);
-    body.set('email', email);
-    body.set('direccion', direccion);
+    const body = {
+      nombre: nombre,
+      telefono: telefono,
+      denominacion: denominacion,
+      email: email,
+      direccion: direccion
+    };
     return this.http.post('/proveedores', body).map((response: Response) => response.json().id);
   }
 
   modificarProveedor(proveedorId: number, nombre: string, telefono: string, denominacion: string, email: string, direccion: string) {
-    const body = new URLSearchParams();
-    body.set('nombre', nombre);
-    body.set('telefono', telefono);
-    body.set('denominacion', denominacion);
-    body.set('email', email);
-    body.set('direccion', direccion);
+    const body = {
+      nombre: nombre,
+      telefono: telefono,
+      denominacion: denominacion,
+      email: email,
+      direccion: direccion
+    };
     return this.http.put('/proveedores/' + proveedorId, body).map((response: Response) => response.json());
   }
 

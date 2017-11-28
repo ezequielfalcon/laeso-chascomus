@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Injectable } from '@angular/core';
-import {Http, Headers, Response} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 
 @Injectable()
 export class HttpVeaService {
@@ -13,8 +13,8 @@ export class HttpVeaService {
     private router: Router
   ) {
     this.http = http;
-    if (sessionStorage.getItem('url_backend')) {
-      this.urlPrefix = sessionStorage.getItem('url_backend');
+    if (localStorage.getItem('url_backend')) {
+      this.urlPrefix = localStorage.getItem('url_backend');
     } else {
       this.notif.error('Error', 'Error de comunicación con el servicio de VEA, ingrese sus credenciales nuevamente!');
       this.router.navigate(['/login']); // Si la URL todavía no está seteada, la única forma de seguir es volver al login

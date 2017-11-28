@@ -9,6 +9,7 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { DetalleProductoComponent } from './componentes/productos/detalle-producto/detalle-producto.component';
 import {StockHomeComponent} from './componentes/stock-home/stock-home.component';
 import {RemitoCompletoComponent} from './componentes/stock-home/remito-completo/remito-completo.component';
+import {StockProductosComponent} from './componentes/stock-productos/stock-productos.component';
 const stockRoutes: Routes = [
   { path: 'stock', component: StockComponent, canActivate:
   [StockGuard], canActivateChild: [StockGuard], children: [
@@ -20,6 +21,7 @@ const stockRoutes: Routes = [
     { path: 'productos', component: ProductosComponent },
     { path: 'productos/:id', component: DetalleProductoComponent },
     { path: 'carga-remito/:id', component: RemitoCompletoComponent },
+    { path: 'stock-productos', component: StockProductosComponent },
     { path: '*', redirectTo: '', pathMatch: 'full' }
     ]
   },

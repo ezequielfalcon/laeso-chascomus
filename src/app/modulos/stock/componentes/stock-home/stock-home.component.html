@@ -1,5 +1,6 @@
 <div class="center">
   <mat-card>
+    <button mat-raised-button color="primary" type="button" (click)="cargarNuevoRemito()">Cargar nuevo remito</button>
     <mat-card-header>
       <mat-card-title>
         <h3>Remitos recibidos por caja</h3>
@@ -14,7 +15,7 @@
           <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
           <td>{{reemplazarProv(remito.id_proveedor)}}</td>
           <td>{{remito.observaciones}}</td>
-          <td>{{remito.nombre}}</td>
+          <td>{{remito.usuario}}</td>
         </tr>
       </table>
     </mat-card-content>
@@ -34,7 +35,27 @@
           <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
           <td>{{reemplazarProv(remito.id_proveedor)}}</td>
           <td>{{remito.observaciones}}</td>
-          <td>{{remito.nombre}}</td>
+          <td>{{remito.usuario}}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3>Remitos finalizados</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table width="100%">
+        <tr>
+          <th>Numero</th><th>Fecha</th><th>Proveedor</th><th>Observaciones</th><th>Usuario</th>
+        </tr>
+        <tr *ngFor="let remito of remitosFin | slice:0:10">
+          <td>{{remito.numero}}</td><td>{{remito.fecha.substr(0, 10)}}</td>
+          <td>{{reemplazarProv(remito.id_proveedor)}}</td>
+          <td>{{remito.observaciones}}</td>
+          <td>{{remito.usuario}}</td>
         </tr>
       </table>
     </mat-card-content>

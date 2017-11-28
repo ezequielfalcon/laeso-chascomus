@@ -15,6 +15,13 @@ import {NuevoUsuarioService} from './dialogos/nuevo-usuario/nuevo-usuario.servic
 import {EditarUsuarioComponent} from './dialogos/editar-usuario/editar-usuario.component';
 import {EditarUsuarioService} from './dialogos/editar-usuario/editar-usuario.service';
 import {ConfirmarService} from '../utils/dialogos/confirmar/confirmar.service';
+import { AjustesStockComponent } from './componentes/ajustes-stock/ajustes-stock.component';
+import { RemitosComponent } from './componentes/remitos/remitos.component';
+import {PreciosComponent} from './componentes/precios/precios.component';
+import { HistorialPreciosComponent } from './dialogos/historial-precios/historial-precios.component';
+import {HistorialPreciosService} from './dialogos/historial-precios/historial-precios.service';
+import { NuevoPrecioComponent } from './dialogos/nuevo-precio/nuevo-precio.component';
+import {NuevoPrecioService} from './dialogos/nuevo-precio/nuevo-precio.service';
 
 @NgModule({
   imports: [
@@ -31,17 +38,26 @@ import {ConfirmarService} from '../utils/dialogos/confirmar/confirmar.service';
     AdminHomeComponent,
     UsuariosComponent,
     NuevoUsuarioComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    AjustesStockComponent,
+    RemitosComponent,
+    PreciosComponent,
+    HistorialPreciosComponent,
+    NuevoPrecioComponent
   ],
   providers: [
     AdminService,
     NuevoUsuarioService,
     EditarUsuarioService,
-    ConfirmarService
+    ConfirmarService,
+    HistorialPreciosService,
+    NuevoPrecioService
   ],
   entryComponents: [
     NuevoUsuarioComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    HistorialPreciosComponent,
+    NuevoPrecioComponent
   ]
 })
 export class AdminModule { }

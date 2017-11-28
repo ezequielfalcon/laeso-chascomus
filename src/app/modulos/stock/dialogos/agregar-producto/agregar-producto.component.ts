@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductoRemito} from '../../../../modelos/producto-remito';
-import {ProductoFull} from '../../../../modelos/producto-full';
 import {StockService} from '../../../../servicios/datos/stock.service';
 import {NotificationsService} from 'angular2-notifications';
 import {MatDialogRef} from '@angular/material';
 import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service';
+import {Producto} from '../../../../modelos/producto';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -13,14 +12,15 @@ import {SpinnerService} from '../../../utils/directivas/spinner/spinner.service'
 })
 export class AgregarProductoComponent implements OnInit {
 
-  public productos: ProductoFull[];
+  public productos: Producto[];
   public idRemito: number;
 
-  productoNuevo: ProductoRemito = new ProductoRemito;
+  productoNuevo: Producto = new Producto;
   busquedaCodigo = '';
   busquedaNombre = '';
   seleccionar = true;
   tieneIva = false;
+  productosAgregados = 0;
 
   constructor(
     private stockService: StockService,
@@ -45,13 +45,20 @@ export class AgregarProductoComponent implements OnInit {
 
   guardarProductoNuevo(terminar: boolean) {
     if (this.productoNuevo.costo && this.productoNuevo.cantidad) {
+      if (this.productoNuevo.fecha_vencimiento) {
+        if (new Date(this.productoNuevo.fecha_vencimiento) < new Date) {
+          this.notificationsService.warn('Error', 'La fecha de vencimiento es anterior a la actual!!');
+          return;
+        }
+      }
       this.spinner.start();
+      this.productoNuevo.iva_incluido = this.tieneIva;
       this.stockService.agregarProductoRemito(this.idRemito, this.productoNuevo).subscribe(() => {
+        this.productosAgregados++;
         if (terminar) {
-          this.dialogRef.close(true);
+          this.dialogRef.close(this.productosAgregados);
         } else {
-          this.seleccionar = true;
-          this.productoNuevo = new ProductoRemito;
+          this.dialogRef.close(-1);
         }
         this.notificationsService.success('OK', 'Producto agregado al remitoCarga!');
         this.spinner.stop();

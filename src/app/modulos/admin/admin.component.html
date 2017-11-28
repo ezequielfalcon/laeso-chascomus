@@ -10,6 +10,21 @@
       <span>Usuarios</span>
     </button>
     <br>
+    <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/ajustes-stock']">
+      <mat-icon>adjust</mat-icon>
+      <span>Ajustes de stock</span>
+    </button>
+    <br>
+    <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/remitos']">
+      <mat-icon>receipt</mat-icon>
+      <span>Remitos</span>
+    </button>
+    <br>
+    <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/admin/precios']">
+      <mat-icon>monetization_on</mat-icon>
+      <span>Precios de venta</span>
+    </button>
+    <br>
     <mat-divider></mat-divider>
     <button mat-button class="boton-sidenav" color="warn" (click)="sidenav.toggle()" [routerLink]="['/']">
       <mat-icon>exit_to_app</mat-icon>

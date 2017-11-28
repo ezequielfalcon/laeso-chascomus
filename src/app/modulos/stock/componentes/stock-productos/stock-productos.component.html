@@ -1,0 +1,34 @@
+<div class="center-agenda">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title-group>
+        <h2>Stock por productos</h2>
+      </mat-card-title-group>
+    </mat-card-header>
+    <a class="boton-add" mat-mini-fab color="accent" matTooltip="Ajuste de stock" (click)="clickAjuste()"><mat-icon>adjust</mat-icon></a>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput placeholder="Nombre..." [(ngModel)]="filtroNombre" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Código..." [(ngModel)]="filtroCodigo" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Categoría" [(ngModel)]="filtroCat">
+          <mat-option *ngFor="let cat of categorias" [value]="cat.nombre">
+            {{cat.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-button color="warn" (click)="sacarFiltro()">Quitar filtro</button>
+      <table width="100%">
+        <tr>
+          <th *ngFor="let columna of columnas">{{columna.label}}</th>
+        </tr>
+        <tr *ngFor="let producto of productosStock | filtro: {nombre: filtroNombre, categoria: filtroCat, codigo: filtroCodigo} | slice:0:20">
+          <td *ngFor="let columnaProd of columnas">{{producto[columnaProd.name]}}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

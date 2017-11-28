@@ -1,11 +1,11 @@
 import { SpinnerService } from '../../../utils/directivas/spinner/spinner.service';
 import { ProductosService } from '../../../../servicios/datos/productos.service';
-import { ProductoFull } from '../../../../modelos/producto-full';
 import { Component, HostListener, OnDestroy, OnInit, ViewContainerRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import {NotificationsService} from 'angular2-notifications';
 import {Router} from '@angular/router';
 import { NuevoProductoService } from '../../dialogos/nuevo-producto/nuevo-producto.service';
 import {Categoria} from '../../../../modelos/categoria';
+import {Producto} from '../../../../modelos/producto';
 
 @Component({
   selector: 'app-productos',
@@ -14,7 +14,7 @@ import {Categoria} from '../../../../modelos/categoria';
 })
 export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  productosFull: ProductoFull[] = [];
+  productosFull: Producto[] = [];
   categorias: Categoria[] = [];
   dialogoAbierto = false;
   filtroNombre = '';
