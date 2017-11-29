@@ -1,7 +1,9 @@
 {
   "name": "laeso-chascomus",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.0",
+  "license": "Privado",
+  "author": "Ezequiel Falcón",
+  "description": "Frontend de Laeso, usando backend genérico multi-tenant",
   "scripts": {
     "ng": "ng",
     "start": "node laeso.js",
