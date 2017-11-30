@@ -27,7 +27,7 @@ export class LoginService {
       cliente: '$2a$06$haVRFwEuOBH5oV/8LT0CQOXssTCHUtIQLJUy.Tjhmtz.gdZubp8VO'
     };
     return this.http.post(this.urlPrefix + '/login', body)
-      .subscribe(response => {
+      .map(response => {
         sessionStorage.setItem('usuario', usuario);
         sessionStorage.setItem('token', response['token']);
         sessionStorage.setItem('roles', response['rolesToken']);
