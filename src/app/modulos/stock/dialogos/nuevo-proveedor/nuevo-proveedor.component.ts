@@ -44,8 +44,7 @@ export class NuevoProveedorComponent implements OnInit {
       this.spinner.stop();
       this.dialogRef.close();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }

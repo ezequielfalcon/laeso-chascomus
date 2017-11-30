@@ -49,8 +49,7 @@ export class NuevaRecepcionComponent implements OnInit {
       this.proveedorSeleccionado = true;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -81,8 +80,7 @@ export class NuevaRecepcionComponent implements OnInit {
       this.spinner.stop();
       this.dialog.close(nuevoRemito['id']);
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }

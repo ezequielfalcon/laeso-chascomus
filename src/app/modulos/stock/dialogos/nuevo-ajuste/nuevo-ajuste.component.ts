@@ -60,8 +60,7 @@ export class NuevoAjusteComponent implements OnInit {
               this.notificationsService.success('Ok', 'Ajuste de stock creado con ID ' + nuevoAjuste['id']);
               this.dialogRef.close(true);
             }, error => {
-              const body = JSON.parse(error._body);
-              this.notificationsService.error('Error', body.mensaje);
+              this.notificationsService.error('Error', error.error.mensaje);
             });
           }
         });

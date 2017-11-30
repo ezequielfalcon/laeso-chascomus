@@ -50,8 +50,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
         this.spinner.stop();
         this.cargado = true;
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
       }
     );
@@ -63,8 +62,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
       this.cargarProducto();
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -74,8 +72,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
       this.unidades = unidadesDb;
       this.cargarCategorias();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -97,8 +94,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
         this.edicion = false;
         this.notificationsService.success('OK', 'Producto modificado');
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
     });
   }
@@ -112,8 +108,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
             this.notificationsService.success('OK', 'Producto borrado correctamente');
             this.router.navigate([this.returnUrl]);
           }, error => {
-            const body = JSON.parse(error._body);
-            this.notificationsService.error('Error', body.mensaje);
+            this.notificationsService.error('Error', error.error.mensaje);
             this.spinner.stop();
           });
         }

@@ -72,8 +72,7 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
       this.productosFull = productosDb;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -83,8 +82,7 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
       this.categorias = categoriasDb;
       this.cargarProductos();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -95,8 +93,7 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
       this.cargarProductos();
       this.dialogoAbierto = false;
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
       this.dialogoAbierto = false;
     });

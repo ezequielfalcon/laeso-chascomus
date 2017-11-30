@@ -45,8 +45,7 @@ export class PreciosComponent implements OnInit {
       this.categorias = categoriasDb;
       this.cargarProductos();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -56,8 +55,7 @@ export class PreciosComponent implements OnInit {
       this.productosPrecios = productosDb;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
