@@ -2,4 +2,6 @@ box: node
 build:
   steps:
     - npm-install
-    - npm-lint
+    - script:
+            name: lint
+            code: npm run lint
