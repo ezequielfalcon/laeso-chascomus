@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
@@ -8,11 +8,11 @@ export class LoginService {
   private urlPrefix: string;
 
   constructor(
-    private http: Http
+    private http: HttpClient
   ) {
-    this.http.get(window.location.origin + '/backend').map((response: Response) => response.json()).subscribe(urlBackend => {
-      this.urlPrefix = urlBackend.url;
-      localStorage.setItem('url_backend', urlBackend.url);
+    this.http.get(window.location.origin + '/backend').subscribe(urlBackend => {
+      this.urlPrefix = urlBackend['url'];
+      localStorage.setItem('url_backend', urlBackend['url']);
     }, error => {
       console.log('Error al obtener URL del backend, usando testing: vea1-backend-test');
       this.urlPrefix = 'https://vea1-backend-test.herokuapp.com';
@@ -27,10 +27,10 @@ export class LoginService {
       cliente: '$2a$06$haVRFwEuOBH5oV/8LT0CQOXssTCHUtIQLJUy.Tjhmtz.gdZubp8VO'
     };
     return this.http.post(this.urlPrefix + '/login', body)
-      .map((response: Response) => {
+      .subscribe(response => {
         sessionStorage.setItem('usuario', usuario);
-        sessionStorage.setItem('token', response.json().token);
-        sessionStorage.setItem('roles', response.json().rolesToken);
+        sessionStorage.setItem('token', response['token']);
+        sessionStorage.setItem('roles', response['rolesToken']);
       });
   }
 
