@@ -115,7 +115,7 @@ export class NuevoProductoComponent implements OnInit {
       this.productosService.nuevoProductoRand(this.nuevoProducto.nombre, this.nuevoProducto.stock_minimo,
         this.nuevoProducto.iva,
         this.nuevoProducto.id_categoria, this.nuevoProducto.id_unidad).subscribe(nuevoCod => {
-        this.notificationsService.success('OK', 'Producto creado con Código ' + nuevoCod.nuevoCodigo);
+        this.notificationsService.success('OK', 'Producto creado con Código ' + nuevoCod['nuevoCodigo']);
         this.spinner.stop();
         this.dialogRef.close();
       }, error => {
