@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import {Response} from '@angular/http';
 
 @Injectable()
 export class ProductosService {
@@ -10,31 +9,31 @@ export class ProductosService {
   ) { }
 
   verCategorias() {
-    return this.http.get('/productos/categorias').map((response: Response) => response.json().datos);
+    return this.http.get('/productos/categorias').map(response => response['datos']);
   }
 
   verUnidades() {
-    return this.http.get('/productos/unidades').map((response: Response) => response.json().datos);
+    return this.http.get('/productos/unidades').map(response => response['datos']);
   }
 
   borrarUnidad(unidadId: number) {
-    return this.http.del('/productos/unidades/' + unidadId).map((response: Response) => response.json());
+    return this.http.del('/productos/unidades/' + unidadId);
   }
 
   verProductosFull() {
-    return this.http.get('/productos-full').map((response: Response) => response.json().datos);
+    return this.http.get('/productos-full').map(response => response['datos']);
   }
 
   borrarProducto(productoId: number) {
-    return this.http.del('/productos/' + productoId).map((response: Response) => response.json());
+    return this.http.del('/productos/' + productoId);
   }
 
   borrarCategoria(categoriaId: number) {
-    return this.http.del('/productos/categorias/' + categoriaId).map((response: Response) => response.json());
+    return this.http.del('/productos/categorias/' + categoriaId).map(response => response['datos']);
   }
 
   verProducto(productoId: number) {
-    return this.http.get('/productos-por-id/' + productoId).map((response: Response) => response.json().datos);
+    return this.http.get('/productos-por-id/' + productoId).map(response => response['datos']);
   }
 
   nuevoProducto(nombre: string, stock_minimo: number, codigo: string, iva: string,
@@ -47,7 +46,7 @@ export class ProductosService {
       id_categoria: id_categoria,
       id_unidad: id_unidad
     };
-    return this.http.post('/productos', body).map((response: Response) => response.json());
+    return this.http.post('/productos', body);
   }
 
   nuevoProductoRand(nombre: string, stock_minimo: number, iva: string,
@@ -59,7 +58,7 @@ export class ProductosService {
       id_categoria: id_categoria,
       id_unidad: id_unidad
     };
-    return this.http.post('/producto-rand', body).map((response: Response) => response.json());
+    return this.http.post('/producto-rand', body);
   }
 
   modificarProducto(productoId: number, nombre: string, stock_minimo: number, codigo: string, iva: string,
@@ -72,36 +71,36 @@ export class ProductosService {
       id_categoria: id_categoria,
       id_unidad: id_unidad
     };
-    return this.http.put('/productos/' + productoId, body).map((response: Response) => response.json().id);
+    return this.http.put('/productos/' + productoId, body).map(response => response['id']);
   }
 
   nuevaCategoria(nombre: string) {
     const body = {
       nombre: nombre
     };
-    return this.http.post('/productos/categorias', body).map((response: Response) => response.json().id);
+    return this.http.post('/productos/categorias', body).map(response => response['id']);
   }
 
   nuevaUnidad(nombre: string) {
     const body = {
       nombre: nombre
     };
-    return this.http.post('/productos/unidades', body).map((response: Response) => response.json().id);
+    return this.http.post('/productos/unidades', body).map(response => response['id']);
   }
 
   verProductosPrecios() {
-    return this.http.get('/productos/precios').map((response: Response) => response.json().datos);
+    return this.http.get('/productos/precios').map(response => response['datos']);
   }
 
   verPreciosProducto(productoId: number) {
-    return this.http.get('/productos/precios/' + productoId).map((response: Response) => response.json().datos);
+    return this.http.get('/productos/precios/' + productoId).map(response => response['datos']);
   }
 
   nuevoPrecio(productoId: number, precio: number) {
     const body = {
       precio: precio
     };
-    return this.http.put('/productos/precios/' + productoId, body).map((response: Response) => response.json().id);
+    return this.http.put('/productos/precios/' + productoId, body).map(response => response['id']);
   }
 
 }

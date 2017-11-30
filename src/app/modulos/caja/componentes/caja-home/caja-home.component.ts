@@ -57,7 +57,7 @@ export class CajaHomeComponent implements OnInit {
 
   cargarRemitos() {
     this.stockService.verRemitos().subscribe(resDb => {
-      this.remitosRecibidos = resDb.remitosRec;
+      this.remitosRecibidos = resDb['remitosRec'];
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);

@@ -57,7 +57,7 @@ export class NuevoAjusteComponent implements OnInit {
             const ajuste = new Ajuste();
             ajuste.motivo = this.motivo;
             this.stockService.nuevoAjuste(this.producto.id, this.cantidad, this.motivo).subscribe(nuevoAjuste => {
-              this.notificationsService.success('Ok', 'Ajuste de stock creado con ID ' + nuevoAjuste.id);
+              this.notificationsService.success('Ok', 'Ajuste de stock creado con ID ' + nuevoAjuste['id']);
               this.dialogRef.close(true);
             }, error => {
               const body = JSON.parse(error._body);

@@ -16,11 +16,13 @@
       <mat-form-field>
         <input matInput placeholder="Código..." [(ngModel)]="filtroCodigo" />
       </mat-form-field>
-      <mat-select placeholder="Categoría" [(ngModel)]="filtroCat">
-        <mat-option *ngFor="let cat of categorias" [value]="cat.nombre">
-          {{cat.nombre}}
-        </mat-option>
-      </mat-select>
+      <mat-form-field>
+        <mat-select placeholder="Categoría" [(ngModel)]="filtroCat">
+          <mat-option *ngFor="let cat of categorias" [value]="cat.nombre">
+            {{cat.nombre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-button color="warn" (click)="sacarFiltro()">Quitar filtro</button>
       <table width="100%">
         <tr>

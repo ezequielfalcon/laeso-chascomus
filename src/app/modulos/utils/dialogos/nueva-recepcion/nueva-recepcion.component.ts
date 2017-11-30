@@ -79,7 +79,7 @@ export class NuevaRecepcionComponent implements OnInit {
     this.stockServ.nuevoRemitoRecibido(proveedorId, numRemito, obs).subscribe(nuevoRemito => {
       this.notificationsService.success('OK', 'Remito guardado!');
       this.spinner.stop();
-      this.dialog.close(nuevoRemito.id);
+      this.dialog.close(nuevoRemito['id']);
     }, error => {
       const body = JSON.parse(error._body);
       this.notificationsService.error('Error', body.mensaje);

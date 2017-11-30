@@ -1,14 +1,14 @@
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class HttpVeaService {
   private urlPrefix: string; // La URL acá es seteada por el servicio de Login
 
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private notif: NotificationsService,
     private router: Router
   ) {
@@ -22,39 +22,33 @@ export class HttpVeaService {
   }
 
 
-  static createAuthorizationHeader(headers: Headers) {
-    headers.append('x-access-token', sessionStorage.getItem('token'));
+  static createAuthorizationHeader() {
+    return new HttpHeaders({
+      'x-access-token': sessionStorage.getItem('token')
+    });
   }
 
   get(url) {
-    const headers = new Headers();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.get(this.urlPrefix + url, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 
   post(url, data) {
-    const headers = new Headers();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.post(this.urlPrefix + url, data, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 
   put(url, data) {
-    const headers = new Headers();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.put(this.urlPrefix + url, data, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 
   del(url) {
-    const headers = new Headers();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.delete(this.urlPrefix + url, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 }

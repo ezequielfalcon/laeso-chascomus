@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import {Response} from '@angular/http';
 
 @Injectable()
 export class ProveedoresService {
@@ -10,11 +9,11 @@ export class ProveedoresService {
   ) { }
 
   traerTodos() {
-    return this.http.get('/proveedores').map((response: Response) => response.json().datos);
+    return this.http.get('/proveedores').map(response => response['datos']);
   }
 
   verProveedor(provedorId: number) {
-    return this.http.get('/proveedores/' + provedorId).map((response: Response) => response.json().datos);
+    return this.http.get('/proveedores/' + provedorId).map(response => response['datos']);
   }
 
   nuevoProveedor(nombre: string, telefono: string, denominacion: string, email: string, direccion: string) {
@@ -25,7 +24,7 @@ export class ProveedoresService {
       email: email,
       direccion: direccion
     };
-    return this.http.post('/proveedores', body).map((response: Response) => response.json().id);
+    return this.http.post('/proveedores', body).map(response => response['id']);
   }
 
   modificarProveedor(proveedorId: number, nombre: string, telefono: string, denominacion: string, email: string, direccion: string) {
@@ -36,11 +35,11 @@ export class ProveedoresService {
       email: email,
       direccion: direccion
     };
-    return this.http.put('/proveedores/' + proveedorId, body).map((response: Response) => response.json());
+    return this.http.put('/proveedores/' + proveedorId, body);
   }
 
   borrarProveedor(proveedorId: number) {
-    return this.http.del('/proveedores/' + proveedorId).map((response: Response) => response.json());
+    return this.http.del('/proveedores/' + proveedorId);
   }
 
 }
