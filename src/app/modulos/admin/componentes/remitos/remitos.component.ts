@@ -57,9 +57,9 @@ export class RemitosComponent implements OnInit, OnDestroy {
 
   cargarRemitos() {
     this.stockService.verRemitos().subscribe(resDb => {
-      this.remitosRecibidos = resDb.remitosRec;
-      this.remitosEnCarga = resDb.remitosEnC;
-      this.remitosFinalizados = resDb.remitosCerr;
+      this.remitosRecibidos = resDb['remitosRec'];
+      this.remitosEnCarga = resDb['remitosEnC'];
+      this.remitosFinalizados = resDb['remitosCerr'];
       this.spinner.stop();
     }, error => {
       const body = JSON.parse(error._body);

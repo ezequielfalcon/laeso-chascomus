@@ -24,6 +24,7 @@ import { StockModule } from './modulos/stock/stock.module';
 import {CajaGuard} from './guards/caja.guard';
 import {CajaModule} from './modulos/caja/caja.module';
 import {AdminModule} from './modulos/admin/admin.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import {AdminModule} from './modulos/admin/admin.module';
     BrowserModule,
     FormsModule,
     MaterialModule,
-    HttpModule,
-    SimpleNotificationsModule,
+    HttpClientModule,
+    SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     StockModule,
     CajaModule,

@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import {Response} from '@angular/http';
-import {Ajuste} from '../../modelos/ajuste';
-import {Stock} from '../../modelos/stock';
 import {Producto} from '../../modelos/producto';
 
 @Injectable()
@@ -13,19 +10,19 @@ export class StockService {
   ) { }
 
   verRemitos() {
-    return this.http.get('/stock/remitos').map((response: Response) => response.json());
+    return this.http.get('/stock/remitos');
   }
 
   verRemitosParaCarga(remitoId: number) {
-    return this.http.get('/stock/remitos/' + remitoId).map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos/' + remitoId).map(response => response['datos']);
   }
 
   verHistorialRemito(remitoId: number) {
-    return this.http.get('/stock/remitos/historial/' + remitoId).map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos/historial/' + remitoId).map(response => response['datos']);
   }
 
   verProductosPorRemito(remitoId: number) {
-    return this.http.get('/stock/remitos/productos/' + remitoId).map((response: Response) => response.json().datos);
+    return this.http.get('/stock/remitos/productos/' + remitoId).map(response => response['datos']);
   }
 
   nuevoRemitoRecibido(proveedorId: number, numero: string, obs: string) {
@@ -34,7 +31,7 @@ export class StockService {
       numero: numero,
       observaciones: obs
     };
-    return this.http.post('/stock/remitos', body).map((response: Response) => response.json());
+    return this.http.post('/stock/remitos', body);
   }
 
   agregarProductoRemito(remitoId: number, producto: Producto) {
@@ -46,31 +43,31 @@ export class StockService {
       fecha_vencimiento: producto.fecha_vencimiento,
       iva: producto.iva_incluido
     };
-    return this.http.post('/stock/remitos/productos', body).map((response: Response) => response.json());
+    return this.http.post('/stock/remitos/productos', body);
   }
 
   quitarProductoRemito(remitoId: number, productoId: number) {
-    return this.http.del('/stock/remitos/productos/' + remitoId + '/' + productoId).map((response: Response) => response.json());
+    return this.http.del('/stock/remitos/productos/' + remitoId + '/' + productoId);
   }
 
   confirmarRemito(remitoId: number) {
-    return this.http.put('/stock/remitos/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
+    return this.http.put('/stock/remitos/' + remitoId, new URLSearchParams());
   }
 
   cerrarRemito(remitoId: number) {
-    return this.http.put('/stock/remitos/cerrar/' + remitoId, new URLSearchParams()).map((response: Response) => response.json());
+    return this.http.put('/stock/remitos/cerrar/' + remitoId, new URLSearchParams());
   }
 
   borrarRemito(remitoId: number) {
-    return this.http.del('/stock/remitos/' + remitoId).map((response: Response) => response.json());
+    return this.http.del('/stock/remitos/' + remitoId);
   }
 
   verProductosStock() {
-    return this.http.get('/stock').map((response: Response) => response.json().datos);
+    return this.http.get('/stock').map(response => response['datos']);
   }
 
   verAjustesStock() {
-    return this.http.get('/stock/ajustes').map((response: Response) => response.json().datos);
+    return this.http.get('/stock/ajustes').map(response => response['datos']);
   }
 
   nuevoAjuste(idProducto: number, cantidad: number, motivo: string) {
@@ -79,7 +76,7 @@ export class StockService {
       cantidad: cantidad,
       motivo: motivo
     };
-    return this.http.post('/stock/ajuste-unico', body).map((response: Response) => response.json());
+    return this.http.post('/stock/ajuste-unico', body);
   }
 
 }
