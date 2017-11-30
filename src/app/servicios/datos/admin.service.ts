@@ -48,7 +48,7 @@ export class AdminService {
       direccion: direccion,
       id_rol: id_rol
     };
-    return this.http.put('/usuarios/' + nombre, usuarioNuevo)
+    return this.http.put('/usuarios/' + nombre, usuarioNuevo);
   }
 
 }
