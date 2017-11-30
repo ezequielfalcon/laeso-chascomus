@@ -22,39 +22,33 @@ export class HttpVeaService {
   }
 
 
-  static createAuthorizationHeader(headers: HttpHeaders) {
-    headers.append('x-access-token', sessionStorage.getItem('token'));
+  static createAuthorizationHeader() {
+    return new HttpHeaders({
+      'x-access-token': sessionStorage.getItem('token')
+    });
   }
 
   get(url) {
-    const headers = new HttpHeaders();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.get(this.urlPrefix + url, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 
   post(url, data) {
-    const headers = new HttpHeaders();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.post(this.urlPrefix + url, data, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 
   put(url, data) {
-    const headers = new HttpHeaders();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.put(this.urlPrefix + url, data, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 
   del(url) {
-    const headers = new HttpHeaders();
-    HttpVeaService.createAuthorizationHeader(headers);
     return this.http.delete(this.urlPrefix + url, {
-      headers: headers
+      headers: HttpVeaService.createAuthorizationHeader()
     });
   }
 }
