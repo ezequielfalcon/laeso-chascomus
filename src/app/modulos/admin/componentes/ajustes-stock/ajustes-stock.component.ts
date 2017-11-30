@@ -33,8 +33,7 @@ export class AjustesStockComponent implements OnInit, OnDestroy {
       this.ajustes = ajustesDb;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }

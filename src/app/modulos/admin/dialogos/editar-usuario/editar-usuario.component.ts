@@ -35,8 +35,7 @@ export class EditarUsuarioComponent implements OnInit {
       this.roles = rolesDb;
       this.cargarUsuario(this.nombreUsuario);
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -46,8 +45,7 @@ export class EditarUsuarioComponent implements OnInit {
       this.usuario = usuarioDb;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -63,8 +61,7 @@ export class EditarUsuarioComponent implements OnInit {
         this.notificationsService.success('OK', 'Usuario modificado!');
         this.dialogRef.close(true);
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
       });
   }

@@ -34,8 +34,7 @@ export class NuevoPrecioComponent implements OnInit {
         this.notificationsService.success('OK', 'Nuevo precio creado con ID ' + nuevoPrecioId);
         this.dialogRef.close(true);
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
         if (error.status === 404) {
           this.router.navigate(['/admin']);

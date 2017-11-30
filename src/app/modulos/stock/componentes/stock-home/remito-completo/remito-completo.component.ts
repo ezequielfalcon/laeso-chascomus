@@ -45,8 +45,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
         this.histoRemito(this.remitoCarga.id);
         this.cargarProveedor(this.remitoCarga.id_proveedor);
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
         if (error.status === 404) {
           this.router.navigate(['/stock']);
@@ -70,8 +69,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       this.historialRemito = historialDb;
       this.cargarProductosRemito(remitoId);
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
       if (error.status === 404) {
         this.router.navigate(['/stock']);
@@ -83,8 +81,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     this.productosService.verProductosFull().subscribe(productosDb => {
       this.productosFull = productosDb;
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
       if (error.status === 404) {
         this.router.navigate(['/stock']);
@@ -97,8 +94,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
       this.productosRemito = productosDb;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
       if (error.status === 404) {
         this.router.navigate(['/stock']);
@@ -114,8 +110,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
           this.stockService.confirmarRemito(this.remitoCarga.id).subscribe(() => {
             // nada
           }, error => {
-            const body = JSON.parse(error._body);
-            this.notificationsService.error('Error', body.mensaje);
+            this.notificationsService.error('Error', error.error.mensaje);
             this.spinner.stop();
           });
         }
@@ -150,8 +145,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
     this.stockService.quitarProductoRemito(remitoId, productoId).subscribe(() => {
       this.cargarProductosRemito(remitoId);
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -217,8 +211,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
               this.remitoCarga.numero + ' confirmado y cerrado.');
             this.router.navigate(['/stock']);
           }, error => {
-            const body = JSON.parse(error._body);
-            this.notificationsService.error('Error', body.mensaje);
+            this.notificationsService.error('Error', error.error.mensaje);
             this.spinner.stop();
           });
         }
@@ -236,8 +229,7 @@ export class RemitoCompletoComponent implements OnInit, OnDestroy {
               this.remitoCarga.numero + ' borrado correctamente');
             this.router.navigate(['/stock']);
           }, error => {
-            const body = JSON.parse(error._body);
-            this.notificationsService.error('Error', body.mensaje);
+            this.notificationsService.error('Error', error.error.mensaje);
             this.spinner.stop();
           });
         }

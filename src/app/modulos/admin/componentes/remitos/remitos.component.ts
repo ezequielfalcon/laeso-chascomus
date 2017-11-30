@@ -49,8 +49,7 @@ export class RemitosComponent implements OnInit, OnDestroy {
       });
       this.cargarRemitos();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -62,8 +61,7 @@ export class RemitosComponent implements OnInit, OnDestroy {
       this.remitosFinalizados = resDb['remitosCerr'];
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -88,8 +86,7 @@ export class RemitosComponent implements OnInit, OnDestroy {
             remito.numero + ' borrado correctamente');
           this.cargarProveedores();
         }, error => {
-          const body = JSON.parse(error._body);
-          this.notificationsService.error('Error', body.mensaje);
+          this.notificationsService.error('Error', error.error.mensaje);
           this.spinner.stop();
         });
       }

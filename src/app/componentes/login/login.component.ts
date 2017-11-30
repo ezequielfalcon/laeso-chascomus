@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private loginService: LoginService,
-    private notificationSerivce: NotificationsService,
+    private notificationsService: NotificationsService,
     private spinner: SpinnerService
   ) {}
 
@@ -38,13 +38,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
         () => {
-          this.notificationSerivce.success('OK', 'Sesión iniciada!');
+          this.notificationsService.success('OK', 'Sesión iniciada!');
           this.loading = false;
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          const body = JSON.parse(error._body);
-          this.notificationSerivce.error('Error', body.mensaje);
+          this.notificationsService.error('Error', error.error.mensaje);
           this.loading = false;
         }
       );

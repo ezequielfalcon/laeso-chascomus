@@ -37,8 +37,7 @@ export class UnidadesComponent implements OnInit, OnDestroy {
     this.productosService.verUnidades().subscribe(unidadesDb => {
       this.unidades = unidadesDb;
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -51,8 +50,7 @@ export class UnidadesComponent implements OnInit, OnDestroy {
             this.notificationsService.success('OK', 'Categoría borrada!');
             this.cargarUnidades();
           }, error => {
-            const body = JSON.parse(error._body);
-            this.notificationsService.error('Error', body.mensaje);
+            this.notificationsService.error('Error', error.error.mensaje);
             this.spinner.stop();
           });
         }

@@ -66,8 +66,7 @@ export class NuevoProductoComponent implements OnInit {
       this.categorias = categoriasDb;
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -77,8 +76,7 @@ export class NuevoProductoComponent implements OnInit {
       this.unidades = unidadesDb;
       this.nuevoProducto.id_unidad = NuevoProductoComponent.encontrarUnidad(this.unidades);
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }
@@ -106,8 +104,7 @@ export class NuevoProductoComponent implements OnInit {
         this.spinner.stop();
         this.dialogRef.close();
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
       });
     } else {
@@ -119,8 +116,7 @@ export class NuevoProductoComponent implements OnInit {
         this.spinner.stop();
         this.dialogRef.close();
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
       });
     }
