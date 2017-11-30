@@ -3,5 +3,8 @@ build:
   steps:
     - npm-install
     - script:
+            name: build
+            code: npm run build
+    - script:
             name: lint
             code: npm run lint

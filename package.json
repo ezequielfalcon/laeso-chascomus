@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node laeso.js",
-    "build": "ng build",
+    "build": "ng build --aot -prod",
     "test": "ng test",
     "lint": "ng lint --force --type-check",
     "e2e": "ng e2e",
