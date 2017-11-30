@@ -17,12 +17,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "1.5.5",
-    "@angular/compiler-cli": "^5.0.0",
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "^5.0.0-rc.2",
+    "@angular/cli": "1.5.5",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
     "@angular/core": "^5.0.0",
     "@angular/forms": "^5.0.0",
     "@angular/http": "^5.0.0",
@@ -63,5 +63,7 @@
   "engines": {
     "node": "9.2.0",
     "npm": "5.5.1"
-  }
+  },
+  "main": "laeso.js",
+  "repository": "https://github.com/ezequielfalcon/laeso-chascomus.git"
 }
