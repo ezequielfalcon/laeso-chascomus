@@ -52,8 +52,7 @@ export class ProveedoresComponent implements OnInit, OnDestroy {
       });
       this.spinner.stop();
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
   }

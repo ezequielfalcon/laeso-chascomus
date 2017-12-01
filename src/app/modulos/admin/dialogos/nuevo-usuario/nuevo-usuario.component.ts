@@ -31,8 +31,7 @@ export class NuevoUsuarioComponent implements OnInit {
     this.adminService.verRoles().subscribe(rolesDb => {
       this.roles = rolesDb;
     }, error => {
-      const body = JSON.parse(error._body);
-      this.notificationsService.error('Error', body.mensaje);
+      this.notificationsService.error('Error', error.error.mensaje);
     });
   }
 
@@ -51,8 +50,7 @@ export class NuevoUsuarioComponent implements OnInit {
         this.notificationsService.success('OK', 'Usuario creado!');
         this.dialogRef.close(true);
       }, error => {
-        const body = JSON.parse(error._body);
-        this.notificationsService.error('Error', body.mensaje);
+        this.notificationsService.error('Error', error.error.mensaje);
       });
   }
 
