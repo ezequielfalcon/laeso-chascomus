@@ -31,4 +31,8 @@ export class MenusComponent implements OnInit, OnDestroy {
     this.spinner.start();
   }
 
+  cargarMenus() {
+    
+  }
+
 }
