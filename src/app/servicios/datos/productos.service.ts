@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
-import { Menu } from '../../modelos/menu';
 
 @Injectable()
 export class ProductosService {
@@ -106,13 +105,4 @@ export class ProductosService {
     };
     return this.http.put('/productos/precios/' + productoId, body).map(response => response['id']);
   }
-
-  verMenus() {
-    return this.http.get('/productos/menus').map(response => response['datos']);
-  }
-
-  crearMenu(nuevoMenu: Menu) {
-    return this.http.post('/productos/menus', nuevoMenu).map(response => response['id']);
-  }
-
 }
