@@ -88,7 +88,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
   modificar() {
     this.spinner.start();
     this.productosService.modificarProducto(this.producto.id, this.producto.nombre, this.producto.stock_minimo,
-      this.producto.codigo, this.producto.iva, this.producto.id_categoria, this.producto.id_unidad)
+      this.producto.codigo, this.producto.iva, this.producto.id_categoria, this.producto.id_unidad, this.producto.es_ingrediente)
       .subscribe(() => {
         this.spinner.stop();
         this.edicion = false;

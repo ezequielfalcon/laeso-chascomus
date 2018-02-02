@@ -99,7 +99,7 @@ export class NuevoProductoComponent implements OnInit {
       this.spinner.start();
       this.productosService.nuevoProducto(this.nuevoProducto.nombre, this.nuevoProducto.stock_minimo,
         this.nuevoProducto.codigo, this.nuevoProducto.iva,
-        this.nuevoProducto.id_categoria, this.nuevoProducto.id_unidad).subscribe(() => {
+        this.nuevoProducto.id_categoria, this.nuevoProducto.id_unidad, this.nuevoProducto.es_ingrediente).subscribe(() => {
         this.notificationsService.success('OK', 'Producto creado con Código ' + this.nuevoProducto.codigo);
         this.spinner.stop();
         this.dialogRef.close();
@@ -111,7 +111,7 @@ export class NuevoProductoComponent implements OnInit {
       this.spinner.start();
       this.productosService.nuevoProductoRand(this.nuevoProducto.nombre, this.nuevoProducto.stock_minimo,
         this.nuevoProducto.iva,
-        this.nuevoProducto.id_categoria, this.nuevoProducto.id_unidad).subscribe(nuevoCod => {
+        this.nuevoProducto.id_categoria, this.nuevoProducto.id_unidad, this.nuevoProducto.es_ingrediente).subscribe(nuevoCod => {
         this.notificationsService.success('OK', 'Producto creado con Código ' + nuevoCod['nuevoCodigo']);
         this.spinner.stop();
         this.dialogRef.close();

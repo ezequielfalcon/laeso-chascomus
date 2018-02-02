@@ -14,4 +14,5 @@ export class Producto {
   fecha_vencimiento: string;
   iva_incluido: boolean;
   precio: number;
+  es_ingrediente: boolean;
 }

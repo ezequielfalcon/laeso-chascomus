@@ -2,49 +2,58 @@
   <mat-card>
     <mat-card-header><mat-card-title-group><h2>Detalle de producto</h2></mat-card-title-group></mat-card-header>
     <mat-card-content *ngIf="cargado">
-      <tr>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Código" [disabled]="!edicion" [(ngModel)]="producto.codigo" required autofocus (keyup.enter)="nombreForm.focus()">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Nombre" [disabled]="!edicion" [(ngModel)]="producto.nombre"
-                   required #nombreForm (keyup.tab)="stockMinimoForm.focus()" (keyup.enter)="crearBtn.focus()">
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Stock Mínimo" [disabled]="!edicion" [(ngModel)]="producto.stock_minimo" required #stockMinimoForm (keyup.enter)="crearBtn.focus()">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-select placeholder="IVA" [disabled]="!edicion" [(ngModel)]="producto.iva" required>
-            <mat-option *ngFor="let iva of ivas" [value]="iva.valor">
-              {{iva.label}}
-            </mat-option>
-          </mat-select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-select placeholder="Categoría" [disabled]="!edicion" [(ngModel)]="producto.id_categoria" required>
-            <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
-              {{categoria.nombre}}
-            </mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <mat-select placeholder="Unidad" [disabled]="!edicion" [(ngModel)]="producto.id_unidad" required>
-            <mat-option *ngFor="let unidad of unidades" [value]="unidad.id">
-              {{unidad.nombre}}
-            </mat-option>
-          </mat-select>
-        </td>
-      </tr>
+      <table>
+          <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Código" [disabled]="!edicion" [(ngModel)]="producto.codigo" required autofocus (keyup.enter)="nombreForm.focus()">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Nombre" [disabled]="!edicion" [(ngModel)]="producto.nombre"
+                         required #nombreForm (keyup.tab)="stockMinimoForm.focus()" (keyup.enter)="crearBtn.focus()">
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput placeholder="Stock Mínimo" [disabled]="!edicion" [(ngModel)]="producto.stock_minimo" required #stockMinimoForm (keyup.enter)="crearBtn.focus()">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-select placeholder="IVA" [disabled]="!edicion" [(ngModel)]="producto.iva" required>
+                  <mat-option *ngFor="let iva of ivas" [value]="iva.valor">
+                    {{iva.label}}
+                  </mat-option>
+                </mat-select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-select placeholder="Categoría" [disabled]="!edicion" [(ngModel)]="producto.id_categoria" required>
+                  <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
+                    {{categoria.nombre}}
+                  </mat-option>
+                </mat-select>
+              </td>
+              <td>
+                <mat-select placeholder="Unidad" [disabled]="!edicion" [(ngModel)]="producto.id_unidad" required>
+                  <mat-option *ngFor="let unidad of unidades" [value]="unidad.id">
+                    {{unidad.nombre}}
+                  </mat-option>
+                </mat-select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-checkbox [disabled]="!edicion" [(ngModel)]="producto.es_ingrediente">
+                  Es ingrediente de cocina
+                </mat-checkbox>
+              </td>
+            </tr>
+      </table>
     </mat-card-content>
     <mat-card-actions *ngIf="cargado">
       <button mat-button color="primary" (click)="editar(true)" *ngIf="!edicion" type="button"><mat-icon>create</mat-icon>Modificar</button>
