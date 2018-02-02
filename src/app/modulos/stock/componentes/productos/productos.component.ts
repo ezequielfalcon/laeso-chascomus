@@ -59,8 +59,6 @@ export class ProductosComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
-
     if (event.keyCode === 13 && !this.dialogoAbierto) {
       this.nuevoProducto();
       this.dialogoAbierto = true;
