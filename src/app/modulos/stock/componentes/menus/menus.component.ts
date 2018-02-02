@@ -24,7 +24,7 @@ export class MenusComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.spinner.stop();
+    this.cargarMenus();
   }
 
   ngOnDestroy() {
@@ -32,7 +32,16 @@ export class MenusComponent implements OnInit, OnDestroy {
   }
 
   cargarMenus() {
-    
+    this.productosService.verMenus().subscribe(
+      menusDb => {
+        this.menus = menusDb;
+        console.log(menusDb);
+        this.spinner.stop();
+      }, error => {
+        this.notificationsService.error('Error', error.error.mensaje);
+        this.spinner.stop();
+      }
+    );
   }
 
 }
