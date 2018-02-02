@@ -33,6 +33,7 @@ import {SeleccionarService} from '../utils/dialogos/seleccionar/seleccionar.serv
 import { StockProductosComponent } from './componentes/stock-productos/stock-productos.component';
 import { NuevoAjusteComponent } from './dialogos/nuevo-ajuste/nuevo-ajuste.component';
 import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
+import { MenusComponent } from './componentes/menus/menus.component';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
     RemitoCompletoComponent,
     AgregarProductoComponent,
     StockProductosComponent,
-    NuevoAjusteComponent
+    NuevoAjusteComponent,
+    MenusComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
