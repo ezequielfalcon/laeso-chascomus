@@ -34,6 +34,8 @@ import { StockProductosComponent } from './componentes/stock-productos/stock-pro
 import { NuevoAjusteComponent } from './dialogos/nuevo-ajuste/nuevo-ajuste.component';
 import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
 import { MenusComponent } from './componentes/menus/menus.component';
+import { NuevoMenuComponent } from './dialogos/nuevo-menu/nuevo-menu.component';
+import { NuevoMenuService } from './dialogos/nuevo-menu/nuevo-menu.service';
 
 @NgModule({
   imports: [
@@ -62,7 +64,8 @@ import { MenusComponent } from './componentes/menus/menus.component';
     AgregarProductoComponent,
     StockProductosComponent,
     NuevoAjusteComponent,
-    MenusComponent
+    MenusComponent,
+    NuevoMenuComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
@@ -70,7 +73,8 @@ import { MenusComponent } from './componentes/menus/menus.component';
     NuevoProductoComponent,
     NuevoProveedorComponent,
     AgregarProductoComponent,
-    NuevoAjusteComponent
+    NuevoAjusteComponent,
+    NuevoMenuComponent
   ],
   providers: [
     NuevaCategoriaService,
@@ -83,7 +87,8 @@ import { MenusComponent } from './componentes/menus/menus.component';
     StockService,
     AgregarProductoService,
     SeleccionarService,
-    NuevoAjusteService
+    NuevoAjusteService,
+    NuevoMenuService
   ]
 })
 export class StockModule { }
