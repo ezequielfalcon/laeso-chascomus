@@ -1,12 +1,10 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, OnDestroy } from '@angular/core';
 import { Menu } from '../../../../../modelos/menu';
-import { Route } from '@angular/router/src/config';
 import { NotificationsService } from 'angular2-notifications';
 import { SpinnerService } from '../../../../utils/directivas/spinner/spinner.service';
 import { CocinaService } from '../../../../../servicios/datos/cocina.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { Producto } from '../../../../../modelos/producto';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AgregarIngredienteService } from '../../../dialogos/agregar-ingrediente/agregar-ingrediente.service';
 
 @Component({

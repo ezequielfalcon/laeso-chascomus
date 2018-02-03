@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, OnDestroy } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { SpinnerService } from '../../../utils/directivas/spinner/spinner.service';
 import { Router } from '@angular/router';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Menu } from '../../../../modelos/menu';
 import { NuevoMenuService } from '../../dialogos/nuevo-menu/nuevo-menu.service';
 import { CocinaService } from '../../../../servicios/datos/cocina.service';
