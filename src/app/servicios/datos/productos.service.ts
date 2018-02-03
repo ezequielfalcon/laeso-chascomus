@@ -37,39 +37,42 @@ export class ProductosService {
   }
 
   nuevoProducto(nombre: string, stock_minimo: number, codigo: string, iva: string,
-                id_categoria: number, id_unidad: number) {
+                id_categoria: number, id_unidad: number, es_ingrediente: boolean) {
     const body = {
       nombre: nombre,
       stock_minimo: stock_minimo,
       iva: iva,
       codigo: codigo,
       id_categoria: id_categoria,
-      id_unidad: id_unidad
+      id_unidad: id_unidad,
+      es_ingrediente: es_ingrediente
     };
     return this.http.post('/productos', body);
   }
 
   nuevoProductoRand(nombre: string, stock_minimo: number, iva: string,
-                    id_categoria: number, id_unidad: number) {
+                    id_categoria: number, id_unidad: number, es_ingrediente: boolean) {
     const body = {
       nombre: nombre,
       stock_minimo: stock_minimo,
       iva: iva,
       id_categoria: id_categoria,
-      id_unidad: id_unidad
+      id_unidad: id_unidad,
+      es_ingrediente: es_ingrediente
     };
     return this.http.post('/producto-rand', body);
   }
 
   modificarProducto(productoId: number, nombre: string, stock_minimo: number, codigo: string, iva: string,
-                id_categoria: number, id_unidad: number) {
+                id_categoria: number, id_unidad: number, es_ingrediente: boolean) {
     const body = {
       nombre: nombre,
       stock_minimo: stock_minimo,
       iva: iva,
       codigo: codigo,
       id_categoria: id_categoria,
-      id_unidad: id_unidad
+      id_unidad: id_unidad,
+      es_ingrediente: es_ingrediente
     };
     return this.http.put('/productos/' + productoId, body).map(response => response['id']);
   }
@@ -102,5 +105,4 @@ export class ProductosService {
     };
     return this.http.put('/productos/precios/' + productoId, body).map(response => response['id']);
   }
-
 }

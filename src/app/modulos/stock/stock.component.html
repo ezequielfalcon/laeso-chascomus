@@ -19,6 +19,11 @@
         <span>Stock</span>
       </button>
         <br>
+        <button mat-button class="boton-sidenav" (click)="sidenav.toggle()" [routerLink]="['/stock/menus']">
+          <mat-icon>restaurant_menu</mat-icon>
+          <span>Menus</span>
+        </button>
+          <br>
         <mat-divider></mat-divider>
         <button mat-button class="boton-sidenav" color="accent" (click)="sidenav.toggle()" [routerLink]="['/stock/configuraciones']">
       <mat-icon>settings_ethernet</mat-icon>

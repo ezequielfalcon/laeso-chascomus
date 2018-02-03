@@ -33,6 +33,13 @@ import {SeleccionarService} from '../utils/dialogos/seleccionar/seleccionar.serv
 import { StockProductosComponent } from './componentes/stock-productos/stock-productos.component';
 import { NuevoAjusteComponent } from './dialogos/nuevo-ajuste/nuevo-ajuste.component';
 import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
+import { MenusComponent } from './componentes/menus/menus.component';
+import { NuevoMenuComponent } from './dialogos/nuevo-menu/nuevo-menu.component';
+import { NuevoMenuService } from './dialogos/nuevo-menu/nuevo-menu.service';
+import { CocinaService } from '../../servicios/datos/cocina.service';
+import { DetalleMenuComponent } from './componentes/menus/detalle-menu/detalle-menu.component';
+import { AgregarIngredienteComponent } from './dialogos/agregar-ingrediente/agregar-ingrediente.component';
+import { AgregarIngredienteService } from './dialogos/agregar-ingrediente/agregar-ingrediente.service';
 
 @NgModule({
   imports: [
@@ -60,7 +67,11 @@ import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
     RemitoCompletoComponent,
     AgregarProductoComponent,
     StockProductosComponent,
-    NuevoAjusteComponent
+    NuevoAjusteComponent,
+    MenusComponent,
+    NuevoMenuComponent,
+    DetalleMenuComponent,
+    AgregarIngredienteComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
@@ -68,7 +79,9 @@ import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
     NuevoProductoComponent,
     NuevoProveedorComponent,
     AgregarProductoComponent,
-    NuevoAjusteComponent
+    NuevoAjusteComponent,
+    NuevoMenuComponent,
+    AgregarIngredienteComponent
   ],
   providers: [
     NuevaCategoriaService,
@@ -81,7 +94,10 @@ import {NuevoAjusteService} from './dialogos/nuevo-ajuste/nuevo-ajuste.service';
     StockService,
     AgregarProductoService,
     SeleccionarService,
-    NuevoAjusteService
+    NuevoAjusteService,
+    NuevoMenuService,
+    CocinaService,
+    AgregarIngredienteService
   ]
 })
 export class StockModule { }
