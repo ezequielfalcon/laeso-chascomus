@@ -5,6 +5,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { SpinnerService } from '../../../../utils/directivas/spinner/spinner.service';
 import { CocinaService } from '../../../../../servicios/datos/cocina.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import { Producto } from '../../../../../modelos/producto';
 
 @Component({
   selector: 'app-detalle-menu',
@@ -16,6 +17,7 @@ export class DetalleMenuComponent implements OnInit {
   public menuId: number;
 
   menu: Menu;
+  ingredientes: Producto[] = [];
 
   constructor(
     private cocinaService: CocinaService,

@@ -8,7 +8,28 @@
     <mat-card-content>
       <ng-container *ngIf="menu">
         <label>Nombre del Menú: <strong>{{menu.nombre}}</strong></label>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <table>
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+          </tr>
+          <tr *ngFor="let ingrediente of ingredientes">
+            <td>{{ingrediente.nombre}}</td>
+            <td>{{ingrediente.cantidad}}</td>
+            <td>
+              <a class="clickVer"><mat-icon>delete</mat-icon></a>
+            </td>
+          </tr>
+        </table>
       </ng-container>
     </mat-card-content>
+    <mat-card-footer>
+      <button type="button" mat-raised-button [routerLink]="['/stock/menus']"><mat-icon>undo</mat-icon> Volver</button>
+      <button type="button" mat-raised-button color="accent"><mat-icon>add_circle</mat-icon> Agregar Ingrediente</button>
+      <button type="button" mat-raised-button color="warn"><mat-icon>remove</mat-icon> Eliminar Menú</button>
+    </mat-card-footer>
   </mat-card>
 </div>
