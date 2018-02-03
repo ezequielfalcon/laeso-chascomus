@@ -21,4 +21,8 @@ verMenus() {
     return this.http.get('/cocina/ingredientes').map(response => response['datos']);
   }
 
+  verMenu(menuId: number) {
+    return this.http.get('/cocina/menus/' + menuId).map(response => response['datos']);
+  }
+
 }

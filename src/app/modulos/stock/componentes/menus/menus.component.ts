@@ -37,17 +37,20 @@ export class MenusComponent implements OnInit, OnDestroy {
     this.nuevoMenuService.crearMenu(this.vcr).subscribe(
       res => {
         if (res) {
-          console.log('piola');
+          this.abrirMenu(res);
         }
       }
     );
+  }
+
+  abrirMenu(menuId) {
+    this.router.navigate(['/stock/menus/' + menuId]);
   }
 
   cargarMenus() {
     this.cocinaService.verMenus().subscribe(
       menusDb => {
         this.menus = menusDb;
-        console.log(menusDb);
         this.spinner.stop();
       }, error => {
         this.notificationsService.error('Error', error.error.mensaje);

@@ -1,3 +1,14 @@
-<p>
-  detalle-menu works!
-</p>
+<div class="center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3>Menú de Cocina</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ng-container *ngIf="menu">
+        <label>Nombre del Menú: <strong>{{menu.nombre}}</strong></label>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+</div>
