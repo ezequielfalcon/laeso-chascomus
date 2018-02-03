@@ -14,10 +14,12 @@
         <table>
           <tr>
             <th>Nombre</th>
+            <th>Código</th>
             <th>Cantidad</th>
           </tr>
-          <tr *ngFor="let ingrediente of ingredientes">
+          <tr *ngFor="let ingrediente of ingredientesMenu">
             <td>{{ingrediente.nombre}}</td>
+            <td>{{ingrediente.codigo}}</td>
             <td>{{ingrediente.cantidad}}</td>
             <td>
               <a class="clickVer"><mat-icon>delete</mat-icon></a>
@@ -28,8 +30,7 @@
     </mat-card-content>
     <mat-card-footer>
       <button type="button" mat-raised-button [routerLink]="['/stock/menus']"><mat-icon>undo</mat-icon> Volver</button>
-      <button type="button" mat-raised-button color="accent"><mat-icon>add_circle</mat-icon> Agregar Ingrediente</button>
-      <button type="button" mat-raised-button color="warn"><mat-icon>remove</mat-icon> Eliminar Menú</button>
+      <button type="button" mat-raised-button color="accent" (click)="agregarIngrediente()"><mat-icon>add_circle</mat-icon> Agregar Ingrediente</button>
     </mat-card-footer>
   </mat-card>
 </div>

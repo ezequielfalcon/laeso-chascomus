@@ -38,6 +38,8 @@ import { NuevoMenuComponent } from './dialogos/nuevo-menu/nuevo-menu.component';
 import { NuevoMenuService } from './dialogos/nuevo-menu/nuevo-menu.service';
 import { CocinaService } from '../../servicios/datos/cocina.service';
 import { DetalleMenuComponent } from './componentes/menus/detalle-menu/detalle-menu.component';
+import { AgregarIngredienteComponent } from './dialogos/agregar-ingrediente/agregar-ingrediente.component';
+import { AgregarIngredienteService } from './dialogos/agregar-ingrediente/agregar-ingrediente.service';
 
 @NgModule({
   imports: [
@@ -68,7 +70,8 @@ import { DetalleMenuComponent } from './componentes/menus/detalle-menu/detalle-m
     NuevoAjusteComponent,
     MenusComponent,
     NuevoMenuComponent,
-    DetalleMenuComponent
+    DetalleMenuComponent,
+    AgregarIngredienteComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
@@ -77,7 +80,8 @@ import { DetalleMenuComponent } from './componentes/menus/detalle-menu/detalle-m
     NuevoProveedorComponent,
     AgregarProductoComponent,
     NuevoAjusteComponent,
-    NuevoMenuComponent
+    NuevoMenuComponent,
+    AgregarIngredienteComponent
   ],
   providers: [
     NuevaCategoriaService,
@@ -92,7 +96,8 @@ import { DetalleMenuComponent } from './componentes/menus/detalle-menu/detalle-m
     SeleccionarService,
     NuevoAjusteService,
     NuevoMenuService,
-    CocinaService
+    CocinaService,
+    AgregarIngredienteService
   ]
 })
 export class StockModule { }

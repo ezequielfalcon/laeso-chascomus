@@ -25,4 +25,16 @@ verMenus() {
     return this.http.get('/cocina/menus/' + menuId).map(response => response['datos']);
   }
 
+  agregarIngredienteMenu(menuId: number, ingredienteId: number, cantidad: number) {
+    const cuerpo = {
+      id_producto: ingredienteId,
+      cantidad: cantidad
+    };
+    return this.http.put('/cocina/menus/agregar/' + menuId, cuerpo);
+  }
+
+  verIngredientesMenu(menuId: number) {
+    return this.http.get('/cocina/ingredientes/' + menuId).map(response => response['datos']);
+  }
+
 }
