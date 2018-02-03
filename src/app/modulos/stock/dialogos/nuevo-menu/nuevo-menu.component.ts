@@ -15,7 +15,6 @@ import { CocinaService } from '../../../../servicios/datos/cocina.service';
 export class NuevoMenuComponent implements OnInit {
 
   nuevoMenu: Menu = new Menu();
-  ingredientes: Producto[] = [];
 
   constructor(
     private spinner: SpinnerService,
@@ -25,19 +24,21 @@ export class NuevoMenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.cargarIngredientes();
+    this.spinner.stop();
   }
 
-  cargarIngredientes() {
-    this.cocinaService.verIngredientes().subscribe(
-      ingredientesDb => {
-        this.ingredientes = ingredientesDb;
-        this.spinner.stop();
-      }, error => {
-        this.notificationsService.error('Error', error.error.mensaje);
-        this.spinner.stop();
-      }
-    );
+  crearMenu() {
+    if (this.nuevoMenu.nombre) {
+      this.cocinaService.crearMenu(this.nuevoMenu).subscribe(
+        nuevoMenuId => {
+          this.notificationsService.success('OK', 'Menú creado con éxito!');
+          this.dialogRef.close(nuevoMenuId);
+        }, error => {
+          this.notificationsService.error('Error', error.error.mensaje);
+          this.spinner.stop();
+        }
+      );
+    }
   }
 
 }

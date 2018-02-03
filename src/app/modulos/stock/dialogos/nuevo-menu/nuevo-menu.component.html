@@ -1,3 +1,10 @@
-<p>
-  nuevo-menu works!
-</p>
+<h2 matDialogTitle>Nuevo Menú</h2>
+<div mat-dialog-content>
+     <mat-form-field>
+        <input matInput placeholder="Nombre" [(ngModel)]="nuevoMenu.nombre" required>
+      </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="crearMenu()">Crear y cargar ingredientes</button>
+  <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+</div>
