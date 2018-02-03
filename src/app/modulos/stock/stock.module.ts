@@ -37,6 +37,7 @@ import { MenusComponent } from './componentes/menus/menus.component';
 import { NuevoMenuComponent } from './dialogos/nuevo-menu/nuevo-menu.component';
 import { NuevoMenuService } from './dialogos/nuevo-menu/nuevo-menu.service';
 import { CocinaService } from '../../servicios/datos/cocina.service';
+import { DetalleMenuComponent } from './componentes/menus/detalle-menu/detalle-menu.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { CocinaService } from '../../servicios/datos/cocina.service';
     StockProductosComponent,
     NuevoAjusteComponent,
     MenusComponent,
-    NuevoMenuComponent
+    NuevoMenuComponent,
+    DetalleMenuComponent
   ],
   entryComponents: [
     NuevaCategoriaComponent,
