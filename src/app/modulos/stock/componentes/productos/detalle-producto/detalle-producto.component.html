@@ -12,14 +12,14 @@
               <td>
                 <mat-form-field>
                   <input matInput placeholder="Nombre" [disabled]="!edicion" [(ngModel)]="producto.nombre"
-                         required #nombreForm (keyup.tab)="stockMinimoForm.focus()" (keyup.enter)="crearBtn.focus()">
+                         required #nombreForm (keyup.tab)="stockMinimoForm.focus()">
                 </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
                 <mat-form-field>
-                  <input matInput placeholder="Stock Mínimo" [disabled]="!edicion" [(ngModel)]="producto.stock_minimo" required #stockMinimoForm (keyup.enter)="crearBtn.focus()">
+                  <input matInput placeholder="Stock Mínimo" [disabled]="!edicion" [(ngModel)]="producto.stock_minimo" required #stockMinimoForm>
                 </mat-form-field>
               </td>
               <td>
@@ -49,7 +49,12 @@
             <tr>
               <td>
                 <mat-checkbox [disabled]="!edicion" [(ngModel)]="producto.es_ingrediente">
-                  Es ingrediente de cocina
+                  Es ingrediente de Menú
+                </mat-checkbox>
+              </td>
+              <td>
+                <mat-checkbox [disabled]="!edicion" [(ngModel)]="producto.es_adicional">
+                  Es adicional de Cocina
                 </mat-checkbox>
               </td>
             </tr>
