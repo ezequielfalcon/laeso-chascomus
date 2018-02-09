@@ -15,4 +15,5 @@ export class Producto {
   iva_incluido: boolean;
   precio: number;
   es_ingrediente: boolean;
+  es_adicional: boolean;
 }

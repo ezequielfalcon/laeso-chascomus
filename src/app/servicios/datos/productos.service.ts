@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpVeaService} from '../http-vea.service';
+import { Producto } from '../../modelos/producto';
 
 @Injectable()
 export class ProductosService {
@@ -36,45 +37,45 @@ export class ProductosService {
     return this.http.get('/productos-por-id/' + productoId).map(response => response['datos']);
   }
 
-  nuevoProducto(nombre: string, stock_minimo: number, codigo: string, iva: string,
-                id_categoria: number, id_unidad: number, es_ingrediente: boolean) {
+  nuevoProducto(p: Producto) {
     const body = {
-      nombre: nombre,
-      stock_minimo: stock_minimo,
-      iva: iva,
-      codigo: codigo,
-      id_categoria: id_categoria,
-      id_unidad: id_unidad,
-      es_ingrediente: es_ingrediente
+      nombre: p.nombre,
+      stock_minimo: p.stock_minimo,
+      iva: p.iva,
+      codigo: p.codigo,
+      id_categoria: p.id_categoria,
+      id_unidad: p.id_unidad,
+      es_ingrediente: p.es_ingrediente,
+      es_adicional: p.es_adicional
     };
     return this.http.post('/productos', body);
   }
 
-  nuevoProductoRand(nombre: string, stock_minimo: number, iva: string,
-                    id_categoria: number, id_unidad: number, es_ingrediente: boolean) {
+  nuevoProductoRand(p: Producto) {
     const body = {
-      nombre: nombre,
-      stock_minimo: stock_minimo,
-      iva: iva,
-      id_categoria: id_categoria,
-      id_unidad: id_unidad,
-      es_ingrediente: es_ingrediente
+      nombre: p.nombre,
+      stock_minimo: p.stock_minimo,
+      iva: p.iva,
+      id_categoria: p.id_categoria,
+      id_unidad: p.id_unidad,
+      es_ingrediente: p.es_ingrediente,
+      es_adicional: p.es_adicional
     };
     return this.http.post('/producto-rand', body);
   }
 
-  modificarProducto(productoId: number, nombre: string, stock_minimo: number, codigo: string, iva: string,
-                id_categoria: number, id_unidad: number, es_ingrediente: boolean) {
+  modificarProducto(p: Producto) {
     const body = {
-      nombre: nombre,
-      stock_minimo: stock_minimo,
-      iva: iva,
-      codigo: codigo,
-      id_categoria: id_categoria,
-      id_unidad: id_unidad,
-      es_ingrediente: es_ingrediente
+      nombre: p.nombre,
+      stock_minimo: p.stock_minimo,
+      iva: p.iva,
+      codigo: p.codigo,
+      id_categoria: p.id_categoria,
+      id_unidad: p.id_unidad,
+      es_ingrediente: p.es_ingrediente,
+      es_adicional: p.es_adicional
     };
-    return this.http.put('/productos/' + productoId, body).map(response => response['id']);
+    return this.http.put('/productos/' + p.id, body).map(response => response['id']);
   }
 
   nuevaCategoria(nombre: string) {
