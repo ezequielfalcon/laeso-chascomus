@@ -1,0 +1,43 @@
+<h2 matDialogTitle>Agregar Ingrediente al menú {{menu.nombre}}</h2>
+<div mat-dialog-content>
+  <mat-list>
+    <div *ngIf="seleccionar">
+      <mat-input-container>
+        <input matInput type="text" placeholder="Código..." [(ngModel)]="busquedaCodigo">
+      </mat-input-container>
+      <mat-input-container>
+        <input matInput type="text" placeholder="Nombre..." [(ngModel)]="busquedaNombre">
+      </mat-input-container>
+      <table width="100%">
+        <tr *ngFor="let ingrediente of ingredientes | filtro: {codigo: busquedaCodigo, nombre: busquedaNombre} | slice:0:5"
+            (click)="seleccionarIngrediente(ingrediente.id)" class="clickVer">
+          <td>
+            {{ingrediente.codigo}}
+          </td>
+          <td>
+            {{ingrediente.nombre}}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="!seleccionar">
+      <h3>{{ingredienteNuevo.nombre}}</h3>
+      <table>
+        <tr>
+          <td>
+            <mat-input-container>
+              <input matInput type="number" placeholder="Cantidad..." [(ngModel)]="ingredienteNuevo.cantidad">
+            </mat-input-container>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <div *ngIf="!seleccionar">
+    <button mat-raised-button color="primary" (click)="guardarIngredienteNuevo(false)">Aceptar y continuar</button>
+    <button mat-raised-button color="accent" (click)="guardarIngredienteNuevo(true)">Aceptar y salir</button>
+  </div>
+  <button mat-button color="warn" (click)="dialogRef.close(ingredientesAgregados)">Cancelar</button>
+</div>
