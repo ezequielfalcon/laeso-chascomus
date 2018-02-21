@@ -9,7 +9,7 @@ import {CajaHomeComponent} from './componentes/caja-home/caja-home.component';
 import {StockService} from '../../servicios/datos/stock.service';
 import {NuevaRecepcionService} from '../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
 import {SeleccionarProveedorService} from '../utils/dialogos/seleccionar-proveedor/seleccionar-proveedor.service';
-import { MenuComponent } from './componentes/menu/menu.component';
+import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { MenuComponent } from './componentes/menu/menu.component';
   declarations: [
     CajaComponent,
     CajaHomeComponent,
-    MenuComponent
+    PedidosComponent
   ],
   providers: [
     NuevaRecepcionService,
