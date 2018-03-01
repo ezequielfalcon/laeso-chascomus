@@ -37,4 +37,12 @@ verMenus() {
     return this.http.get('/cocina/ingredientes/' + menuId).map(response => response['datos']);
   }
 
+  verPedidosPendientes() {
+    return this.http.get('/cocina/pedidos/pendientes').map(response => response['datos']);
+  }
+
+  verPedidosCerrados() {
+    return this.http.get('/cocina/pedidos/cerrados').map(response => response['datos']);
+  }
+
 }
