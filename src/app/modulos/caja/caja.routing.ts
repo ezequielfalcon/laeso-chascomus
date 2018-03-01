@@ -10,7 +10,7 @@ const cajaRoutes: Routes = [
   { path: 'caja', component: CajaComponent, canActivate: [CajaGuard], canActivateChild: [CajaGuard],
   children: [
     { path: '', component: CajaHomeComponent },
-    { path: '/pedidos', component: PedidosComponent },
+    { path: 'pedidos', component: PedidosComponent },
     { path: '*', redirectTo: '', pathMatch: 'full' }
   ]}
 ];
