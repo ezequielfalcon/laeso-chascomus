@@ -10,6 +10,8 @@ import {StockService} from '../../servicios/datos/stock.service';
 import {NuevaRecepcionService} from '../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
 import {SeleccionarProveedorService} from '../utils/dialogos/seleccionar-proveedor/seleccionar-proveedor.service';
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
+import { NuevoPedidoComponent } from './dialogos/nuevo-pedido/nuevo-pedido.component';
+import { NuevoPedidoService } from './dialogos/nuevo-pedido/nuevo-pedido.service';
 
 @NgModule({
   imports: [
@@ -22,14 +24,17 @@ import { PedidosComponent } from './componentes/pedidos/pedidos.component';
   declarations: [
     CajaComponent,
     CajaHomeComponent,
-    PedidosComponent
+    PedidosComponent,
+    NuevoPedidoComponent
   ],
   providers: [
     NuevaRecepcionService,
     SeleccionarProveedorService,
-    StockService
+    StockService,
+    NuevoPedidoService
   ],
   entryComponents: [
+    NuevoPedidoComponent
   ]
 })
 export class CajaModule { }
