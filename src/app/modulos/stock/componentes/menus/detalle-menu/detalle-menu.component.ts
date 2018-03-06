@@ -6,6 +6,7 @@ import { CocinaService } from '../../../../../servicios/datos/cocina.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { Producto } from '../../../../../modelos/producto';
 import { AgregarIngredienteService } from '../../../dialogos/agregar-ingrediente/agregar-ingrediente.service';
+import { ConfirmarService } from '../../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-detalle-menu',
@@ -25,7 +26,8 @@ export class DetalleMenuComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private agregarIngredienteService: AgregarIngredienteService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private confirmarService: ConfirmarService
   ) { }
 
   ngOnInit() {
@@ -84,4 +86,19 @@ export class DetalleMenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  quitarIngrediente(ingrediente: Producto) {
+    this.confirmarService.confirmar('Quitar Ingrediente', 'Desea quitar el ingrediente ' +
+    ingrediente.nombre + ' del menú ' + this.menu.nombre + '?', this.vcr)
+    .subscribe(confirmado => {
+      if (confirmado) {
+        this.spinner.start();
+        this.cocinaService.borrarIngredienteMenu(this.menu.id, ingrediente.id).subscribe(() => {
+          this.cargarIngredientesMenu(this.menu.id);
+        }, error => {
+          this.notificationsService.error('Error', error.error.mensaje);
+          this.spinner.stop();
+        });
+      }
+    });
+  }
 }

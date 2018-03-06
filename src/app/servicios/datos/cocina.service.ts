@@ -30,7 +30,11 @@ verMenus() {
       id_producto: ingredienteId,
       cantidad: cantidad
     };
-    return this.http.put('/cocina/menus/agregar/' + menuId, cuerpo);
+    return this.http.put('/cocina/menus/ingredientes/' + menuId, cuerpo);
+  }
+
+  borrarIngredienteMenu(menuId: number, productoId: number) {
+    return this.http.del('/cocina/menus/ingredientes/' + menuId + '/' + productoId);
   }
 
   verIngredientesMenu(menuId: number) {
