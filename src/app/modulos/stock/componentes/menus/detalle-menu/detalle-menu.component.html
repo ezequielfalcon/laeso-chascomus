@@ -22,7 +22,7 @@
             <td>{{ingrediente.codigo}}</td>
             <td>{{ingrediente.cantidad}}</td>
             <td>
-              <a class="clickVer"><mat-icon>delete</mat-icon></a>
+              <a class="clickVer" (click)="quitarIngrediente(ingrediente)"><mat-icon>delete</mat-icon></a>
             </td>
           </tr>
         </table>
