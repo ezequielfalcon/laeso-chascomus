@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpVeaService } from '../http-vea.service';
 import { Menu } from '../../modelos/menu';
+import { Pedido } from '../../modelos/pedido';
 
 @Injectable()
 export class CocinaService {
@@ -43,6 +44,10 @@ verMenus() {
 
   verPedidosCerrados() {
     return this.http.get('/cocina/pedidos/cerrados').map(response => response['datos']);
+  }
+
+  crearPedido(pedido: Pedido) {
+    return this.http.post('/cocina/pedidos', pedido).map(response => response['id']);
   }
 
 }

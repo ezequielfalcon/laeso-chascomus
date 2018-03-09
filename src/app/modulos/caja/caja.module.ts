@@ -12,6 +12,7 @@ import {SeleccionarProveedorService} from '../utils/dialogos/seleccionar-proveed
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 import { NuevoPedidoComponent } from './dialogos/nuevo-pedido/nuevo-pedido.component';
 import { NuevoPedidoService } from './dialogos/nuevo-pedido/nuevo-pedido.service';
+import { DetallePedidoComponent } from './componentes/pedidos/detalle-pedido/detalle-pedido.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { NuevoPedidoService } from './dialogos/nuevo-pedido/nuevo-pedido.service
     CajaComponent,
     CajaHomeComponent,
     PedidosComponent,
-    NuevoPedidoComponent
+    NuevoPedidoComponent,
+    DetallePedidoComponent
   ],
   providers: [
     NuevaRecepcionService,

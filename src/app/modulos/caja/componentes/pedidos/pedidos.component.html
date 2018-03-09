@@ -1,6 +1,6 @@
 <div class="center">
   <mat-card>
-    <button mat-raised-button color="primary" type="button">Nuevo pedido</button>
+    <button mat-raised-button color="primary" (click)="crearPedido()" type="button">Nuevo pedido</button>
     <mat-card-header>
       <mat-card-title>
         <h3>Pedidos pendientes</h3>
@@ -11,11 +11,11 @@
         <tr>
           <th>Numero</th><th>Fecha</th><th>Nombre</th><th>Observaciones</th>
         </tr>
-        <tr class="clickVer" [routerLink]="['/']" *ngFor="let pedido of pedidosPendientes">
-          <td>pedido.id</td>
-          <td>pedido.fecha</td>
-          <td>pedido.nombre</td>
-          <td>pedido.observacion</td>
+        <tr class="clickVer" [routerLink]="['/caja/pedido/' + pedido.id]" *ngFor="let pedido of pedidosPendientes">
+          <td>{{pedido.id}}</td>
+          <td>{{pedido.fecha.substr(0, 10)}}</td>
+          <td>{{pedido.nombre}}</td>
+          <td>{{pedido.observacion}}</td>
         </tr>
       </table>
     </mat-card-content>
@@ -31,7 +31,7 @@
         <tr>
           <th>Numero</th><th>Fecha</th><th>Nombre</th><th>Observaciones</th>
         </tr>
-        <tr class="clickVer" [routerLink]="['/']" *ngFor="let pedido of pedidosCerrados">
+        <tr *ngFor="let pedido of pedidosCerrados">
           <td>pedido.id</td>
           <td>pedido.fecha</td>
           <td>pedido.nombre</td>
