@@ -46,8 +46,16 @@ verMenus() {
     return this.http.get('/cocina/pedidos/cerrados').map(response => response['datos']);
   }
 
+  verPedido(pedidoId: number) {
+    return this.http.get('/cocina/pedidos/' + pedidoId).map(response => response['datos']);
+  }
+
   crearPedido(pedido: Pedido) {
     return this.http.post('/cocina/pedidos', pedido).map(response => response['id']);
+  }
+
+  verAdicionales() {
+    return this.http.get('/cocina/pedidos/adicionales').map(response => response['datos']);
   }
 
 }
