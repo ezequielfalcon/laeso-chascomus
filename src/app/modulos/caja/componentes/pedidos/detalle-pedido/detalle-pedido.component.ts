@@ -32,16 +32,16 @@ export class DetallePedidoComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.switchMap((params: Params) => this.cocina.verPedido(+params['id']))
-    .subscribe(pedidoDb => {
-      this.pedido = pedidoDb;
-      console.log(pedidoDb);
-    }, error => {
-      this.notificationsService.error('Error', error.error.mensaje);
+      .subscribe(pedidoDb => {
+        this.pedido = pedidoDb;
+        this.cargarMenusPedido();
+      }, error => {
+        this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
         if (error.status === 404) {
           this.router.navigate(['/cocina/pedidos']);
         }
-    });
+      });
     this.cargarMenus();
     this.cargarAdicionales();
   }
@@ -71,7 +71,12 @@ export class DetallePedidoComponent implements OnInit {
   }
 
   cargarMenusPedido() {
-
+    this.cocina.verMenusPedido(this.pedido.id).subscribe(menusPedidoDb => {
+      this.menusPedido = menusPedidoDb;
+    }, error => {
+      this.notificationsService.error('Error', error.error.mensaje);
+      this.spinner.stop();
+    });
   }
 
   getRandomColor() {

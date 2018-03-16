@@ -58,4 +58,8 @@ verMenus() {
     return this.http.get('/cocina/pedidos/adicionales').map(response => response['datos']);
   }
 
+  verMenusPedido(pedidoId: number) {
+    return this.http.get('/cocina/pedidos/menus/' + pedidoId).map(response => response['datos']);
+  }
+
 }
