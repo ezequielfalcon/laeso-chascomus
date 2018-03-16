@@ -34,6 +34,7 @@ export class DetallePedidoComponent implements OnInit {
     this.route.params.switchMap((params: Params) => this.cocina.verPedido(+params['id']))
     .subscribe(pedidoDb => {
       this.pedido = pedidoDb;
+      console.log(pedidoDb);
     }, error => {
       this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
@@ -41,12 +42,17 @@ export class DetallePedidoComponent implements OnInit {
           this.router.navigate(['/cocina/pedidos']);
         }
     });
+    this.cargarMenus();
+    this.cargarAdicionales();
   }
 
   cargarMenus() {
     this.cocina.verMenus().subscribe(
       menusDb => {
         this.menus = menusDb;
+        for (const menu of this.menus) {
+          menu.color = this.getRandomColor();
+        }
         this.spinner.stop();
       }, error => {
         this.notificationsService.error('Error', error.error.mensaje);
@@ -62,6 +68,15 @@ export class DetallePedidoComponent implements OnInit {
       this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
     });
+  }
+
+  cargarMenusPedido() {
+
+  }
+
+  getRandomColor() {
+    const color = Math.floor(0x1000000 * Math.random()).toString(16);
+    return '#' + ('000000' + color).slice(-6);
   }
 
 }

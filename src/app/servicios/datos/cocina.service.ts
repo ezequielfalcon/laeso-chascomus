@@ -39,11 +39,11 @@ verMenus() {
   }
 
   verPedidosPendientes() {
-    return this.http.get('/cocina/pedidos/pendientes').map(response => response['datos']);
+    return this.http.get('/cocina/pedidos-pendientes').map(response => response['datos']);
   }
 
   verPedidosCerrados() {
-    return this.http.get('/cocina/pedidos/cerrados').map(response => response['datos']);
+    return this.http.get('/cocina/pedidos-cerrados').map(response => response['datos']);
   }
 
   verPedido(pedidoId: number) {
