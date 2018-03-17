@@ -13,6 +13,7 @@ import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 import { NuevoPedidoComponent } from './dialogos/nuevo-pedido/nuevo-pedido.component';
 import { NuevoPedidoService } from './dialogos/nuevo-pedido/nuevo-pedido.service';
 import { DetallePedidoComponent } from './componentes/pedidos/detalle-pedido/detalle-pedido.component';
+import { AgregarMenuPedidoComponent } from './dialogos/agregar-menu-pedido/agregar-menu-pedido.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { DetallePedidoComponent } from './componentes/pedidos/detalle-pedido/det
     CajaHomeComponent,
     PedidosComponent,
     NuevoPedidoComponent,
-    DetallePedidoComponent
+    DetallePedidoComponent,
+    AgregarMenuPedidoComponent
   ],
   providers: [
     NuevaRecepcionService,
