@@ -45,29 +45,30 @@ export class AgregarMenuPedidoComponent implements OnInit {
 
   confirmarMenuPedido() {
     this.spinner.start();
-    this.cocina.agregarMenuPedido(this.pedido.id, this.menu, this.observaciones).subscribe(nuevoId => {
-      if (this.adicionalesMenu.length > 0) {
-        let adicionalesCargados = 0;
-        for (const adicional of this.adicionalesMenu) {
-          this.cocina.agregarAdicionalMenuPedido(nuevoId, adicional.id).subscribe(() => {
-            adicionalesCargados++;
-            if (adicionalesCargados === this.adicionalesMenu.length) {
-              this.notificationsService.success('OK', 'Menú con adicionales cargado!');
-              this.dialogRef.close(true);
-            }
-          }, error => {
-            this.notificationsService.error('Error', error.error.mensaje);
-            this.spinner.stop();
-          });
+    this.cocina.agregarMenuPedido(this.pedido.id, this.menu, this.observaciones)
+      .subscribe(nuevoId => {
+        if (this.adicionalesMenu.length > 0) {
+          let adicionalesCargados = 0;
+          for (const adicional of this.adicionalesMenu) {
+            this.cocina.agregarAdicionalMenuPedido(nuevoId.id, adicional.id).subscribe(() => {
+              adicionalesCargados++;
+              if (adicionalesCargados === this.adicionalesMenu.length) {
+                this.notificationsService.success('OK', 'Menú con adicionales cargado!');
+                this.dialogRef.close(true);
+              }
+            }, error => {
+              this.notificationsService.error('Error', error.error.mensaje);
+              this.spinner.stop();
+            });
+          }
+        } else {
+          this.notificationsService.success('OK', 'Menú cargado!');
+          this.dialogRef.close(true);
         }
-      } else {
-        this.notificationsService.success('OK', 'Menú cargado!');
-        this.dialogRef.close(true);
-      }
-    }, error => {
-      this.notificationsService.error('Error', error.error.mensaje);
-      this.spinner.stop();
-    });
+      }, error => {
+        this.notificationsService.error('Error', error.error.mensaje);
+        this.spinner.stop();
+      });
   }
 
 }
