@@ -20,6 +20,7 @@ export class AgregarMenuPedidoComponent implements OnInit {
 
   adicionalesMenu: Producto[] = [];
   observaciones = '';
+  busquedaNombre = '';
 
   constructor(
     private spinner: SpinnerService,
@@ -29,6 +30,44 @@ export class AgregarMenuPedidoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  agregarAdicionalMenu(adicional: Producto) {
+    this.adicionalesMenu.push(adicional);
+  }
+
+  sacarAdicionalMenu(adicional: Producto) {
+    const index = this.adicionalesMenu.indexOf(adicional, 0);
+    if (index > -1) {
+      this.adicionalesMenu.splice(index, 1);
+    }
+  }
+
+  confirmarMenuPedido() {
+    this.spinner.start();
+    this.cocina.agregarMenuPedido(this.pedido.id, this.menu, this.observaciones).subscribe(nuevoId => {
+      if (this.adicionalesMenu.length > 0) {
+        let adicionalesCargados = 0;
+        for (const adicional of this.adicionalesMenu) {
+          this.cocina.agregarAdicionalMenuPedido(nuevoId, adicional.id).subscribe(() => {
+            adicionalesCargados++;
+            if (adicionalesCargados === this.adicionalesMenu.length) {
+              this.notificationsService.success('OK', 'Menú con adicionales cargado!');
+              this.dialogRef.close(true);
+            }
+          }, error => {
+            this.notificationsService.error('Error', error.error.mensaje);
+            this.spinner.stop();
+          });
+        }
+      } else {
+        this.notificationsService.success('OK', 'Menú cargado!');
+        this.dialogRef.close(true);
+      }
+    }, error => {
+      this.notificationsService.error('Error', error.error.mensaje);
+      this.spinner.stop();
+    });
   }
 
 }

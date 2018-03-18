@@ -7,6 +7,7 @@ import { SpinnerService } from '../../../../utils/directivas/spinner/spinner.ser
 import { NotificationsService } from 'angular2-notifications';
 import { ConfirmarService } from '../../../../utils/dialogos/confirmar/confirmar.service';
 import { CocinaService } from '../../../../../servicios/datos/cocina.service';
+import { AgregarMenuPedidoService } from '../../../dialogos/agregar-menu-pedido/agregar-menu-pedido.service';
 
 @Component({
   selector: 'app-detalle-pedido',
@@ -27,7 +28,8 @@ export class DetallePedidoComponent implements OnInit {
     private vcr: ViewContainerRef,
     private confirmar: ConfirmarService,
     private router: Router,
-    private cocina: CocinaService
+    private cocina: CocinaService,
+    private agregar: AgregarMenuPedidoService
   ) { }
 
   ngOnInit() {
@@ -82,6 +84,10 @@ export class DetallePedidoComponent implements OnInit {
   getRandomColor() {
     const color = Math.floor(0x1000000 * Math.random()).toString(16);
     return '#' + ('000000' + color).slice(-6);
+  }
+
+  agregarMenuPedido(menu: Menu) {
+    this.agregar.agregarMenuPedido(menu, this.pedido, this.adicionales, this.vcr).subscribe();
   }
 
 }

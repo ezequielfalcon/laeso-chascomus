@@ -6,11 +6,11 @@ import { Pedido } from '../../modelos/pedido';
 @Injectable()
 export class CocinaService {
 
-constructor(
+  constructor(
     private http: HttpVeaService
-) { }
+  ) { }
 
-verMenus() {
+  verMenus() {
     return this.http.get('/cocina/menus').map(response => response['datos']);
   }
 
@@ -60,6 +60,21 @@ verMenus() {
 
   verMenusPedido(pedidoId: number) {
     return this.http.get('/cocina/pedidos/menus/' + pedidoId).map(response => response['datos']);
+  }
+
+  agregarMenuPedido(pedidoId: number, menu: Menu, observaciones: string) {
+    const body = {
+      id_menu: menu.id,
+      observaciones: observaciones
+    };
+    return this.http.put('/cocina/pedidos/menus/' + pedidoId, body).map(response => response['id']);
+  }
+
+  agregarAdicionalMenuPedido(menuPedidoId: number, adicionalId: number) {
+    const body = {
+      id_producto: adicionalId
+    };
+    return this.http.put('/cocina/pedidos/adicionales/' + menuPedidoId, body);
   }
 
 }
