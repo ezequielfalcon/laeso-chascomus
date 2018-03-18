@@ -3,7 +3,7 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatCommonModule, MatDialogModule, MatIconModule,
   MatInputModule, MatLineModule, MatListModule, MatProgressBarModule, MatSelectModule,
   MatSidenavModule, MatTableModule, MatTabsModule,
-  MatToolbarModule, MatTooltipModule
+  MatToolbarModule, MatTooltipModule, MatGridListModule
 } from '@angular/material';
 
 @NgModule({
@@ -23,7 +23,8 @@ import {
     MatLineModule,
     MatSelectModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
   ],
   exports: [
     MatButtonModule,
@@ -41,7 +42,8 @@ import {
     MatLineModule,
     MatSelectModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatGridListModule
   ],
 })
 export class MaterialModule { }

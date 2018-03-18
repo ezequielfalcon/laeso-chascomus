@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef, OnDestroy} from '@angular/core';
 import {NuevaRecepcionService} from '../../../utils/dialogos/nueva-recepcion/nueva-recepcion.service';
 import {RemitoRecibido} from '../../../../modelos/remito-recibido';
 import {Proveedor} from '../../../../modelos/proveedor';
@@ -13,7 +13,7 @@ import {ConfirmarService} from '../../../utils/dialogos/confirmar/confirmar.serv
   templateUrl: './caja-home.component.html',
   styleUrls: ['./caja-home.component.css']
 })
-export class CajaHomeComponent implements OnInit {
+export class CajaHomeComponent implements OnInit, OnDestroy {
 
   remitosRecibidos: RemitoRecibido[] = [];
   proveedores: Proveedor[] = [];
@@ -30,6 +30,10 @@ export class CajaHomeComponent implements OnInit {
 
   ngOnInit() {
     this.cargarProveedores();
+  }
+
+  ngOnDestroy() {
+    this.spinner.start();
   }
 
   nuevaRecep() {
