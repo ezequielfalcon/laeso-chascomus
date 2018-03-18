@@ -78,7 +78,7 @@ export class CocinaService {
     const body = {
       id_producto: adicionalId
     };
-    return this.http.put('/cocina/pedidos/adicionales/' + menuPedidoId, body);
+    return this.http.put('/cocina/pedidos/adicionales/' + menuPedidoId, body).map(response => response['id']);
   }
 
 }

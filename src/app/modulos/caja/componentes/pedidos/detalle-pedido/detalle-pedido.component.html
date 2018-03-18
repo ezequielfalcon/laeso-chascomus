@@ -6,18 +6,33 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <label>Menús disponibles:</label>
       <mat-grid-list cols="4" rowHeight="80px">
         <mat-grid-tile class="clickVer" matTooltip="Click para agregar el menú!" *ngFor="let menu of menus" [style.background]="menu.color"
           (click)="agregarMenuPedido(menu)">
           {{menu.nombre}}
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-list style="width: 200px">
-        <mat-list-item *ngFor="let menuPedido of menusPedido">
-          <mat-icon mat-list-icon>restaurant_menu</mat-icon>
-          <h3 mat-line>{{menuPedido.nombre}}</h3>
-        </mat-list-item>
-      </mat-list>
+      <mat-divider></mat-divider>
+      <label>Menús seleccionados:</label>
+      <br>
+      <ng-container *ngFor="let menu of menusPedido">
+        <mat-card class="card-menu">
+          <mat-card-header>
+            <mat-card-title>
+              {{menu.nombre}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            asd
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="accent">Confirmar pedido</button>

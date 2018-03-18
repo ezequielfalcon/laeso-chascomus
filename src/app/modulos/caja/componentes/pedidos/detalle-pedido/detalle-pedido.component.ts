@@ -75,6 +75,9 @@ export class DetallePedidoComponent implements OnInit {
   cargarMenusPedido() {
     this.cocina.verMenusPedido(this.pedido.id).subscribe(menusPedidoDb => {
       this.menusPedido = menusPedidoDb;
+      if (this.spinner.active) {
+        this.spinner.stop();
+      }
     }, error => {
       this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
@@ -87,7 +90,13 @@ export class DetallePedidoComponent implements OnInit {
   }
 
   agregarMenuPedido(menu: Menu) {
-    this.agregar.agregarMenuPedido(menu, this.pedido, this.adicionales, this.vcr).subscribe();
+    this.agregar.agregarMenuPedido(menu, this.pedido, this.adicionales, this.vcr)
+      .subscribe(res => {
+        if (res) {
+          this.spinner.start();
+          this.cargarMenusPedido();
+        }
+      });
   }
 
 }

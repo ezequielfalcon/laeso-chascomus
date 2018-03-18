@@ -1,15 +1,6 @@
-#sides {
-  margin: 0;
-}
-
-#left {
-  float: left;
-  width: 75%;
-  overflow: hidden;
-}
-
-#right {
-  float: left;
-  width: 25%;
-  overflow: hidden;
+.card-menu {
+  display: inline-block;
+  width: 20%;
+  margin: 10px;
+  vertical-align: top;
 }
