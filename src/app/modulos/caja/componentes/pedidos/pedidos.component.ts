@@ -4,6 +4,7 @@ import { SpinnerService } from '../../../utils/directivas/spinner/spinner.servic
 import { NotificationsService } from 'angular2-notifications';
 import { CocinaService } from '../../../../servicios/datos/cocina.service';
 import { NuevoPedidoService } from '../../dialogos/nuevo-pedido/nuevo-pedido.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos',
@@ -20,7 +21,8 @@ export class PedidosComponent implements OnInit, OnDestroy {
     private notificationsService: NotificationsService,
     private cocina: CocinaService,
     private pedidos: NuevoPedidoService,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -51,8 +53,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
   crearPedido() {
     this.pedidos.nuevoPedido(this.vcr).subscribe(pedidoId => {
       if (pedidoId) {
-        console.log('Hay pedido:');
-        console.log(pedidoId);
+        this.router.navigate(['/caja/pedido/' + pedidoId]);
       }
     });
   }
