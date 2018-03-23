@@ -77,4 +77,8 @@ export class CocinaService {
     return this.http.put('/cocina/pedidos/adicionales/' + menuPedidoId, body).map(response => response['id']);
   }
 
+  verAdicionalesMenuPedido(menuPedidoId: number) {
+    return this.http.get('/cocina/pedidos/adicionales/' + menuPedidoId).map(response => response['datos']);
+  }
+
 }

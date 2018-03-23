@@ -2,29 +2,41 @@
   <mat-card *ngIf="pedido">
     <mat-card-header>
       <mat-card-title>
-        <h3>Pedido {{pedido.id}}</h3>
+        <h3>Pedido Nº {{pedido.id}}</h3>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <label>Menús disponibles:</label>
-      <mat-grid-list cols="4" rowHeight="80px">
+      <h4>Menús disponibles:</h4>
+      <mat-grid-list cols="5" rowHeight="75px">
         <mat-grid-tile class="clickVer" matTooltip="Click para agregar el menú!" *ngFor="let menu of menus" [style.background]="menu.color"
           (click)="agregarMenuPedido(menu)">
           {{menu.nombre}}
         </mat-grid-tile>
       </mat-grid-list>
       <mat-divider></mat-divider>
-      <label>Menús seleccionados:</label>
+      <h4>Menús seleccionados:</h4>
       <br>
       <ng-container *ngFor="let menu of menusPedido">
         <mat-card class="card-menu">
           <mat-card-header>
             <mat-card-title>
-              {{menu.nombre}}
+              <h3>{{menu.nombre}}</h3>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            asd
+            <ng-container *ngIf="menu.adicionales.length">
+              <strong>Adicionales:</strong>
+              <br>
+              <ng-container *ngFor="let adicional of menu.adicionales">
+                <p>{{adicional.nombre}}</p>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="menu.observaciones">
+              <br>
+              <strong>Observaciones:</strong>
+              <br>
+              <p>{{menu.observaciones}}</p>
+            </ng-container>
           </mat-card-content>
           <mat-card-actions>
             <button mat-icon-button>
@@ -35,6 +47,7 @@
       </ng-container>
     </mat-card-content>
     <mat-card-actions>
+      <button mat-button [routerLink]="['/caja/pedidos']">Volver</button>
       <button mat-raised-button color="accent">Confirmar pedido</button>
     </mat-card-actions>
   </mat-card>

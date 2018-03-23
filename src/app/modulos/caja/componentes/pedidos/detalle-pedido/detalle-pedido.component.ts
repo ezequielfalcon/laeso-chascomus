@@ -36,7 +36,8 @@ export class DetallePedidoComponent implements OnInit {
     this.route.params.switchMap((params: Params) => this.cocina.verPedido(+params['id']))
       .subscribe(pedidoDb => {
         this.pedido = pedidoDb;
-        this.cargarMenusPedido();
+        this.cargarMenus();
+        this.cargarAdicionales();
       }, error => {
         this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
@@ -44,8 +45,6 @@ export class DetallePedidoComponent implements OnInit {
           this.router.navigate(['/cocina/pedidos']);
         }
       });
-    this.cargarMenus();
-    this.cargarAdicionales();
   }
 
   cargarMenus() {
@@ -55,7 +54,6 @@ export class DetallePedidoComponent implements OnInit {
         for (const menu of this.menus) {
           menu.color = this.getRandomColor();
         }
-        this.spinner.stop();
       }, error => {
         this.notificationsService.error('Error', error.error.mensaje);
         this.spinner.stop();
@@ -66,6 +64,7 @@ export class DetallePedidoComponent implements OnInit {
   cargarAdicionales() {
     this.cocina.verAdicionales().subscribe(adicionalesDb => {
       this.adicionales = adicionalesDb;
+      this.cargarMenusPedido();
     }, error => {
       this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
@@ -75,9 +74,7 @@ export class DetallePedidoComponent implements OnInit {
   cargarMenusPedido() {
     this.cocina.verMenusPedido(this.pedido.id).subscribe(menusPedidoDb => {
       this.menusPedido = menusPedidoDb;
-      if (this.spinner.active) {
-        this.spinner.stop();
-      }
+      this.cargarAdicionalesMenu();
     }, error => {
       this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
@@ -97,6 +94,30 @@ export class DetallePedidoComponent implements OnInit {
           this.cargarMenusPedido();
         }
       });
+  }
+
+  cargarAdicionalesMenu() {
+    let menusProcesados = 0;
+    for (const menu of this.menusPedido) {
+      menu.adicionales = [];
+      this.cocina.verAdicionalesMenuPedido(menu.id_menu_pedido).subscribe(
+        adicionalesMenu => {
+          for (const adic of adicionalesMenu) {
+            for (const adicionalProd of this.adicionales) {
+              if (+adic.id_producto === adicionalProd.id) {
+                menu.adicionales.push(adicionalProd);
+              }
+            }
+          }
+          menusProcesados++;
+          if (menusProcesados === this.menusPedido.length) {
+            this.spinner.stop();
+          }
+        }, error => {
+          this.notificationsService.error('Error', error.error.mensaje);
+          this.spinner.stop();
+        });
+    }
   }
 
 }
