@@ -124,4 +124,15 @@ export class DetallePedidoComponent implements OnInit {
     }
   }
 
+  quitarMenuPedido(menu: Menu) {
+    this.spinner.start();
+    this.cocina.quitarMenuPedido(menu.id_menu_pedido).subscribe(() => {
+      this.notificationsService.success('OK', 'Menú borrado del pedido');
+      this.cargarMenusPedido();
+    }, error => {
+      this.notificationsService.error('Error', error.error.mensaje);
+      this.spinner.stop();
+    });
+  }
+
 }
