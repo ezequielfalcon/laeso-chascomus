@@ -150,4 +150,19 @@ export class DetallePedidoComponent implements OnInit {
       });
   }
 
+  confirmarPedido() {
+    this.confirmar.confirmar('Confirmar pedido', 'Está seguro que desea pasar el pedido a Cocina?', this.vcr)
+      .subscribe(res => {
+        if (res) {
+          this.cocina.confirmarPedido(this.pedido.id).subscribe(() => {
+            this.notificationsService.success('OK', 'Pedido confirmado y enviado a Cocina!');
+            this.router.navigate(['/caja/pedidos']);
+          }, error => {
+            this.notificationsService.error('Error', error.error.mensaje);
+            this.spinner.stop();
+          });
+        }
+      });
+  }
+
 }

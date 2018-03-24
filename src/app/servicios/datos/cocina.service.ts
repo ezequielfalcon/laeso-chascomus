@@ -93,4 +93,8 @@ export class CocinaService {
     return this.http.del('/cocina/pedidos/' + pedidoId);
   }
 
+  confirmarPedido(pedidoId: number) {
+    return this.http.put('/cocina/pedidos/confirmar/' + pedidoId, {});
+  }
+
 }

@@ -38,10 +38,10 @@
           <th>Observaciones</th>
         </tr>
         <tr *ngFor="let pedido of pedidosCerrados">
-          <td>pedido.id</td>
-          <td>pedido.fecha</td>
-          <td>pedido.nombre</td>
-          <td>pedido.observacion</td>
+          <td>{{pedido.id}}</td>
+          <td>{{pedido.fecha.substr(0, 10)}}</td>
+          <td>{{pedido.nombre}}</td>
+          <td>{{pedido.observacion}}</td>
         </tr>
       </table>
     </mat-card-content>
