@@ -73,8 +73,12 @@ export class DetallePedidoComponent implements OnInit {
 
   cargarMenusPedido() {
     this.cocina.verMenusPedido(this.pedido.id).subscribe(menusPedidoDb => {
-      this.menusPedido = menusPedidoDb;
-      this.cargarAdicionalesMenu();
+      if (menusPedidoDb.length > 0) {
+        this.menusPedido = menusPedidoDb;
+        this.cargarAdicionalesMenu();
+      } else {
+        this.spinner.stop();
+      }
     }, error => {
       this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
