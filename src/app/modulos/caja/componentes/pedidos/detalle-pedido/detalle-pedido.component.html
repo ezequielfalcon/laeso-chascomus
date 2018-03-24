@@ -15,7 +15,6 @@
       </mat-grid-list>
       <mat-divider></mat-divider>
       <h4>Menús seleccionados:</h4>
-      <br>
       <ng-container *ngFor="let menu of menusPedido">
         <mat-card class="card-menu">
           <mat-card-header>
@@ -39,7 +38,7 @@
             </ng-container>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-icon-button>
+            <button type="button" mat-icon-button (click)="quitarMenuPedido(menu)">
               <mat-icon>delete</mat-icon>
             </button>
           </mat-card-actions>
@@ -48,6 +47,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button [routerLink]="['/caja/pedidos']">Volver</button>
+      <button mat-raised-button color="warn" (click)="borrarPedido()">Cancelar pedido</button>
       <button mat-raised-button color="accent">Confirmar pedido</button>
     </mat-card-actions>
   </mat-card>

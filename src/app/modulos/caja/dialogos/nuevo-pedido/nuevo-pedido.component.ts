@@ -25,14 +25,18 @@ export class NuevoPedidoComponent implements OnInit {
   }
 
   crearPedido() {
-    this.spinner.start();
-    this.cocina.crearPedido(this.nuevoPedido).subscribe(nuevoPedidoId => {
-      this.notificationsService.success('Éxito!', 'Pedido creado con ID ' + nuevoPedidoId);
-      this.dialogRef.close(nuevoPedidoId);
-    }, error => {
-      this.notificationsService.error('Error', error.error.mensaje);
-      this.spinner.stop();
-    });
+    if (this.nuevoPedido.nombre) {
+      this.spinner.start();
+      this.cocina.crearPedido(this.nuevoPedido).subscribe(nuevoPedidoId => {
+        this.notificationsService.success('Éxito!', 'Pedido creado con ID ' + nuevoPedidoId);
+        this.dialogRef.close(nuevoPedidoId);
+      }, error => {
+        this.notificationsService.error('Error', error.error.mensaje);
+        this.spinner.stop();
+      });
+    } else {
+      this.notificationsService.warn('Error', 'Debe completar el campo Nombre!');
+    }
   }
 
 }

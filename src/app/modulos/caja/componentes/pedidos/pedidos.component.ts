@@ -5,6 +5,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { CocinaService } from '../../../../servicios/datos/cocina.service';
 import { NuevoPedidoService } from '../../dialogos/nuevo-pedido/nuevo-pedido.service';
 import { Router } from '@angular/router';
+import { ConfirmarService } from '../../../utils/dialogos/confirmar/confirmar.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -22,7 +23,8 @@ export class PedidosComponent implements OnInit, OnDestroy {
     private cocina: CocinaService,
     private pedidos: NuevoPedidoService,
     private vcr: ViewContainerRef,
-    private router: Router
+    private router: Router,
+    private confirmar: ConfirmarService
   ) { }
 
   ngOnInit() {

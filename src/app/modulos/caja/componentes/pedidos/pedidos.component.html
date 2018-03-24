@@ -9,7 +9,10 @@
     <mat-card-content>
       <table width="100%">
         <tr>
-          <th>Numero</th><th>Fecha</th><th>Nombre</th><th>Observaciones</th>
+          <th>Numero</th>
+          <th>Fecha</th>
+          <th>Nombre</th>
+          <th>Observaciones</th>
         </tr>
         <tr class="clickVer" [routerLink]="['/caja/pedido/' + pedido.id]" *ngFor="let pedido of pedidosPendientes">
           <td>{{pedido.id}}</td>
@@ -29,7 +32,10 @@
     <mat-card-content>
       <table width="100%">
         <tr>
-          <th>Numero</th><th>Fecha</th><th>Nombre</th><th>Observaciones</th>
+          <th>Numero</th>
+          <th>Fecha</th>
+          <th>Nombre</th>
+          <th>Observaciones</th>
         </tr>
         <tr *ngFor="let pedido of pedidosCerrados">
           <td>pedido.id</td>

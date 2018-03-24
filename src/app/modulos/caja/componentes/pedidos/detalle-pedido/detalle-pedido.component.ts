@@ -73,8 +73,12 @@ export class DetallePedidoComponent implements OnInit {
 
   cargarMenusPedido() {
     this.cocina.verMenusPedido(this.pedido.id).subscribe(menusPedidoDb => {
-      this.menusPedido = menusPedidoDb;
-      this.cargarAdicionalesMenu();
+      if (menusPedidoDb.length > 0) {
+        this.menusPedido = menusPedidoDb;
+        this.cargarAdicionalesMenu();
+      } else {
+        this.spinner.stop();
+      }
     }, error => {
       this.notificationsService.error('Error', error.error.mensaje);
       this.spinner.stop();
@@ -118,6 +122,32 @@ export class DetallePedidoComponent implements OnInit {
           this.spinner.stop();
         });
     }
+  }
+
+  quitarMenuPedido(menu: Menu) {
+    this.spinner.start();
+    this.cocina.quitarMenuPedido(menu.id_menu_pedido).subscribe(() => {
+      this.notificationsService.success('OK', 'Menú borrado del pedido');
+      this.cargarMenusPedido();
+    }, error => {
+      this.notificationsService.error('Error', error.error.mensaje);
+      this.spinner.stop();
+    });
+  }
+
+  borrarPedido() {
+    this.confirmar.confirmar('Borrar pedido', 'Está seguro que desea borrar el pedido ' + this.pedido.id + ' ?', this.vcr)
+      .subscribe(res => {
+        if (res) {
+          this.cocina.borrarPedido(this.pedido.id).subscribe(() => {
+            this.notificationsService.success('OK', 'Pedido borrado!');
+            this.router.navigate(['/caja/pedidos']);
+          }, error => {
+            this.notificationsService.error('Error', error.error.mensaje);
+            this.spinner.stop();
+          });
+        }
+      });
   }
 
 }

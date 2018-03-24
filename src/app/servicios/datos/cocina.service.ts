@@ -85,4 +85,12 @@ export class CocinaService {
     return this.http.get('/cocina/pedidos/adicionales/' + menuPedidoId).map(response => response['datos']);
   }
 
+  quitarMenuPedido(menuPedidoId: number) {
+    return this.http.del('/cocina/pedidos/menus/' + menuPedidoId);
+  }
+
+  borrarPedido(pedidoId: number) {
+    return this.http.del('/cocina/pedidos/' + pedidoId);
+  }
+
 }
