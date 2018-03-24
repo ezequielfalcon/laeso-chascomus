@@ -135,4 +135,19 @@ export class DetallePedidoComponent implements OnInit {
     });
   }
 
+  borrarPedido() {
+    this.confirmar.confirmar('Borrar pedido', 'Está seguro que desea borrar el pedido ' + this.pedido.id + ' ?', this.vcr)
+      .subscribe(res => {
+        if (res) {
+          this.cocina.borrarPedido(this.pedido.id).subscribe(() => {
+            this.notificationsService.success('OK', 'Pedido borrado!');
+            this.router.navigate(['/caja/pedidos']);
+          }, error => {
+            this.notificationsService.error('Error', error.error.mensaje);
+            this.spinner.stop();
+          });
+        }
+      });
+  }
+
 }
