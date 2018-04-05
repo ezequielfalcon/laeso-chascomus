@@ -1,0 +1,31 @@
+<h2 matDialogTitle>Añadir menú {{menu.nombre}} a pedido {{pedido.id}}</h2>
+<mat-dialog-content>
+  <h4>
+    Seleccione si desea agregar un adicional al menú:
+  </h4>
+  <mat-input-container>
+    <input matInput type="text" placeholder="Filtrar..." [(ngModel)]="busquedaNombre">
+  </mat-input-container>
+  <mat-list>
+    <mat-list-item *ngFor="let adicional of adicionales | filtro: {nombre: busquedaNombre} | slice:0:5" class="clickVer" (click)="agregarAdicionalMenu(adicional)">
+      <mat-icon mat-list-icon>restaurant</mat-icon>
+      <h3 mat-line>{{adicional.nombre}}</h3>
+    </mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+  <ng-container *ngIf="adicionalesMenu.length > 0">
+    <h4>Adicionales seleccionados:</h4>
+    <mat-list>
+      <mat-list-item *ngFor="let adicional of adicionalesMenu" class="clickVer" (click)="sacarAdicionalMenu(adicional)">
+        <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+        <h3 mat-line>{{adicional.nombre}}</h3>
+      </mat-list-item>
+    </mat-list>
+  </ng-container>
+  <mat-input-container>
+    <input matInput type="text" placeholder="Observaciones..." [(ngModel)]="observaciones">
+  </mat-input-container>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" type="button" (click)="confirmarMenuPedido()">Confirmar</button>
+</mat-dialog-actions>

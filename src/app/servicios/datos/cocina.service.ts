@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpVeaService } from '../http-vea.service';
 import { Menu } from '../../modelos/menu';
+import { Pedido } from '../../modelos/pedido';
 
 @Injectable()
 export class CocinaService {
 
-constructor(
+  constructor(
     private http: HttpVeaService
-) { }
+  ) { }
 
-verMenus() {
+  verMenus() {
     return this.http.get('/cocina/menus').map(response => response['datos']);
   }
 
@@ -39,6 +40,61 @@ verMenus() {
 
   verIngredientesMenu(menuId: number) {
     return this.http.get('/cocina/ingredientes/' + menuId).map(response => response['datos']);
+  }
+
+  verPedidosPendientes() {
+    return this.http.get('/cocina/pedidos-pendientes').map(response => response['datos']);
+  }
+
+  verPedidosCerrados() {
+    return this.http.get('/cocina/pedidos-cerrados').map(response => response['datos']);
+  }
+
+  verPedido(pedidoId: number) {
+    return this.http.get('/cocina/pedidos/' + pedidoId).map(response => response['datos']);
+  }
+
+  crearPedido(pedido: Pedido) {
+    return this.http.post('/cocina/pedidos', pedido).map(response => response['id']);
+  }
+
+  verAdicionales() {
+    return this.http.get('/cocina/pedidos/adicionales').map(response => response['datos']);
+  }
+
+  verMenusPedido(pedidoId: number) {
+    return this.http.get('/cocina/pedidos/menus/' + pedidoId).map(response => response['datos']);
+  }
+
+  agregarMenuPedido(pedidoId: number, menu: Menu, observaciones: string) {
+    const body = {
+      id_menu: menu.id,
+      observaciones: observaciones
+    };
+    return this.http.put('/cocina/pedidos/menus/' + pedidoId, body).map(response => response['id']);
+  }
+
+  agregarAdicionalMenuPedido(menuPedidoId: number, adicionalId: number) {
+    const body = {
+      id_producto: adicionalId
+    };
+    return this.http.put('/cocina/pedidos/adicionales/' + menuPedidoId, body).map(response => response['id']);
+  }
+
+  verAdicionalesMenuPedido(menuPedidoId: number) {
+    return this.http.get('/cocina/pedidos/adicionales/' + menuPedidoId).map(response => response['datos']);
+  }
+
+  quitarMenuPedido(menuPedidoId: number) {
+    return this.http.del('/cocina/pedidos/menus/' + menuPedidoId);
+  }
+
+  borrarPedido(pedidoId: number) {
+    return this.http.del('/cocina/pedidos/' + pedidoId);
+  }
+
+  confirmarPedido(pedidoId: number) {
+    return this.http.put('/cocina/pedidos/confirmar/' + pedidoId, {});
   }
 
 }
