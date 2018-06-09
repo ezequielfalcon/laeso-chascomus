@@ -8,6 +8,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { ConfirmarService } from '../../../../utils/dialogos/confirmar/confirmar.service';
 import { CocinaService } from '../../../../../servicios/datos/cocina.service';
 import { AgregarMenuPedidoService } from '../../../dialogos/agregar-menu-pedido/agregar-menu-pedido.service';
+import { ImpresionService } from '../../../../../servicios/impresion.service';
 
 @Component({
   selector: 'app-detalle-pedido',
@@ -29,7 +30,8 @@ export class DetallePedidoComponent implements OnInit {
     private confirmar: ConfirmarService,
     private router: Router,
     private cocina: CocinaService,
-    private agregar: AgregarMenuPedidoService
+    private agregar: AgregarMenuPedidoService,
+    private impresion: ImpresionService
   ) { }
 
   ngOnInit() {
@@ -150,13 +152,36 @@ export class DetallePedidoComponent implements OnInit {
       });
   }
 
+  imprimirPedidoCocina() {
+    let itemsCsv = '';
+    let contadorItems = 1;
+    for (const item of this.menusPedido) {
+      if (contadorItems > 1) {
+        itemsCsv += ',';
+      }
+      itemsCsv += contadorItems + ' - ' + item.nombre;
+      contadorItems++;
+      if (item.adicionales.length > 0) {
+        for (const adicItem of item.adicionales) {
+          itemsCsv += ',    ADC: ' + adicItem.nombre;
+        }
+      }
+    }
+    this.impresion.imprimirPedido(this.pedido.id + ' - ' + this.pedido.nombre, itemsCsv).subscribe(() => {
+      this.notificationsService.success('OK', 'Pedido confirmado y enviado a Cocina!');
+      this.router.navigate(['/caja/pedidos']);
+    }, error => {
+      this.notificationsService.error('Error', error.error.mensaje);
+      this.spinner.stop();
+    });
+  }
+
   confirmarPedido() {
     this.confirmar.confirmar('Confirmar pedido', 'Está seguro que desea pasar el pedido a Cocina?', this.vcr)
       .subscribe(res => {
         if (res) {
           this.cocina.confirmarPedido(this.pedido.id).subscribe(() => {
-            this.notificationsService.success('OK', 'Pedido confirmado y enviado a Cocina!');
-            this.router.navigate(['/caja/pedidos']);
+            this.imprimirPedidoCocina();
           }, error => {
             this.notificationsService.error('Error', error.error.mensaje);
             this.spinner.stop();
