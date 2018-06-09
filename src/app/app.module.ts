@@ -25,6 +25,7 @@ import {CajaGuard} from './guards/caja.guard';
 import {CajaModule} from './modulos/caja/caja.module';
 import {AdminModule} from './modulos/admin/admin.module';
 import {HttpClientModule} from '@angular/common/http';
+import { ImpresionService } from './servicios/impresion.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {HttpClientModule} from '@angular/common/http';
     AdminGuard,
     StockGuard,
     SpinnerService,
-    CajaGuard
+    CajaGuard,
+    ImpresionService
   ],
   bootstrap: [AppComponent]
 })
